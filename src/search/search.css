@@ -1,0 +1,60 @@
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.searchSection {
+  width: 320px;
+  margin: 0 auto;
+}
+
+.formSearch {
+  margin: 0 auto;
+  width: 257px;
+  border-bottom: 2px solid #9894a1;
+
+}
+
+.inputSearch {
+  width: 220px;
+  border: none;
+  border-top: 10px;
+  font-family: Roboto;
+  font-size: 14px;
+}
+
+.buttonSearch {
+  width: 20px;
+  height: 20px;
+  background-image: url(./images/icon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: #fff;
+}
+
+.filmList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.pagination {
+  width: 270px;
+  margin: 0 auto;
+  text-align: center;
+}

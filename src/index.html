@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Cinema Library</title>
-  </head>
-  <header>
 
-  </header>
-  <body>
-    <section class="main-page"></section>
-    <section class="library-watched"></section>
-    <section class="library-queue"></section>
-    <section class="details-page"></section>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Cinema Library</title>
+</head>
+<header>
 
-  <footer>
+</header>
 
-  </footer>
+<body>
+  <section class="main-page">
+    <section class="searchSection">
+      <form class="formSearch">
+        <button class="buttonSearch" type="submit"></button>
+        <input class="inputSearch" type="text" placeholder="Write movie name and click Enter">
+      </form>
+
+      <div class="errorSearch"></div>
+
+      <ul class="filmList">
+
+      </ul>
+
+      <div class="pagination">
+        <button type="button" data-active="prev">Prev</button>
+        <span class="numberPage">1</span>
+        <button type="button" data-active="next">Next</button>
+      </div>
+
+    </section>
+  </section>
+  <section class="library-watched"></section>
+  <section class="library-queue"></section>
+  <section class="details-page"></section>
+</body>
+
+<footer>
+
+</footer>
+
 </html>
