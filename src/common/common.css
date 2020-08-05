@@ -1,0 +1,8 @@
+:root {
+  --hf-bg-color: #77c1bb; /* Background color for header, footer and tabs */
+  --hf-tx-color: #372c48; /* Text color for header and footer */
+  --cap-bg-color: #f3f6f6; /* Background color for captions: search form and selected tabs */
+  --btn-text-color: #556270; /* Text color for nav buttons */
+  --ev-table-bg-color: #ffffff; /* Background color for even table rows in Details table */
+  --odd-table-bg-color: #addad6; /* Background color for odd table rows in Details table */
+}
