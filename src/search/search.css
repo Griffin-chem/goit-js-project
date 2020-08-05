@@ -12,7 +12,7 @@ html {
 
 img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
@@ -48,8 +48,55 @@ img {
 
 .filmList {
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
+
+}
+
+
+
+.itemFilm {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  height: 155px;
+  position: relative;
+  background-image: linear-gradient(#ffffff, #000000);
+}
+
+
+
+
+
+
+.itemFilm_title {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: #ffffff;
+  font-size: 12.3px;
+  padding-left: 10px;
+}
+
+.filmYear {
+  padding-left: 10px;
+}
+
+.displayNone {
+  display: none;
+}
+
+
+.errorSearch {
+  text-align: center;
+  font-size: 80px;
+  color: red;
+  background-color: green;
+
 }
 
 
@@ -57,4 +104,6 @@ img {
   width: 270px;
   margin: 0 auto;
   text-align: center;
+
+
 }

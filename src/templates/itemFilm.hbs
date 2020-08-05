@@ -1,5 +1,9 @@
-<li>
-    <h2>{{title}}</h2>
-    <p>{{overview}}</p>
+<li class="itemFilm">
+    <h2 class="itemFilm_title">{{original_title}}<span class="filmYear">({{release_date}})</span></h2>
+
     <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{poster_path}}" alt="">
 </li>
+
+
+
+{{!-- {new Date(release_date).getFullYear()} --}}
