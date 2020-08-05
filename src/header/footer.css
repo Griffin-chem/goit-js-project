@@ -1,0 +1,45 @@
+/* roboto-regular - latin */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v20-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Roboto'), local('Roboto-Regular'),
+         url('../fonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/roboto-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+  }
+footer{
+
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end ;
+    text-align: right;
+    margin: 0px;
+    min-width: 320px;
+    min-height: 86px;
+    max-width: 767px;
+    background-color: #77c1bb;
+   }
+   .name_group{
+  font-family: Roboto ;
+       margin-top: 36px;
+       margin-right: 18px;
+       font-family: Roboto;
+       font-size: 16px;
+
+   }
+
+   .btnUp{
+       margin-right: 15px;
+       text-align: center;
+       margin-top: 18px;
+       width: 50px;
+       height: 50px;
+       border-radius: 50px ;
+       border: 2px solid #5e9893;
+       background-color: inherit;
+       box-shadow: 0 0 4px 2px #63a19c;
+   }

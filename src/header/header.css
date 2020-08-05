@@ -1,0 +1,68 @@
+/* roboto-regular - latin */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v20-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Roboto'), local('Roboto-Regular'),
+         url('../fonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/roboto-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+  }
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    margin-bottom: 50px;
+    min-width: 320px;
+    min-height: 65px;
+    max-width: 767px;
+    background-color: #77c1bb;
+    text-align: center;
+}
+.header-menu{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto;
+     
+    text-align: center;
+    list-style: none;
+text-transform: uppercase;
+  
+}
+.item_header_menu{
+    position: relative;
+    margin-top: 22px;
+    
+}
+.item_header_menu_film{
+    margin-top: 22px;
+}
+.item{
+    
+    color: #372c48;
+    font-family: Roboto;
+   font-size: 14px; 
+    text-decoration: none;
+}
+.item_header_menu::after{
+    position: absolute;
+    opacity: 0;
+    content: "";
+    background-color:#372c48;
+    right: calc(50% - 60px);
+    top: 30px;
+    height: 3px;
+    width: 121px;
+    
+}
+.item_header_menu:hover::after{
+    opacity: 1;
+}
+
