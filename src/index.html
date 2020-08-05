@@ -4,21 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      rel="stylesheet"
+    />
     <title>Cinema Library</title>
   </head>
   <body>
-  <header>
-
-  </header>
+    <header></header>
 
     <section class="main-page"></section>
     <section class="library-watched"></section>
     <section class="library-queue"></section>
-    <section class="details-page"></section>
+    <section class="details-page">
+      <form action="" class="details-page__form">
+        <i class="fas fa-video" data-name="icon-Queue"></i>
+        <button
+          type="submit"
+          class="details-page__button"
+          data-name="filmsQueue"
+        >
+          Add to queue
+        </button>
+        <i class="fas fa-calendar-plus" data-name="icon-Watched"></i>
+        <button
+          type="submit"
+          class="details-page__button"
+          data-name="filmsWatched"
+        >
+          Add to watched
+        </button>
+      </form>
+    </section>
 
-
-  <footer>
-
-  </footer>
- </body>
+    <footer></footer>
+  </body>
 </html>
