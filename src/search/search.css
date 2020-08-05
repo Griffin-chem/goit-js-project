@@ -39,7 +39,7 @@ img {
 .buttonSearch {
   width: 20px;
   height: 20px;
-  background-image: url(./images/icon.png);
+  background-image: url(../images/icon.png);
   background-repeat: no-repeat;
   background-position: center;
   border: none;

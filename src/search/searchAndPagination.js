@@ -1,5 +1,5 @@
 import fetchMoviesWithQuery from '../services/moviesApi';
-import itemFilm from './templates/itemFilm.hbs';
+import itemFilm from '../templates/itemFilm.hbs';
 
 let inputValue;
 const pageNumber = 1;
