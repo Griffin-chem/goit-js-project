@@ -7,4 +7,5 @@ export default {
   nextBtn: document.querySelector('#next'),
   numberPage: document.querySelector('.numberPage'),
   errorDiv: document.querySelector('.errorSearch'),
+  libraryGallery: document.querySelector('.library-list'),
 };
