@@ -10,7 +10,7 @@ const filmDetalisPage = {
 
 	options: {
 		queue: {
-			film: 'filmsQueue', // имя коробки c элементами icon and button,  name in localStorage
+			boxFilm: 'filmsQueue', // имя коробки c элементами icon and button,  name in localStorage
 			delete: 'Delete from queue', // change text
 			add: 'Add to queue', //start text
 			icon: 'fas', //не низменное в иконке
@@ -18,7 +18,7 @@ const filmDetalisPage = {
 			iconYes: 'fa-film' //на то что должна меняться
 		},
 		watched: {
-			film: 'filmsWatched', // имя коробки c элементами icon and button,name in localStorage
+			boxFilm: 'filmsWatched', // имя коробки c элементами icon and button,name in localStorage
 			delete: 'Delete from watched', // change text
 			add: 'Add to watched', //start text
 			icon: 'fa-calendar-plus', //не низменное в иконке
@@ -42,8 +42,8 @@ const filmDetalisPage = {
 		const elem = document.querySelector(target);
 		this.elementForm = {
 			formFilm: elem.querySelector('form[data-name="form-film"]'),
-			boxFilmsQueue: elem.querySelector(`button[data-name="${queue.film}"]`),
-			boxFilmsWatched: elem.querySelector(`button[data-name="${watched.film}"]`),
+			boxFilmsQueue: elem.querySelector(`button[data-name="${queue.boxFilm}"]`),
+			boxFilmsWatched: elem.querySelector(`button[data-name="${watched.boxFilm}"]`),
 			buttonQueue: elem.querySelector('button[data-name="button_Queue"]'),
 			buttonWatched: elem.querySelector('button[data-name="button_Watched"]'),
 			iconQueue: elem.querySelector('i[data-name="icon-Queue"]'),
@@ -57,7 +57,11 @@ const filmDetalisPage = {
 	},
 
 	toggleToQueue(item) {
-		this.elementForm.buttonQueue.addEventListener('click', (e) => this.elemEvent(e, this.options));
+		this.elementForm.buttonQueue.addEventListener('click', (e) => {
+			const remember = this.readingLocalStorage(this.options.queue.boxFilm);
+			let text = this.UpdateLocalStorage(remember, item);
+			console.dir(text);
+		});
 		// пишем функцию toggleToQueue (будет добавлять или удалять фильмы из очереди просмотра),
 		//  которая создает переменную массива в очереди,
 		//   читает local storage по ключу filmsQueue если результат не пустой то пушит элементы в нашу переменную,
@@ -67,7 +71,13 @@ const filmDetalisPage = {
 		// запускает в конце себя функцию monitorButtonStatusText;
 	},
 	toggleToWatched(item) {
-		this.elementForm.buttonWatched.addEventListener('click', (e) => this.elemEvent(e, this.options));
+		this.elementForm.buttonWatched.addEventListener('click', (e) => {
+			const remember = this.readingLocalStorage(this.options.watched.boxFilm);
+			console.dir(remember);
+			console.dir(this.UpdateLocalStorage(remember, item));
+			// return this.UpdateLocalStorage(remember.films, item);
+		});
+
 		// пишем функцию toggleToWatched (будет добавлять или удалять фильмы из просмотренных),
 		//  суть ее работы один в один как toggleToQueue только работает с local storage по ключу filmsWatched.
 	},
@@ -78,6 +88,8 @@ const filmDetalisPage = {
 
 		this.addFormInElem(elem);
 		this.monitorButtonStatusText();
+		this.toggleToQueue(selectFilm);
+		this.toggleToWatched(selectFilm);
 	},
 	// elemEvent -Функция  меняющая и изменяющая иконку и надпись на кнопках
 	elemEvent(e, { queue, watched }) {
@@ -108,19 +120,34 @@ const filmDetalisPage = {
 				break;
 		}
 	},
+
+	readingLocalStorage(item) {
+		try {
+			const elem = JSON.parse(localStorage.getItem(item));
+			return elem;
+		} catch (error) {
+			console.warn('что-то пошло не так в toggleToWatched');
+		}
+	},
 	// addLocalStorage - записывает значения в локальную историю
-	addLocalStorage(elem, film, change, icon, bool) {
+	addLocalStorage(elem, boxFilm, change, icon, bool, film) {
 		elem.innerText = change;
 		let remember = {
 			checkInput: bool,
 			textContext: change,
-			iconClass: icon
+			iconClass: icon,
+			films: [ film ]
 		};
 		try {
-			localStorage.setItem(film, JSON.stringify(remember));
+			localStorage.setItem(boxFilm, JSON.stringify(remember));
 		} catch (err) {
 			console.warn('Не получилось записать в localStorage', err);
 		}
+	},
+
+	//UpdateLocalStorage - обновит localStorage
+	UpdateLocalStorage(item, newFilm) {
+		return [ ...item, newFilm ];
 	}
 };
 
@@ -144,7 +171,7 @@ filmDetalisPage.options = {
 	}
 };
 
-filmDetalisPage.showDetails('.details-page');
+filmDetalisPage.showDetails('.details-page', 'text test');
 
 export default {
 	filmDetalisPage
