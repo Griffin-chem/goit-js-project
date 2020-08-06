@@ -16,7 +16,7 @@ img {
   height: auto;
 }
 
-.searchSection {
+.main-page {
   width: 320px;
   margin: 0 auto;
 }
@@ -46,7 +46,7 @@ img {
   background-color: #fff;
 }
 
-.filmList {
+.js-main-page {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -78,7 +78,7 @@ img {
   bottom: 10px;
   left: 0;
   color: #ffffff;
-  font-size: 12.3px;
+  font-size: 12px;
   padding-left: 10px;
 }
 
@@ -93,9 +93,9 @@ img {
 
 .errorSearch {
   text-align: center;
-  font-size: 80px;
-  color: red;
-  background-color: green;
+  font-size: 30px;
+  color: #050505;
+  background-color: #f8faf8;
 
 }
 

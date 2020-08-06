@@ -1,9 +1,9 @@
 <li class="itemFilm">
-    <h2 class="itemFilm_title">{{original_title}}<span class="filmYear">({{release_date}})</span></h2>
-
+    <h2 class="itemFilm_title">{{title}}
+        <span class="filmYear">{{release_date}}</span>
+        {{!-- release_date --}}
+    </h2>
+    {{!-- <div>>{{year release_date}}</div> --}}
+    <div class="card_rating">{{vote_average}}</div>
     <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{poster_path}}" alt="">
 </li>
-
-
-
-{{!-- {new Date(release_date).getFullYear()} --}}

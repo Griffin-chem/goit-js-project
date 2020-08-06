@@ -22,4 +22,4 @@ import './search/search.css';
 
 // Film details page
 import './details/filmDetailsPage';
-import './details/details.css'
+import './details/details.css';
