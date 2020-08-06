@@ -8,17 +8,19 @@
   </head>
   <body>
     <header>
-      <ul class="header-menu">
-        <li class="item_header_menu_film">
-          <a class="film" href="#"
-            ><img class="film" src="./images/film.png" alt=""
-          /></a>
+      <div class="name-block">
+        <a class="film" href="#"
+        ><img class="film" src="./images/film.png" alt=""
+      /></a>
+      <p class ="filmoteka">Filmoteka</p>
+      </div>
+      
+      <ul class="nav-menu nav-menu--header">
+        <li class="nav-menu__item">
+          <a class="nav-menu__link js-link-to-home" href="#">home</a>
         </li>
-        <li class="item_header_menu">
-          <a class="item" href="#">home</a>
-        </li>
-        <li class="item_header_menu">
-          <a class="item" href="#">My Library</a>
+        <li class="nav-menu__item ">
+          <a class="nav-menu__link js-link-to-myLibrary" href="#">My Library</a>
         </li>
       </ul>
     </header>
@@ -38,9 +40,9 @@
       </section>
     </main>
     <footer>
-      <h2 class="name_group">
+      <span class="name_group">
         Made by GroupeName
-      </h2>
+      </span>
 
       <button class="btnUp"><img src="./images/arrow.png" alt="" /></button>
     </footer>
