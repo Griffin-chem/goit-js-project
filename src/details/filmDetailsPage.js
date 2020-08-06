@@ -7,11 +7,10 @@ const filmDetalisPage = {
 
 	//elementForm - массив элементов для работы
 	elementForm: {},
-	// Базовые опций
+
 	options: {
-		element: '.details-page',
 		queue: {
-			film: 'filmsQueue',
+			film: 'filmsQueue', // имя коробки c элементами icon and button,  name in localStorage
 			delete: 'Delete from queue', // change text
 			add: 'Add to queue', //start text
 			icon: 'fas', //не низменное в иконке
@@ -19,7 +18,7 @@ const filmDetalisPage = {
 			iconYes: 'fa-film' //на то что должна меняться
 		},
 		watched: {
-			film: 'filmsWatched',
+			film: 'filmsWatched', // имя коробки c элементами icon and button,name in localStorage
 			delete: 'Delete from watched', // change text
 			add: 'Add to watched', //start text
 			icon: 'fa-calendar-plus', //не низменное в иконке
@@ -104,6 +103,7 @@ const filmDetalisPage = {
 				this.addLocalStorage(elem, queue.film, queue.add, queue.iconNot, false);
 				return;
 			default:
+				localStorage.clear();
 				console.warn("don't found  LocalStorage ");
 				break;
 		}
@@ -116,9 +116,14 @@ const filmDetalisPage = {
 			textContext: change,
 			iconClass: icon
 		};
-		localStorage.setItem(film, JSON.stringify(remember));
+		try {
+			localStorage.setItem(film, JSON.stringify(remember));
+		} catch (err) {
+			console.warn('Не получилось записать в localStorage', err);
+		}
 	}
 };
+
 // При желаний можно всё это изменить
 filmDetalisPage.options = {
 	queue: {
@@ -138,7 +143,9 @@ filmDetalisPage.options = {
 		iconYes: 'far' //на то что должна меняться
 	}
 };
+
 filmDetalisPage.showDetails('.details-page');
+
 export default {
 	filmDetalisPage
 };
