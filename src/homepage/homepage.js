@@ -9,15 +9,15 @@ const genres = '';
 const pageNumber = 1;
 
 const refs = {
-  ulPage: document.querySelector('.js-main-page'),
+  homePageGallery: document.querySelector('.js-main-page'),
 };
 
 function createCardFunc(items) {
   return items.map(item => templates(item)).join('');
 }
 
-refs.ulPage.addEventListener('click', ({ target }) => {
-  activeDetailsPage(target.id, true);
+refs.homePageGallery.addEventListener('click', ({ target }) => {
+  activeDetailsPage(target.dataset.id, false);
 });
 
 //временная функция
@@ -28,7 +28,10 @@ function activeDetailsPage(movieId, boole) {
 
 function fetchPopularMoviesList() {
   moviesApi.fetchPopularMovies(pageNumber).then(({ results }) => {
-    refs.ulPage.insertAdjacentHTML('beforeend', createCardFunc(results));
+    refs.homePageGallery.insertAdjacentHTML(
+      'beforeend',
+      createCardFunc(results),
+    );
   });
 }
 
