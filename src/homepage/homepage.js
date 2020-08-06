@@ -1,5 +1,7 @@
 'use strict';
 
+import refs from '../dom/refs';
+// import createCardFunc from '../utils/createCardsFunc';
 import templates from './templates.hbs';
 import moviesApi from '../services/moviesApi';
 // import activeDetailsPage from ""; //Игоря функция
@@ -8,10 +10,7 @@ const renderFilms = '';
 const genres = '';
 const pageNumber = 1;
 
-const refs = {
-  homePageGallery: document.querySelector('.js-main-page'),
-};
-
+//функцию выносим в папку utils
 function createCardFunc(items) {
   return items.map(item => templates(item)).join('');
 }
