@@ -1,4 +1,10 @@
- <form action="" class="details-page__form">
-        <button type="submit" class="details-page__button" data-name="button_add">add</button>
-        <button type="submit" class="details-page__button" data-name="button_delete">delete</button>
+ <form class="details-page__form" data-name="form-film" >
+    <div class="" data-name="{{queue.film}}">
+        <i class="{{queue.iconNot}} {{queue.icon}} " data-name="icon-Queue"></i>
+        <button type="submit" class="details-page__button" data-name="button_Queue">{{queue.add}}</button>
+    </div>
+    <div  class="" data-name="{{watched.film}}" >
+        <i class="{{watched.iconNot}} {{watched.icon}}" data-name="icon-Watched"></i>
+        <button type="submit" class="details-page__button" data-name="button_Watched">{{watched.add}}</button>
+    </div>
 </form>
