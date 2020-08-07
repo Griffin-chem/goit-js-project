@@ -51,16 +51,16 @@ const filmDetalisPage = {
 		};
 	},
 	//monitorButtonStatusText - следит за кнопками и изменяет  их данные
-	monitorButtonStatusText() {
-		this.elementForm.buttonQueue.addEventListener('click', (e) => this.elemEvent(e, this.options));
-		this.elementForm.buttonWatched.addEventListener('click', (e) => this.elemEvent(e, this.options));
+	monitorButtonStatusText(selectFilm) {
+		this.elementForm.buttonQueue.addEventListener('click', (e) => this.elemEvent(e, this.options, selectFilm));
+		this.elementForm.buttonWatched.addEventListener('click', (e) => this.elemEvent(e, this.options, selectFilm));
 	},
 
-	toggleToQueue(item) {
-		this.elementForm.buttonQueue.addEventListener('click', (e) => {
-			const remember = this.readingLocalStorage(this.options.queue.boxFilm);
-			return this.UpdateLocalStorage(remember.films, item);
-		});
+	toggleToQueue(selectFilm) {
+		const remember = this.readingLocalStorage(this.options.queue.boxFilm);
+		console.dir(remember);
+		return remember;
+
 		// пишем функцию toggleToQueue (будет добавлять или удалять фильмы из очереди просмотра),
 		//  которая создает переменную массива в очереди,
 		//   читает local storage по ключу filmsQueue если результат не пустой то пушит элементы в нашу переменную,
@@ -69,22 +69,23 @@ const filmDetalisPage = {
 		//    потом эта функция кладет нашу переменную в local storage,
 		// запускает в конце себя функцию monitorButtonStatusText;
 	},
-	toggleToWatched(item) {
-		this.elementForm.buttonWatched.addEventListener('click', (e) => {
-			const remember = this.readingLocalStorage(this.options.watched.boxFilm);
-			return this.UpdateLocalStorage(remember.films, item);
-		});
+	toggleToWatched(selectFilm) {
+		const remember = this.readingLocalStorage(this.options.watched.boxFilm);
 
+		console.dir(remember);
+		return remember;
 		// пишем функцию toggleToWatched (будет добавлять или удалять фильмы из просмотренных),
 		//  суть ее работы один в один как toggleToQueue только работает с local storage по ключу filmsWatched.
 	},
+
 	showDetails(elem, selectFilm) {
 		//+ пишем функцию showDetails которая принимает параметром selectFilm (глобальная переменная - объект,
 		// +  которая создана в задаче номер три) и рендерит всю разметку согласно макета,
 		//+   в этой функции запускается функция monitorButtonStatusText.
 
 		this.addFormInElem(elem);
-		this.monitorButtonStatusText();
+		this.monitorButtonStatusText(selectFilm);
+		this.toggleToWatched(selectFilm);
 	},
 	// elemEvent -Функция  меняющая и изменяющая иконку и надпись на кнопках
 	elemEvent(e, { queue, watched }, selectFilm) {
@@ -95,19 +96,27 @@ const filmDetalisPage = {
 		switch (elem.innerText) {
 			case watched.delete:
 				this.elementForm.iconWatched.classList.replace(watched.iconYes, watched.iconNot);
-				this.addLocalStorage(elem, watched.boxFilm, watched.add, watched.iconNot, false, selectFilm);
+				elem.innerText = watched.add;
+				//to do
+				this.addLocalStorage(watched.boxFilm, false, selectFilm, this.toggleToWatched(selectFilm));
 				return;
 			case watched.add:
 				this.elementForm.iconWatched.classList.replace(watched.iconNot, watched.iconYes);
-				this.addLocalStorage(elem, watched.boxFilm, watched.delete, watched.iconYes, true, selectFilm);
+				elem.innerText = watched.delete;
+				//to do
+				this.addLocalStorage(watched.boxFilm, true, selectFilm, this.toggleToWatched(selectFilm));
 				return;
 			case queue.add:
 				this.elementForm.iconQueue.classList.replace(queue.iconNot, queue.iconYes);
-				this.addLocalStorage(elem, queue.boxFilm, queue.delete, queue.iconYes, true, selectFilm);
+				elem.innerText = queue.delete;
+				//to do
+				this.addLocalStorage(queue.boxFilm, true, this.toggleToQueue(selectFilm));
 				return;
 			case queue.delete:
 				this.elementForm.iconQueue.classList.replace(queue.iconYes, queue.iconNot);
-				this.addLocalStorage(elem, queue.boxFilm, queue.add, queue.iconNot, false, selectFilm);
+				elem.innerText = queue.add;
+				//to do
+				this.addLocalStorage(queue.boxFilm, false, this.toggleToQueue(selectFilm));
 				return;
 			default:
 				localStorage.clear();
@@ -122,25 +131,25 @@ const filmDetalisPage = {
 			return elem;
 		} catch (error) {
 			console.warn('что-то пошло не так в toggleToWatched');
+			return;
 		}
 	},
 	// addLocalStorage - записывает значения в локальную историю
-	addLocalStorage(elem, boxFilm, change, icon, bool, film) {
-		elem.innerText = change;
-
+	addLocalStorage(boxFilm, bool, film, oldRemember) {
 		let remember = {
-			checkInput: bool,
-			textContext: change,
-			iconClass: icon,
-			films: [ film ]
+			film: {
+				checkInput: bool,
+				filmName: film
+			}
 		};
+
 		try {
-			localStorage.setItem(boxFilm, JSON.stringify(remember));
+			//to do
+			localStorage.setItem(boxFilm, JSON.stringify(this.UpdateLocalStorage(oldRemember, remember)));
 		} catch (err) {
 			console.warn('Не получилось записать в localStorage', err);
 		}
 	},
-
 	//UpdateLocalStorage - обновит localStorage
 	UpdateLocalStorage(item, newFilm) {
 		return [ ...item, newFilm ];
@@ -167,7 +176,7 @@ filmDetalisPage.options = {
 	}
 };
 
-filmDetalisPage.showDetails('.details-page', 'text new test');
+filmDetalisPage.showDetails('.details-page', 'The name film 35');
 
 export default {
 	filmDetalisPage
