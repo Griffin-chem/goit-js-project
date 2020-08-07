@@ -51,7 +51,7 @@ const filmDetalisPage = {
 		};
 	},
 	//monitorButtonStatusText - следит за кнопками и изменяет  их данные
-	monitorButtonStatusText(event) {
+	monitorButtonStatusText() {
 		this.elementForm.buttonQueue.addEventListener('click', (e) => this.elemEvent(e, this.options));
 		this.elementForm.buttonWatched.addEventListener('click', (e) => this.elemEvent(e, this.options));
 	},
@@ -59,8 +59,7 @@ const filmDetalisPage = {
 	toggleToQueue(item) {
 		this.elementForm.buttonQueue.addEventListener('click', (e) => {
 			const remember = this.readingLocalStorage(this.options.queue.boxFilm);
-			let text = this.UpdateLocalStorage(remember, item);
-			console.dir(text);
+			return this.UpdateLocalStorage(remember.films, item);
 		});
 		// пишем функцию toggleToQueue (будет добавлять или удалять фильмы из очереди просмотра),
 		//  которая создает переменную массива в очереди,
@@ -73,9 +72,7 @@ const filmDetalisPage = {
 	toggleToWatched(item) {
 		this.elementForm.buttonWatched.addEventListener('click', (e) => {
 			const remember = this.readingLocalStorage(this.options.watched.boxFilm);
-			console.dir(remember);
-			console.dir(this.UpdateLocalStorage(remember, item));
-			// return this.UpdateLocalStorage(remember.films, item);
+			return this.UpdateLocalStorage(remember.films, item);
 		});
 
 		// пишем функцию toggleToWatched (будет добавлять или удалять фильмы из просмотренных),
@@ -88,11 +85,9 @@ const filmDetalisPage = {
 
 		this.addFormInElem(elem);
 		this.monitorButtonStatusText();
-		this.toggleToQueue(selectFilm);
-		this.toggleToWatched(selectFilm);
 	},
 	// elemEvent -Функция  меняющая и изменяющая иконку и надпись на кнопках
-	elemEvent(e, { queue, watched }) {
+	elemEvent(e, { queue, watched }, selectFilm) {
 		e.preventDefault();
 		e.stopPropagation();
 		const elem = e.target;
@@ -100,19 +95,19 @@ const filmDetalisPage = {
 		switch (elem.innerText) {
 			case watched.delete:
 				this.elementForm.iconWatched.classList.replace(watched.iconYes, watched.iconNot);
-				this.addLocalStorage(elem, watched.film, watched.add, watched.iconNot, false);
+				this.addLocalStorage(elem, watched.boxFilm, watched.add, watched.iconNot, false, selectFilm);
 				return;
 			case watched.add:
 				this.elementForm.iconWatched.classList.replace(watched.iconNot, watched.iconYes);
-				this.addLocalStorage(elem, watched.film, watched.delete, watched.iconYes, true);
+				this.addLocalStorage(elem, watched.boxFilm, watched.delete, watched.iconYes, true, selectFilm);
 				return;
 			case queue.add:
 				this.elementForm.iconQueue.classList.replace(queue.iconNot, queue.iconYes);
-				this.addLocalStorage(elem, queue.film, queue.delete, queue.iconYes, true);
+				this.addLocalStorage(elem, queue.boxFilm, queue.delete, queue.iconYes, true, selectFilm);
 				return;
 			case queue.delete:
 				this.elementForm.iconQueue.classList.replace(queue.iconYes, queue.iconNot);
-				this.addLocalStorage(elem, queue.film, queue.add, queue.iconNot, false);
+				this.addLocalStorage(elem, queue.boxFilm, queue.add, queue.iconNot, false, selectFilm);
 				return;
 			default:
 				localStorage.clear();
@@ -132,6 +127,7 @@ const filmDetalisPage = {
 	// addLocalStorage - записывает значения в локальную историю
 	addLocalStorage(elem, boxFilm, change, icon, bool, film) {
 		elem.innerText = change;
+
 		let remember = {
 			checkInput: bool,
 			textContext: change,
@@ -154,7 +150,7 @@ const filmDetalisPage = {
 // При желаний можно всё это изменить
 filmDetalisPage.options = {
 	queue: {
-		film: 'filmsQueue', // имя коробки c элементами icon and button,  name in localStorage
+		boxFilm: 'filmsQueue', // имя коробки c элементами icon and button,  name in localStorage
 		delete: 'Delete from queue', // change text
 		add: 'Add to queue', //start text
 		icon: 'fas', //не низменное в иконке
@@ -162,7 +158,7 @@ filmDetalisPage.options = {
 		iconYes: 'fa-film' //на то что должна меняться
 	},
 	watched: {
-		film: 'filmsWatched', // имя коробки c элементами icon and button,name in localStorage
+		boxFilm: 'filmsWatched', // имя коробки c элементами icon and button,name in localStorage
 		delete: 'Delete from watched', // change text
 		add: 'Add to watched', //start text
 		icon: 'fa-calendar-plus', //не низменное в иконке
@@ -171,7 +167,7 @@ filmDetalisPage.options = {
 	}
 };
 
-filmDetalisPage.showDetails('.details-page', 'text test');
+filmDetalisPage.showDetails('.details-page', 'text new test');
 
 export default {
 	filmDetalisPage
