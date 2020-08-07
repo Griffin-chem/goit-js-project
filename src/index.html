@@ -6,22 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Cinema Library</title>
   </head>
-  <header>
-
-  </header>
   <body>
-    <section class="main-page"></section>
-    <section class="library">
-     
-      <button>Watched</button>
-      <button>Queue</button> 
+    <header>
+      <div class="name-block">
+        <a class="film" href="#"
+        ><img class="film" src="./images/film.png" alt=""
+      /></a>
+      <p class ="filmoteka">Filmoteka</p>
+      </div>
+      
+      <ul class="nav-menu nav-menu--header">
+        <li class="nav-menu__item">
+          <a class="nav-menu__link js-link-to-home" href="#">home</a>
+        </li>
+        <li class="nav-menu__item ">
+          <a class="nav-menu__link js-link-to-myLibrary" href="#">My Library</a>
+        </li>
+      </ul>
+    </header>
+
+    <main>
+      <section class="main-page">
+        <ul class="js-main-page"></ul>
+      </section>
+      <!-- ? --> 
+      <section class="library">
+    <div class="library-buttons-place libraryShadow1 ">
+      <button class="library-btn libraryShadow2 watch active-but-lib">Watched</button>
+      <button class="library-btn libraryShadow2 queue ">Queue</button> </div>
       <ul class="library-list"></ul>
-    </section>
-    <!-- <section class="library-queue"></section> -->
-    <section class="details-page"></section>
+    </section>          
+      <section class="details-page">
+        <ul class="js-details-page"></ul>
+      </section>
+    </main>
+    <footer>
+      <span class="name_group">
+        Made by GroupeName
+      </span>
+
+      <button class="btnUp"><img src="./images/arrow.png" alt="" /></button>
+    </footer>
+
   </body>
-
-  <footer>
-
-  </footer>
 </html>

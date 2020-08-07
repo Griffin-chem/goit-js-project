@@ -1,0 +1,83 @@
+.library-buttons-place {
+    background-color: rgb(243, 246, 246);
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+height: 68px;
+}
+.libraryShadow1 {
+margin-bottom: 15px;
+    box-shadow: 0 8px 8px -4px rgba(0, 0, 0, .2);
+  }
+  .library-btn{
+    margin-bottom: 0;
+    width: 140px;
+    height: 38px;
+    font-family: 'Roboto',sans-serif;
+    font-size: medium;
+    background-color: rgb(243, 246, 246);
+    border: 0px;
+    outline: none;
+  }
+  .libraryShadow2 {
+
+    box-shadow: 0 4px 2px 0px rgba(0, 0, 0, .3);
+
+  }
+  .active-but-lib{
+      background-color: #77c1bb;
+      color: rgb(255, 255, 255);
+  }
+   
+@media (min-width: 768px){
+    .library-buttons-place {
+     
+    justify-content: center;}
+
+}
+
+@media (min-width: 1024px){
+
+}
+
+/* ======= */
+.position-items {
+    position: relative;
+  
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+    padding: 0;
+  }
+  
+  .itemFilm {
+    /* text-decoration: none; */
+    list-style-type: none;
+  }
+  
+  .card__movie {
+    width: 100%;
+    height: 156px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .itemFilm_title {
+    position: absolute;
+    color: #ffffff;
+    bottom: 13px;
+    left: 12px;
+  }
+  
+  .card_rating {
+    position: absolute;
+    width: 30px;
+    border-radius: 7px;
+    text-align: center;
+    /* border: 1px, solid, #adadad; */
+    background-color: #ffffff;
+    top: 6px;
+    right: 7px;
+  }
+  
