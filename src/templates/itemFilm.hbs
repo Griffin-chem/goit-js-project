@@ -1,9 +1,8 @@
 <li class="itemFilm">
     <h2 class="itemFilm_title">{{title}}
-        <span class="filmYear">{{release_date}}</span>
-        {{!-- release_date --}}
+        <span class="filmYear">({{year}})</span>
+        {{!-- <span class="filmYear">({{getYear release_date}})</span> --}}
     </h2>
-    {{!-- <div>{{#year1}}{{release_date}}{{/year1}}</div> --}}
     <div class="card_rating">{{vote_average}}</div>
-    <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{poster_path}}" alt="">
+    <img src="http://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" class="card__movie" data-id="{{id}}" />
 </li>
