@@ -24,11 +24,17 @@ function fetchFilms(pageNumber, inputValue) {
     .fetchMoviesWithQuery(inputValue, pageNumber)
     .then(data => {
       renderFilms = [...data.results];
-      console.log(data);
-      console.log(data.results);
 
-      if (data.total_pages === pageNumber) {
-        refs.nextBtn.classList.add('displayNone');
+      data.total_pages === 1
+        ? refs.divPagination.classList.add('displayNone')
+        : refs.nextBtn.classList.remove('displayNone');
+
+      data.total_pages === pageNumber
+        ? refs.nextBtn.classList.add('displayNone')
+        : refs.nextBtn.classList.remove('displayNone');
+
+      if (pageNumber === 1) {
+        refs.prevBtn.classList.add('displayNone');
       }
 
       if (data.results.length === 0) {
@@ -61,13 +67,13 @@ function searchFilms(e) {
   }
 }
 
-if (pageNumber <= 1) {
+if ((pageNumber = 1)) {
   refs.prevBtn.classList.add('displayNone');
   refs.numberPage.classList.add('displayNone');
 }
 
 function plaginationNavigation(e) {
-  if (pageNumber <= 1) {
+  if (pageNumber === 1) {
     refs.prevBtn.classList.add('displayNone');
   }
 
