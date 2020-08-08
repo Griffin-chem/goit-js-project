@@ -27,14 +27,13 @@ let selectFilm;
 
 function activeLibraryPage() {
           // показывает страницу с библиотекой
-    if (refs.mainLibraryQueue.classList.contains('is-hidden'))
-      refs.mainLibraryQueue.classList.remove('is-hidden');
+    if (refs.mainLibrary.classList.contains('is-hidden'))
+      {refs.mainLibrary.classList.remove('is-hidden');
     // console.log(refs.navLibrary);
-    // console.log(6789);
+    console.log(6789);
     // прячет остальные
     refs.mainPage.classList.add('is-hidden')
-    refs.mainLibraryWatched.classList.add('is-hidden');
-    refs.mainDetailsPage.classList.add('is-hidden');
+    refs.mainDetailsPage.classList.add('is-hidden');}
 
     // запускает функцию отрисовки фильмов из очереди drawQueueFilmList
     // drawQueueFilmList();
@@ -83,10 +82,10 @@ function activeLibraryPage() {
 
 // ==================
 // вешаем слушателей на переход на домашнюю страницу и страницу библиотеки в хедере.
-refs.navHome.addEventListener('click', activeHomePage);
+// refs.navHome.addEventListener('click', activeHomePage);
 refs.navLibrary.addEventListener('click', activeLibraryPage);
 // ===================
 // на логотип повесить запуск функции activeHomePage, чтобы при клике туда возвращаться.
-refs.logo.addEventListener('click', activeHomePage);
+// refs.logo.addEventListener('click', activeHomePage);
 
 // ===================
