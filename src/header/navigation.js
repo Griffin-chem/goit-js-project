@@ -79,17 +79,15 @@ function activeLibraryPage() {
 }
 // ===================
 // function activeDetailsPage (movieId,itsLibraryFilm){
-//     el.preventDefault();
-    // if(el.target === img(картинка из HomePage)){
-// if(img(картинка из HomePage))
-    // }
+
 // movieId,itsLibraryFilm((это bool), и в зависимости
 // от того это выбранный фильм с домашней страницы или из библиотеки*/))
 
 // показывает страницу детальной отрисовки фильма
-
+// if (refs.mainDetailsPage.classList.contains('is-hidden'))
+//       refs.mainDetailsPage.classList.remove('is-hidden');
 // прячет остальные страницы
-//     refs.homePageGallery.classList.add('hidden');
+//     refs.mainPage.classList.add('hidden');
 //     refs.mainLibraryWatched.classList.add('hidden');
 //     refs.mainLibraryQueue.classList.add('hidden');
 // // заполняет глобальную переменную selectFilm нужным объектом
@@ -102,7 +100,8 @@ function activeLibraryPage() {
   
 // вешает слушателей на кнопки добавления/удаления фильмов из просмотренных
 //  со страницы detailsPage
-
+// refs.addToWatched.addEventListener('click', callback);
+    // refs.addToQueue.addEventListener('click', callback);
 // удаляет ненужных всех слушателей (таких 4 во всем проекте
 // не нужных на этой странице)
 
