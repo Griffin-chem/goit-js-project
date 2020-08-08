@@ -38,7 +38,13 @@ const fetchMovieDetails = movieId => {
 /*
  * Axios get Api-request by URL
  */
-const getAxios = url => axios.get(url).then(response => response.data);
+const getAxios = url =>
+  axios
+    .get(url)
+    .then(response => response.data)
+    .catch(error => {
+      throw error;
+    });
 
 export default {
   fetchPopularMovies,
