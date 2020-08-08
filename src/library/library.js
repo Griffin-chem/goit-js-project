@@ -5,7 +5,7 @@ import refs from '../dom/refs';
 // import createLibraryCardsFunc from '../utils/createCardsFunc'
 
 
-refs.libraryGallery.insertAdjacentHTML('beforeend', createLibraryCardsFunc(filmsQueue, 'You do not have to queue movies to watch. Add them.'));
+refs.libraryGallery.insertAdjacentHTML('beforeend', createLibraryCardsFunc(filmsQueue));
 
 refs.libraryGallery.addEventListener('click', ({target}) =>{
 activeDetailsPage(target.id, true)});
@@ -15,10 +15,15 @@ const activeDetailsPage = (movieId, boole) => {
     console.log(boole);
 }
 // потом удалить :
-function createLibraryCardsFunc(films, message) {
+function createLibraryCardsFunc(films) {
     if (films.length!==0){
     console.log(films);
     const movies = films.map(item => filmsTemplates(item)).join('');
-    return movies;} else {return `<li>${message}</li>`}
+    return movies;} 
   }
 //   ---
+refs.buttWatch.addEventListener('click', changePageLibrary);
+const changePageLibrary = e =>{
+  e.preventDefolt(),
+  console.log(e.target);
+};
