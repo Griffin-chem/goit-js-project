@@ -19,11 +19,16 @@ margin-bottom: 15px;
     border: 0px;
     outline: none;
   }
+  /* .library-btn:hover {
+    background-color: rgb(110, 226, 116);
+    border-bottom:  rgb(10, 82, 52);
+  } */
   .libraryShadow2 {
 
     box-shadow: 0 4px 2px 0px rgba(0, 0, 0, .3);
 
   }
+
   .active-but-lib{
       background-color: var(--hf-bg-color);
       color: rgb(255, 255, 255);
@@ -31,7 +36,6 @@ margin-bottom: 15px;
    
 @media (min-width: 768px){
     .library-buttons-place {
-     
     justify-content: center;}
 
 }
