@@ -32,14 +32,14 @@ img {
   width: 220px;
   border: none;
   border-top: 10px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 14px;
 }
 
 .buttonSearch {
   width: 20px;
   height: 20px;
-  background-image: url(../images/icon.png);
+  background-image: url('../images/icon.png');
   background-repeat: no-repeat;
   background-position: center;
   border: none;
@@ -55,38 +55,6 @@ img {
 
 }
 
-
-
-.itemFilm {
-  margin: 0;
-  padding: 0;
-  width: 300px;
-  height: 155px;
-  /* position: relative; */
-  /* background-image: linear-gradient(#ffffff, #000000); */
-}
-
-
-
-
-
-
-.itemFilm_title {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  color: #ffffff;
-  font-size: 12px;
-  padding-left: 10px;
-}
-
-.filmYear {
-  padding-left: 10px;
-}
-
-
 .errorSearch {
   text-align: center;
   font-size: 30px;
@@ -95,16 +63,12 @@ img {
 
 }
 
-
 .pagination {
-
   width: 270px;
   margin: 0 auto;
   text-align: center;
   display: flex;
   justify-content: space-around;
-
-
 }
 
 .pagination button {
