@@ -9,10 +9,10 @@
 </head>
 
 <body>
-  <!-- <header>
-    <div class="name-block">
-      <a class="film" href="#"><img class="film" src="./images/film.png" alt="" /></a>
-      <p class="filmoteka">Filmoteka</p>
+  <header>
+    <div class="logo-block js-logo-block">
+      <a class="logo-block--logo" href="#"><img class="logo-block--film" src="./images/film.png" alt="" /></a>
+      <p class="logo-block--filmoteka">Filmoteka</p>
     </div>
 
     <ul class="nav-menu nav-menu--header">
@@ -23,43 +23,55 @@
         <a class="nav-menu__link js-link-to-myLibrary" href="#">My Library</a>
       </li>
     </ul>
-  </header> -->
+  </header>
 
   <main>
     <section class="main-page">
+
       <form class="formSearch">
         <button class="buttonSearch" type="submit"></button>
-        <input class="inputSearch" type="text" placeholder="Write movie name and click Enter">
+        <input class="inputSearch" type="text" placeholder="Write movie name and click Enter" />
       </form>
 
       <div class="errorSearch displayNone">This film is not found</div>
 
       <ul class="js-main-page position-items"></ul>
 
-      <div class="pagination displayNone">
-        <button id="prev" type="button" data-active="prev">Prev</button>
-        <span class="numberPage"></span>
-        <button id="next" type="button" data-active="next">Next</button>
-      </div>
+      <<<<<<< HEAD <ul class="js-main-page position-items">
+        </ul>
+        =======
+        <div class="pagination displayNone">
+          <button id="prev" type="button" data-active="prev">Prev</button>
+          <span class="numberPage"></span>
+          <button id="next" type="button" data-active="next">Next</button>
+        </div>
+    </section>
+    >>>>>>> dev
 
+    <section class="library is-hidden">
+      <div class="library-buttons-place libraryShadow1 ">
+        <button type="button" class="library-btn libraryShadow2 watch active-but-lib">Watched</button>
+        <button type="button" class="library-btn libraryShadow2 queue ">Queue</button> </div>
+      <ul class="library-list"></ul>
     </section>
-    <!-- <section class="library-watched">
-      <ul class="js-library-watched"></ul>
-    </section>
-    <section class="library-queue">
-      <ul class="js-library-queue"></ul>
-    </section>
-    <section class="details-page">
+    <section class="details-page is-hidden">
       <ul class="js-details-page"></ul>
-    </section> -->
+    </section>
+
   </main>
-  <!-- <footer>
-    <span class="name_group">
+  <footer class="footer">
+    <span class="footer-name_group">
       Made by GroupeName
     </span>
 
-    <button class="btnUp"><img src="./images/arrow.png" alt="" /></button>
+    <<<<<<< HEAD <button class="btnUp"><img src="./images/arrow.png" alt="" /></button>
   </footer> -->
 </body>
+=======
+<button class="footer-btnUp"><img src="./images/arrow.png" alt="" /></button>
+</footer>
+
+</body>
+>>>>>>> dev
 
 </html>

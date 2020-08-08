@@ -11,23 +11,23 @@
          url('../fonts/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
          url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
   }
-footer{
+.footer{
     position: relative;
     display: block;
     min-width: 320px;
     height: 86px;
-    background-color: #77c1bb;
+    background-color: var(--hf-bg-color);
     text-align: center;
    }
-   .name_group{
+   .footer-name_group{
        position: relative;
        top:27px;
-       font-family: 'Roboto' ;
+       font-family: 'Roboto',sans-serif ;
        font-size: 16px;
        text-align: center;
    }
 
-   .btnUp{
+   .footer-btnUp{
        position: absolute;
        margin-right: 15px;
        top:18px;
@@ -41,10 +41,13 @@ footer{
        box-shadow: 0 0 4px 2px #63a19c;
    }
    @media (min-width: 768px){
-    footer{
+    .footer{
+        
         min-width: 768px;
             }
-    .btnUp{
+    .footer-btnUp{
         visibility: hidden;
     }
    }
+
+   
