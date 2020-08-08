@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Cinema Library</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Cinema Library</title>
+</head>
 
-  <body>
+<body>
   <header>
     <div class="logo-block js-logo-block">
       <a class="logo-block--logo" href="#"><img class="logo-block--film" src="./images/film.png" alt="" /></a>
@@ -24,41 +24,37 @@
       </li>
     </ul>
   </header>
-    
-    <main>
-      <section class="main-page">
 
-        <form class="formSearch">
-          <button class="buttonSearch" type="submit"></button>
-          <input
-            class="inputSearch"
-            type="text"
-            placeholder="Write movie name and click Enter"
-          />
-        </form>
+  <main>
+    <section class="main-page">
 
-        <div class="errorSearch displayNone">This film is not found</div>
+      <form class="formSearch">
+        <button class="buttonSearch" type="submit"></button>
+        <input class="inputSearch" type="text" placeholder="Write movie name and click Enter" />
+      </form>
 
-        <ul class="js-main-page"></ul>
+      <div class="errorSearch displayNone">This film is not found</div>
 
-        <div class="pagination displayNone">
-          <button id="prev" type="button" data-active="prev">Prev</button>
-          <span class="numberPage"></span>
-          <button id="next" type="button" data-active="next">Next</button>
-        </div>
-      </section>
+      <ul class="js-main-page"></ul>
 
-      <section class="library is-hidden">
-    <div class="library-buttons-place libraryShadow1 ">
-      <button type="button" class="library-btn libraryShadow2 watch active-but-lib">Watched</button>
-      <button type="button" class="library-btn libraryShadow2 queue ">Queue</button> </div>
+      <div class="pagination displayNone">
+        <button id="prev" type="button" data-active="prev">Prev</button>
+        <span class="numberPage"></span>
+        <button id="next" type="button" data-active="next">Next</button>
+      </div>
+    </section>
+
+    <section class="library is-hidden">
+      <div class="library-buttons-place libraryShadow1 ">
+        <button type="button" class="library-btn libraryShadow2 watch active-but-lib">Watched</button>
+        <button type="button" class="library-btn libraryShadow2 queue ">Queue</button> </div>
       <ul class="library-list"></ul>
-    </section>          
-      <section class="details-page is-hidden">
-        <ul class="js-details-page"></ul>
-      </section>
+    </section>
+    <section class="details-page is-hidden">
+      <ul class="js-details-page"></ul>
+    </section>
 
-    </main>
+  </main>
   <footer class="footer">
     <span class="footer-name_group">
       Made by GroupeName
@@ -67,6 +63,6 @@
     <button class="footer-btnUp"><img src="./images/arrow.png" alt="" /></button>
   </footer>
 
-  </body>
+</body>
 
 </html>
