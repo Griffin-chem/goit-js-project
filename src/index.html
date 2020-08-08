@@ -1,50 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Cinema Library</title>
-  </head>
-  <body>
-    <header>
-      <div class="name-block">
-        <a class="film" href="#"
-        ><img class="film" src="./images/film.png" alt=""
-      /></a>
-      <p class ="filmoteka">Filmoteka</p>
-      </div>
-      
-      <ul class="nav-menu nav-menu--header">
-        <li class="nav-menu__item">
-          <a class="nav-menu__link js-link-to-home" href="#">home</a>
-        </li>
-        <li class="nav-menu__item ">
-          <a class="nav-menu__link js-link-to-myLibrary" href="#">My Library</a>
-        </li>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Cinema Library</title>
+</head>
+
+<body>
+  <header>
+    <div class="logo-block js-logo-block">
+      <a class="logo-block--logo" href="#"><img class="logo-block--film" src="./images/film.png" alt="" /></a>
+      <p class="logo-block--filmoteka">Filmoteka</p>
+    </div>
+
+    <ul class="nav-menu nav-menu--header">
+      <li class="nav-menu__item">
+        <a class="nav-menu__link js-link-to-home" href="#">home</a>
+      </li>
+      <li class="nav-menu__item ">
+        <a class="nav-menu__link js-link-to-myLibrary" href="#">My Library</a>
+      </li>
+    </ul>
+  </header>
+
+  <main >
+    <section class="main-page">
+      <ul class="js-main-page">
+        
       </ul>
-    </header>
+    </section>
 
-    <main>
-      <section class="main-page">
-        <ul class="js-main-page"></ul>
-      </section>
-      <section class="library-watched">
-        <ul class="js-library-watched"></ul>
-      </section>
-      <section class="library-queue">
-        <ul class="js-library-queue"></ul>
-      </section>
-      <section class="details-page">
-        <ul class="js-details-page"></ul>
-      </section>
-    </main>
-    <footer>
-      <span class="name_group">
-        Made by GroupeName
-      </span>
+    <section class="library-watched is-hidden">
+      <ul class="js-library-watched">
+        
+      </ul>
+    </section>
 
-      <button class="btnUp"><img src="./images/arrow.png" alt="" /></button>
-    </footer>
-  </body>
+    <section class="library-queue is-hidden">
+      <ul class="js-library-queue">
+        
+      </ul>
+    </section>
+    <section class="details-page is-hidden">
+      <ul class="js-details-page">
+        
+      </ul>
+
+
+
+    </section>
+  </main>
+  <footer class="footer">
+    <span class="footer-name_group">
+      Made by GroupeName
+    </span>
+
+    <button class="footer-btnUp"><img src="./images/arrow.png" alt="" /></button>
+  </footer>
+</body>
+
 </html>
