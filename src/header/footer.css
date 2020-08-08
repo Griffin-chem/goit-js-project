@@ -1,0 +1,53 @@
+/* roboto-regular - latin */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v20-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Roboto'), local('Roboto-Regular'),
+         url('../fonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/roboto-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+  }
+.footer{
+    position: relative;
+    display: block;
+    min-width: 320px;
+    height: 86px;
+    background-color: var(--hf-bg-color);
+    text-align: center;
+   }
+   .footer-name_group{
+       position: relative;
+       top:27px;
+       font-family: 'Roboto',sans-serif ;
+       font-size: 16px;
+       text-align: center;
+   }
+
+   .footer-btnUp{
+       position: absolute;
+       margin-right: 15px;
+       top:18px;
+       right:calc(50% - 50%);
+       text-align: center;
+       width: 50px;
+       height: 50px;
+       border-radius: 50px ;
+       border: 2px solid #5e9893;
+       background-color: inherit;
+       box-shadow: 0 0 4px 2px #63a19c;
+   }
+   @media (min-width: 768px){
+    .footer{
+        
+        min-width: 768px;
+            }
+    .footer-btnUp{
+        visibility: hidden;
+    }
+   }
+
+   

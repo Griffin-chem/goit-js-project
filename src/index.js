@@ -11,7 +11,7 @@ import './homepage/homepage.css';
 import './header/navigation';
 import './header/footer.css';
 import './header/header.css';
-
+import './header/main.css'
 // Libraries - queue and watched
 import './library/library';
 import './library/library.css';
@@ -22,4 +22,4 @@ import './search/search.css';
 
 // Film details page
 import './details/filmDetailsPage';
-import './details/details.css'
+import './details/details.css';
