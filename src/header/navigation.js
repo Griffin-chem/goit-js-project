@@ -1,4 +1,4 @@
-import refs from '../dom/refs';
+// import refs from '../dom/refs';
 // import { join } from 'lodash';
 // export default {
 //     homePageGallery: document.querySelector('.js-main-page'),
@@ -21,24 +21,24 @@ import refs from '../dom/refs';
 // logo:document.querySelector('.logo-block--logo'),
 // };
 // ==========================
-let selectFilm;
+// let selectFilm;
 
 // =====================================
 
 
 // ========================
-function activeHomePage() {
+// function activeHomePage() {
  
 //   if (event.target === refs.navHome || refs.logo) 
     // показывает домашнюю страницу
-    if (refs.mainPage.classList.contains('is-hidden'))
-      refs.mainPage.classList.remove('is-hidden');
+    // if (refs.mainPage.classList.contains('is-hidden'))
+    //   refs.mainPage.classList.remove('is-hidden');
     
     // прячет остальные страницы if(this.classList.contains('active'))
     
-    refs.mainLibraryWatched.classList.add('is-hidden');
-    refs.mainDetailsPage.classList.add('is-hidden');
-    refs.mainLibraryQueue.classList.add('is-hidden');
+    // refs.mainLibraryWatched.classList.add('is-hidden');
+    // refs.mainDetailsPage.classList.add('is-hidden');
+    // refs.mainLibraryQueue.classList.add('is-hidden');
 
     // вешает слушателей на кнопку вперед и назад
 
@@ -49,19 +49,18 @@ function activeHomePage() {
     // refs.addToQueue.removeEventListener('click', callback);
 //   }
   // (таких 4 во всем проекте не нужных на этой странице);
-}
+// }
 
 // =========================
-function activeLibraryPage() {
+// function activeLibraryPage() {
           // показывает страницу с библиотекой
-    if (refs.mainLibraryQueue.classList.contains('is-hidden'))
-      refs.mainLibraryQueue.classList.remove('is-hidden');
-    // console.log(refs.navLibrary);
-    // console.log(6789);
+    // if (refs.mainLibraryQueue.classList.contains('is-hidden'))
+    //   refs.mainLibraryQueue.classList.remove('is-hidden');
+    
     // прячет остальные
-    refs.mainPage.classList.add('is-hidden')
-    refs.mainLibraryWatched.classList.add('is-hidden');
-    refs.mainDetailsPage.classList.add('is-hidden');
+    // refs.mainPage.classList.add('is-hidden')
+    // refs.mainLibraryWatched.classList.add('is-hidden');
+    // refs.mainDetailsPage.classList.add('is-hidden');
 
     // запускает функцию отрисовки фильмов из очереди drawQueueFilmList
     // drawQueueFilmList();
@@ -76,7 +75,7 @@ function activeLibraryPage() {
     // refs.addToWatched.removeEventListener('click', callback);
     // refs.addToQueue.removeEventListener('click', callback);
 //   }
-}
+// }
 // ===================
 // function activeDetailsPage (movieId,itsLibraryFilm){
 
@@ -109,9 +108,9 @@ function activeLibraryPage() {
 
 // ==================
 // вешаем слушателей на переход на домашнюю страницу и страницу библиотеки в хедере.
-refs.navHome.addEventListener('click', activeHomePage);
-refs.navLibrary.addEventListener('click', activeLibraryPage);
+// refs.navHome.addEventListener('click', activeHomePage);
+// refs.navLibrary.addEventListener('click', activeLibraryPage);
 // ===================
 // на логотип повесить запуск функции activeHomePage, чтобы при клике туда возвращаться.
-refs.logo.addEventListener('click', activeHomePage);
+// refs.logo.addEventListener('click', activeHomePage);
 // ===================
