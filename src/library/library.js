@@ -1,6 +1,7 @@
 import filmsQueue from './movies';
 import filmsWached from './movies';
 import refs from '../dom/refs';
+
 import createCardsFunc from '../utils/createCardsFunc';
 
 const createGallery = films => {
@@ -17,6 +18,7 @@ const activeDetailsPage = (movieId, boole) => {
   console.log(movieId);
   console.log(boole);
 };
+
 const createLibraryGallery = (target, button, films) => {
   target.classList.add('active-but-lib');
   button.classList.remove('active-but-lib');

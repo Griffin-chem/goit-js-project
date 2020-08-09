@@ -12,10 +12,10 @@ export default {
   mainPage: document.querySelector('.main-page'),
   mainLibrary: document.querySelector('.library'),
   mainDetailsPage: document.querySelector('.details-page'),
-  addToWatched: document.querySelector('.details-page--toWatched'),
-  addToQueue: document.querySelector('.details-page--toQueue'),
+  btnToWatched: document.querySelector('button[data-action="toWatched"]'),
+  btnToQueue: document.querySelector('button[data-action="toQueue"]'),
   logo: document.querySelector('.js-logo-block'),
   libraryGallery: document.querySelector('.library-list'),
   buttWatch: document.querySelector('.watch'),
-  buttQue: document.querySelector('.queue')
+  buttQue: document.querySelector('.queue'),
 };
