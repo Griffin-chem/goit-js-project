@@ -4,9 +4,10 @@ import { createGallery, createLibraryGallery } from '../library/library';
 import filmsQueue from '../library/movies';
 import filmsWached from '../library/movies';
 // import { join } from 'lodash';
-
-// let selectFilm;
-
+// ======================================
+refs.navHome.addEventListener('click', evt => activeHomePage(evt));
+refs.navLibrary.addEventListener('click', evt => activeLibraryPage(evt));
+refs.logo.addEventListener('click', evt => activeHomePage(evt));
 // =====================================
 function activeHomePage(evt) {
   evt.preventDefault();
@@ -18,6 +19,12 @@ function activeHomePage(evt) {
   // =======================================
   // запускать слушатель на старте страницы
   refs.divPagination.addEventListener('click', plaginationNavigation);
+  refs.buttWatch.removeEventListener('click', ({ target }) =>
+    createLibraryGallery(target, refs.buttQue, filmsWached),
+  );
+  refs.buttQue.removeEventListener('click', ({ target }) =>
+    createLibraryGallery(target, refs.buttWatch, filmsQueue),
+  );
 }
 
 // ====================================
@@ -29,7 +36,6 @@ function activeLibraryPage(evt) {
     refs.mainLibrary.classList.remove('is-hidden');
   }
 
-  // прячет остальные
   refs.mainPage.classList.add('is-hidden');
   refs.mainDetailsPage.classList.add('is-hidden');
   createGallery(filmsQueue);
@@ -43,39 +49,26 @@ function activeLibraryPage(evt) {
   );
 }
 // ===================
-// function activeDetailsPage (movieId,itsLibraryFilm){
+function activeDetailsPage(movieId, itsLibraryFilm) {
+  if (refs.mainDetailsPage.classList.contains('is-hidden')) {
+    refs.mainDetailsPage.classList.remove('is-hidden');
+  }
 
-// movieId,itsLibraryFilm((это bool), и в зависимости
-// от того это выбранный фильм с домашней страницы или из библиотеки*/))
+  refs.mainPage.classList.add('hidden');
+  refs.mainLibrary.classList.add('hidden');
 
-// показывает страницу детальной отрисовки фильма
-// if (refs.mainDetailsPage.classList.contains('is-hidden'))
-//       refs.mainDetailsPage.classList.remove('is-hidden');
-// прячет остальные страницы
-//     refs.mainPage.classList.add('hidden');
-//     refs.mainLibraryWatched.classList.add('hidden');
-//     refs.mainLibraryQueue.classList.add('hidden');
-// // заполняет глобальную переменную selectFilm нужным объектом
-// selectFilm = ( нужный обьект)
-// запускает функцию  showDetails( эту функцию делает №4)
-//   showDetails();
-// вешает слушателей на кнопки добавления/удаления фильмов в очередь просмотра
-// refs.addToWatched.EventListener('click', callback);
-// refs.addToQueue.EventListener('click', callback);
+  showDetails(movieId, itsLibraryFilm);
+// ===============================
+  refs.buttWatch.removeEventListener('click', ({ target }) =>
+    createLibraryGallery(target, refs.buttQue, filmsWached),
+  );
+  refs.buttQue.removeEventListener('click', ({ target }) =>
+    createLibraryGallery(target, refs.buttWatch, filmsQueue),
+  );
 
-// вешает слушателей на кнопки добавления/удаления фильмов из просмотренных
-//  со страницы detailsPage
-// refs.addToWatched.addEventListener('click', callback);
-// refs.addToQueue.addEventListener('click', callback);
-// удаляет ненужных всех слушателей (таких 4 во всем проекте
-// не нужных на этой странице)
+  // refs.addToWatched.EventListener('click', callback);
+  // refs.addToQueue.EventListener('click', callback);
 
-// ==================
-// вешаем слушателей на переход на домашнюю страницу и страницу библиотеки в хедере.
-refs.navHome.addEventListener('click', evt => activeHomePage(evt));
-refs.navLibrary.addEventListener('click', evt => activeLibraryPage(evt));
-// ===================
-// на логотип повесить запуск функции activeHomePage, чтобы при клике туда возвращаться.
-refs.logo.addEventListener('click', evt => activeHomePage(evt));
-
-// ===================
+  // refs.addToWatched.addEventListener('click', callback);
+  // refs.addToQueue.addEventListener('click', callback);
+}
