@@ -1,6 +1,5 @@
 import itemFilm from '../templates/itemFilm.hbs';
-
-const getYear = ({ release_date }) => new Date(release_date).getFullYear();
+import getYear from './getYear';
 
 const createCardsFunc = items =>
   items
