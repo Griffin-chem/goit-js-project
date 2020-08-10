@@ -7,7 +7,8 @@ const filmsQueue = [];
 const filmsWatched = [];
 
 const showDetails = (movieId, itsLibraryFilm) => {
-  createDetails(movieId, itsLibraryFilm);
+  createDetails(movieId);
+  monitorButtonStatusText(film.id, itsLibraryFilm);
 };
 /*
  * пишем функцию monitorButtonStatusText которая следит за состоянием (значок и текст в кнопке)
@@ -33,10 +34,10 @@ const checkFilmToQueue = movieId => filmsQueue.find(({ id }) => id === movieId);
 const checkFilmToWatched = movieId =>
   filmsWatched.find(({ id }) => id === movieId);
 
-const createDetails = (movieId, itsLibraryFilm) => {
+const createDetails = movieId => {
   moviesApi
     .fetchMovieDetails(movieId)
-    .then(data => markupDetailsPage(data, itsLibraryFilm))
+    .then(data => markupDetailsPage(data))
     .catch(error => console.error(error));
 };
 
@@ -46,7 +47,7 @@ const markupDetailsPage = (data, itsLibraryFilm) => {
     'afterbegin',
     templatesDetailsFilm(film),
   );
-  monitorButtonStatusText(film.id, itsLibraryFilm);
+  monitorButtonStatusText(film.id, itsLibraryFilm); ///
 };
 
 export { showDetails };
