@@ -1,6 +1,7 @@
 import filmsQueue from './movies';
 import filmsWached from './movies';
 import refs from '../dom/refs';
+import { activeDetailsPage } from '../header/navigation';
 
 import createCardsFunc from '../utils/createCardsFunc';
 
@@ -11,13 +12,13 @@ const createGallery = films => {
 // refs.libraryGallery.insertAdjacentHTML('beforeend', createLibraryCardsFunc(filmsQueue));
 
 refs.libraryGallery.addEventListener('click', ({ target }) => {
-  activeDetailsPage(target.id, true);
+  activeDetailsPage(target.dataset.id, true);
 });
 // потом удалить :
-const activeDetailsPage = (movieId, boole) => {
-  console.log(movieId);
-  console.log(boole);
-};
+// const activeDetailsPage = (movieId, boole) => {
+//   console.log(movieId);
+//   console.log(boole);
+// };
 
 const createLibraryGallery = (target, button, films) => {
   target.classList.add('active-but-lib');

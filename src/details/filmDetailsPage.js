@@ -1,5 +1,6 @@
 import moviesApi from '../services/moviesApi';
 import templatesDetailsFilm from '../templates/detailsFilm.hbs';
+import templatesDetailsImg from '../templates/detailsImg.hbs';
 import getYear from '../utils/getYear';
 import refs from '../dom/refs';
 
@@ -8,6 +9,7 @@ const filmsWatched = [];
 
 const showDetails = (movieId, itsLibraryFilm) => {
   createDetails(movieId);
+  monitorButtonStatusText(film.id, itsLibraryFilm);
 };
 /*
  * пишем функцию monitorButtonStatusText которая следит за состоянием (значок и текст в кнопке)
@@ -22,8 +24,8 @@ const monitorButtonStatusText = (movieId, itsLibraryFilm) => {
     refs.btnToQueue.textContent = textBtnQueue;
 
     const textBtnWatched = checkFilmToWatched(movieId)
-      ? 'Delete from queue'
-      : 'Add to queue';
+      ? 'Delete from watched'
+      : 'Add to watched';
     refs.btnToWatched.textContent = textBtnWatched;
   }
 };
@@ -40,13 +42,16 @@ const createDetails = movieId => {
     .catch(error => console.error(error));
 };
 
-const markupDetailsPage = data => {
+const markupDetailsPage = (data, itsLibraryFilm) => {
   const film = { ...data, year: getYear(data) };
-  refs.mainDetailsPage.insertAdjacentHTML(
+  refs.imgDetailsWrapper.insertAdjacentHTML(
+    'beforeend',
+    templatesDetailsImg(film),
+  );
+  refs.infoDetailsBox.insertAdjacentHTML(
     'beforeend',
     templatesDetailsFilm(film),
   );
-  monitorButtonStatusText(movieId, itsLibraryFilm);
 };
 
 export { showDetails };

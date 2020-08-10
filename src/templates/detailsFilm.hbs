@@ -1,22 +1,31 @@
-<img src="http://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" />
-<div class="film__info">
-    <h2 class="film__title">{{title}}
-        <span class="film__year">({{year}})</span>
-    </h2>
-    <p>vote/votes<span>{{vote_average}}{{vote_count}}</span></p>
-    <p>popularity<span>{{popularity}}</span></p>
-    <p>original_title<span>{{original_title}}</span></p>
-    <p>genre
-    <ul class="genres-list">
-        {{#each genres}}
-        <li class="genres-list__item">{{this}}</li>
-        {{/each}}
-    </ul>
-    </p>
-    <h3>About</h3>
-    <p>{{overview}}</p>
-    <div>
-        <button type="button" data-target="toQueue" data-action="add">Add to queue</button>
-        <button type="button" data-target="toWatched" data-action="add">Add to watched</button>
-    </div>
-</div>
+<h2 class="film__title">{{title}}
+    <span class="film__year">({{year}})</span>
+</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>vote / votes</th>
+            <td>{{vote_average}} / {{vote_count}}</td>
+        </tr>
+        <tr>
+            <th>popularity</th>
+            <td>{{popularity}}</td>
+        </tr>
+        <tr>
+            <th>original title</th>
+            <td>{{original_title}}</td>
+        </tr>
+        <tr>
+            <th>genre</th>
+            <td>
+                <ul class="genres-list">
+                    {{#each genres}}
+                    <li class="genres-list__item">{{this.name}}</li>
+                    {{/each}}
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 class="about-title">About</h3>
+<p class="overview">{{overview}}</p>

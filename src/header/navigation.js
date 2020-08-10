@@ -1,6 +1,7 @@
 import refs from '../dom/refs';
 import { plaginationNavigation } from '../search/searchAndPagination';
 import { createGallery, createLibraryGallery } from '../library/library';
+import { showDetails } from '../details/filmDetailsPage';
 import filmsQueue from '../library/movies';
 import filmsWached from '../library/movies';
 // import { join } from 'lodash';
@@ -16,6 +17,8 @@ function activeHomePage(evt) {
   }
   refs.mainLibrary.classList.add('is-hidden');
   refs.mainDetailsPage.classList.add('is-hidden');
+  refs.imgDetailsWrapper.innerHTML = '';
+  refs.infoDetailsBox.innerHTML = '';
   // =======================================
   // запускать слушатель на старте страницы
   refs.divPagination.addEventListener('click', plaginationNavigation);
@@ -35,9 +38,10 @@ function activeLibraryPage(evt) {
   if (refs.mainLibrary.classList.contains('is-hidden')) {
     refs.mainLibrary.classList.remove('is-hidden');
   }
-
   refs.mainPage.classList.add('is-hidden');
   refs.mainDetailsPage.classList.add('is-hidden');
+  refs.imgDetailsWrapper.innerHTML = '';
+  refs.infoDetailsBox.innerHTML = '';
   createGallery(filmsQueue);
   refs.buttQue.classList.add('active-but-lib');
   refs.buttWatch.classList.remove('active-but-lib');
@@ -49,16 +53,16 @@ function activeLibraryPage(evt) {
   );
 }
 // ===================
-function activeDetailsPage(movieId, itsLibraryFilm) {
+export function activeDetailsPage(movieId, itsLibraryFilm) {
   if (refs.mainDetailsPage.classList.contains('is-hidden')) {
     refs.mainDetailsPage.classList.remove('is-hidden');
   }
 
-  refs.mainPage.classList.add('hidden');
-  refs.mainLibrary.classList.add('hidden');
+  refs.mainPage.classList.add('is-hidden');
+  refs.mainLibrary.classList.add('is-hidden');
 
   showDetails(movieId, itsLibraryFilm);
-// ===============================
+  // ===============================
   refs.buttWatch.removeEventListener('click', ({ target }) =>
     createLibraryGallery(target, refs.buttQue, filmsWached),
   );

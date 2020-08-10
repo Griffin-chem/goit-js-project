@@ -18,4 +18,6 @@ export default {
   libraryGallery: document.querySelector('.library-list'),
   buttWatch: document.querySelector('.watch'),
   buttQue: document.querySelector('.queue'),
+  imgDetailsWrapper: document.querySelector('.img-wrapper'),
+  infoDetailsBox: document.querySelector('.info-box'),
 };
