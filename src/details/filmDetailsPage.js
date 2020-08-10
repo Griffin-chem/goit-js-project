@@ -7,7 +7,7 @@ const filmsQueue = [];
 const filmsWatched = [];
 
 const showDetails = (movieId, itsLibraryFilm) => {
-  createDetails(movieId);
+  createDetails(movieId, itsLibraryFilm);
 };
 /*
  * пишем функцию monitorButtonStatusText которая следит за состоянием (значок и текст в кнопке)
@@ -22,8 +22,8 @@ const monitorButtonStatusText = (movieId, itsLibraryFilm) => {
     refs.btnToQueue.textContent = textBtnQueue;
 
     const textBtnWatched = checkFilmToWatched(movieId)
-      ? 'Delete from queue'
-      : 'Add to queue';
+      ? 'Delete from watched'
+      : 'Add to watched';
     refs.btnToWatched.textContent = textBtnWatched;
   }
 };
@@ -33,20 +33,20 @@ const checkFilmToQueue = movieId => filmsQueue.find(({ id }) => id === movieId);
 const checkFilmToWatched = movieId =>
   filmsWatched.find(({ id }) => id === movieId);
 
-const createDetails = movieId => {
+const createDetails = (movieId, itsLibraryFilm) => {
   moviesApi
     .fetchMovieDetails(movieId)
-    .then(data => markupDetailsPage(data))
+    .then(data => markupDetailsPage(data, itsLibraryFilm))
     .catch(error => console.error(error));
 };
 
-const markupDetailsPage = data => {
+const markupDetailsPage = (data, itsLibraryFilm) => {
   const film = { ...data, year: getYear(data) };
   refs.mainDetailsPage.insertAdjacentHTML(
-    'beforeend',
+    'afterbegin',
     templatesDetailsFilm(film),
   );
-  monitorButtonStatusText(movieId, itsLibraryFilm);
+  monitorButtonStatusText(film.id, itsLibraryFilm);
 };
 
 export { showDetails };

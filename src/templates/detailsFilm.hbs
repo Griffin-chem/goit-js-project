@@ -3,20 +3,16 @@
     <h2 class="film__title">{{title}}
         <span class="film__year">({{year}})</span>
     </h2>
-    <p>vote/votes<span>{{vote_average}}{{vote_count}}</span></p>
+    <p>vote/votes<span>{{vote_average}}/{{vote_count}}</span></p>
     <p>popularity<span>{{popularity}}</span></p>
     <p>original_title<span>{{original_title}}</span></p>
     <p>genre
     <ul class="genres-list">
         {{#each genres}}
-        <li class="genres-list__item">{{this}}</li>
+        <li class="genres-list__item">{{this.name}}</li>
         {{/each}}
     </ul>
     </p>
     <h3>About</h3>
     <p>{{overview}}</p>
-    <div>
-        <button type="button" data-action="toQueue">Add to queue</button>
-        <button type="button" data-action="toWatched">Add to watched</button>
-    </div>
 </div>
