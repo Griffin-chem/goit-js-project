@@ -17,6 +17,8 @@ function activeHomePage(evt) {
   }
   refs.mainLibrary.classList.add('is-hidden');
   refs.mainDetailsPage.classList.add('is-hidden');
+  refs.imgDetailsWrapper.innerHTML = '';
+  refs.infoDetailsBox.innerHTML = '';
   // =======================================
   // запускать слушатель на старте страницы
   refs.divPagination.addEventListener('click', plaginationNavigation);
@@ -36,9 +38,10 @@ function activeLibraryPage(evt) {
   if (refs.mainLibrary.classList.contains('is-hidden')) {
     refs.mainLibrary.classList.remove('is-hidden');
   }
-
   refs.mainPage.classList.add('is-hidden');
   refs.mainDetailsPage.classList.add('is-hidden');
+  refs.imgDetailsWrapper.innerHTML = '';
+  refs.infoDetailsBox.innerHTML = '';
   createGallery(filmsQueue);
   refs.buttQue.classList.add('active-but-lib');
   refs.buttWatch.classList.remove('active-but-lib');

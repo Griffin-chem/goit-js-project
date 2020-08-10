@@ -1,17 +1,15 @@
+.details-wrapper {
+  padding: 20px;
+}
+
 .img-wrapper {
   max-width: 500px;
-  padding: 20px;
+  margin-bottom: 20px;
   margin: 0 auto;
 }
 
-.buttons-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.film__info {
-  padding: 0 20px;
+.info-box {
+  margin-bottom: 20px;
 }
 
 .film__title {
@@ -57,14 +55,37 @@ tbody tr:nth-child(odd) {
   margin-bottom: 20px;
 }
 
-.overview {
-  margin-bottom: 20px;
+.buttons-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 button[data-target='toQueue'] {
   margin-bottom: 10px;
 }
 
-.buttons-box {
-  margin-bottom: 20px;
+@media (min-width: 768px) {
+  .details-wrapper {
+    display: flex;
+  }
+
+  .img-wrapper {
+    width: 50%;
+    margin-right: 20px;
+  }
+
+  .details {
+    width: 50%;
+  }
+
+  .buttons-box {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  button[data-target='toQueue'] {
+    margin: 0;
+    margin-right: 12px;
+  }
 }

@@ -1,5 +1,6 @@
 import moviesApi from '../services/moviesApi';
 import templatesDetailsFilm from '../templates/detailsFilm.hbs';
+import templatesDetailsImg from '../templates/detailsImg.hbs';
 import getYear from '../utils/getYear';
 import refs from '../dom/refs';
 
@@ -43,11 +44,14 @@ const createDetails = movieId => {
 
 const markupDetailsPage = (data, itsLibraryFilm) => {
   const film = { ...data, year: getYear(data) };
-  refs.mainDetailsPage.insertAdjacentHTML(
-    'afterbegin',
+  refs.imgDetailsWrapper.insertAdjacentHTML(
+    'beforeend',
+    templatesDetailsImg(film),
+  );
+  refs.infoDetailsBox.insertAdjacentHTML(
+    'beforeend',
     templatesDetailsFilm(film),
   );
-  monitorButtonStatusText(film.id, itsLibraryFilm); ///
 };
 
 export { showDetails };
