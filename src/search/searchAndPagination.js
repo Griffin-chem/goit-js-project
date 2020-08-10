@@ -20,11 +20,18 @@ refs.formInput.addEventListener('submit', searchFilms);
 refs.divPagination.addEventListener('click', plaginationNavigation);
 
 function fetchFilms(pageNumber, inputValue) {
-  fetchMoviesWithQuery
-    .fetchMoviesWithQuery(inputValue, pageNumber)
+  let fetch;
+
+  if (inputValue) {
+    fetch = fetchMoviesWithQuery.fetchMoviesWithQuery(inputValue, pageNumber);
+  } else {
+    fetch = fetchMoviesWithQuery.fetchPopularMovies(pageNumber);
+  }
+
+  fetch
     .then(data => {
       renderFilms = [...data.results];
-
+      console.log(data);
       data.total_pages === 1
         ? refs.divPagination.classList.add('displayNone')
         : refs.nextBtn.classList.remove('displayNone');
@@ -45,7 +52,6 @@ function fetchFilms(pageNumber, inputValue) {
 
       refs.homePageGallery.innerHTML = '';
       refs.errorDiv.classList.add('displayNone');
-      refs.divPagination.classList.remove('displayNone');
 
       const markupInsList = createCardsFunc(data.results);
       refs.homePageGallery.insertAdjacentHTML('beforeend', markupInsList);
@@ -67,7 +73,7 @@ function searchFilms(e) {
   }
 }
 
-if ((pageNumber = 1)) {
+if (pageNumber === 1) {
   refs.prevBtn.classList.add('displayNone');
   refs.numberPage.classList.add('displayNone');
 }
@@ -83,6 +89,8 @@ function plaginationNavigation(e) {
     refs.prevBtn.classList.remove('displayNone');
     refs.numberPage.classList.remove('displayNone');
     pageNumber += 1;
+  } else {
+    return;
   }
 
   fetchFilms(pageNumber, inputValue);
@@ -95,3 +103,42 @@ function plaginationNavigation(e) {
     behavior: 'smooth',
   });
 }
+// ==========================================================================================
+// refs.divPagination.classList.remove('displayNone');
+// refs.divPagination.addEventListener('click', paginationPopular);
+
+// function fetchPopularMoviesList(pageNumber) {
+//   fetchMoviesWithQuery.fetchPopularMovies(pageNumber).then(({ results }) => {
+//     refs.homePageGallery.insertAdjacentHTML(
+//       'beforeend',
+//       createCardFunc(results),
+//     );
+//   });
+// }
+
+// function paginationPopular(e) {
+//   if (pageNumber === 1) {
+//     refs.prevBtn.classList.add('displayNone');
+//   }
+
+//   if (e.target.id === 'prev' && pageNumber > 1) {
+//     pageNumber -= 1;
+//   } else if (e.target.id === 'next') {
+//     refs.prevBtn.classList.remove('displayNone');
+//     refs.numberPage.classList.remove('displayNone');
+//     pageNumber += 1;
+//   } else {
+//     return;
+//   }
+//   console.log(pageNumber);
+
+//   fetchPopularMoviesList(pageNumber);
+
+//   refs.numberPage.textContent = `${pageNumber}`;
+
+//   window.scrollTo({
+//     top: 0,
+//     left: 0,
+//     behavior: 'smooth',
+//   });
+// }

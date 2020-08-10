@@ -8,7 +8,7 @@ import moviesApi from '../services/moviesApi';
 
 const renderFilms = '';
 const genres = '';
-const pageNumber = 1;
+let pageNumber = 1;
 
 //функцию выносим в папку utils
 function createCardFunc(items) {
@@ -25,8 +25,9 @@ function activeDetailsPage(movieId, boole) {
   console.log(boole);
 }
 
-function fetchPopularMoviesList() {
+function fetchPopularMoviesList(pageNumber) {
   moviesApi.fetchPopularMovies(pageNumber).then(({ results }) => {
+    console.log(results);
     refs.homePageGallery.insertAdjacentHTML(
       'beforeend',
       createCardFunc(results),
