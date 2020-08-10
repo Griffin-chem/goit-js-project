@@ -25,7 +25,6 @@ img {
   margin: 0 auto;
   width: 257px;
   border-bottom: 2px solid #9894a1;
-
 }
 
 .inputSearch {
@@ -46,21 +45,21 @@ img {
   background-color: #fff;
 }
 
-.js-main-page {
+/* .js-main-page {
   list-style: none;
   /* display: flex;
   flex-wrap: wrap; */
-  margin: 0;
+/* margin: 0;
   padding: 0;
+} */
 
-}
+/* } */
 
 .errorSearch {
   text-align: center;
   font-size: 30px;
   color: #050505;
   background-color: #f8faf8;
-
 }
 
 .pagination {
@@ -93,9 +92,8 @@ img {
   font-size: 22px;
   line-height: 45px;
   border: 1px solid #556270;
-  background-color: #fbfbfb
+  background-color: #fbfbfb;
 }
-
 
 .displayNone {
   display: none;

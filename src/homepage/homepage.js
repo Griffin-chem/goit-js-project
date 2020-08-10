@@ -1,31 +1,20 @@
 'use strict';
 
 import refs from '../dom/refs';
-// import createCardFunc from '../utils/createCardsFunc';
-import templates from './templates.hbs';
+import createCardFunc from '../utils/createCardsFunc';
 import moviesApi from '../services/moviesApi';
 // import activeDetailsPage from ""; //Игоря функция
 
-const renderFilms = '';
-const genres = '';
+let renderFilms = '';
+let genres = '';
 let pageNumber = 1;
-
-//функцию выносим в папку utils
-function createCardFunc(items) {
-  return items.map(item => templates(item)).join('');
-}
 
 refs.homePageGallery.addEventListener('click', ({ target }) => {
   activeDetailsPage(target.dataset.id, false);
 });
 
-//временная функция
-function activeDetailsPage(movieId, boole) {
-  console.log(movieId);
-  console.log(boole);
-}
+function fetchPopularMoviesList() {
 
-function fetchPopularMoviesList(pageNumber) {
   moviesApi.fetchPopularMovies(pageNumber).then(({ results }) => {
     console.log(results);
     refs.homePageGallery.insertAdjacentHTML(
@@ -34,5 +23,3 @@ function fetchPopularMoviesList(pageNumber) {
     );
   });
 }
-
-fetchPopularMoviesList();

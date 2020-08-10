@@ -17,7 +17,7 @@ let renderFilms;
 // });
 
 refs.formInput.addEventListener('submit', searchFilms);
-refs.divPagination.addEventListener('click', plaginationNavigation);
+// refs.divPagination.addEventListener('click', plaginationNavigation);
 
 function fetchFilms(pageNumber, inputValue) {
   let fetch;
@@ -78,7 +78,7 @@ if (pageNumber === 1) {
   refs.numberPage.classList.add('displayNone');
 }
 
-function plaginationNavigation(e) {
+export function plaginationNavigation(e) {
   if (pageNumber === 1) {
     refs.prevBtn.classList.add('displayNone');
   }

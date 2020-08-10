@@ -27,7 +27,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-   
     min-width: 320px;
     height: 65px;
     background-color: var(--hf-bg-color);
