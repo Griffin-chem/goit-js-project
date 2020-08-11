@@ -36,7 +36,7 @@
 
       <div class="errorSearch displayNone">This film is not found</div>
 
-      <ul class="js-main-page"></ul>
+      <ul class="js-main-page position-items"></ul>
 
       <div class="pagination">
         <button id="prev" type="button" data-active="prev">Prev</button>
@@ -46,42 +46,40 @@
     </section>
 
     <section class="library is-hidden">
-        <div class="library-buttons-place libraryShadow1">
-          <button
-            type="button"
-            class="library-btn libraryShadow2 watch active-but-lib"
-          >
-            Watched
-          </button>
-          <button type="button" class="library-btn libraryShadow2 queue">
-            Queue
-          </button>
-        </div>
-        <ul class="library-list"></ul>
-      </section>
-      <section class="details-page is-hidden">
-        <div class="details-wrapper">
-          <div class="img-wrapper"></div>
-          <div class="details">
-            <div class="info-box"></div>
-            <div class="buttons-box">
-              <button type="button" data-target="toQueue">Add to queue</button>
-              <button type="button" data-target="toWatched">
-                Add to watched
-              </button>
-            </div>
+      <div class="library-buttons-place libraryShadow1">
+        <button type="button" class="library-btn libraryShadow2 watch active-but-lib">
+          Watched
+        </button>
+        <button type="button" class="library-btn libraryShadow2 queue">
+          Queue
+        </button>
+      </div>
+      <ul class="library-list position-items"></ul>
+    </section>
+    <section class="details-page is-hidden">
+      <div class="details-wrapper">
+        <div class="img-wrapper"></div>
+        <div class="details">
+          <div class="info-box"></div>
+          <div class="buttons-box">
+            <button type="button" data-target="toQueue" class="butt_style">Add to queue</button>
+            <button type="button" data-target="toWatched" class="butt_style">
+              Add to watched
+            </button>
           </div>
         </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <span class="footer-name_group">
-        Made by GroupeName
-      </span>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <span class="footer-name_group">
+      Made by GroupeName
+    </span>
 
-      <button class="footer-btnUp">
-        <img src="./images/arrow.png" alt="" />
-      </button>
-    </footer>
-  </body>
+    <button class="footer-btnUp">
+      <img src="./images/arrow.png" alt="" />
+    </button>
+  </footer>
+</body>
+
 </html>

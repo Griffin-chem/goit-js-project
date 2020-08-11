@@ -4,8 +4,8 @@
 
 .img-wrapper {
   max-width: 500px;
-  margin-bottom: 20px;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .info-box {
@@ -13,6 +13,9 @@
 }
 
 .film__title {
+  font-family: 'Roboto Medium', sans-serif;
+  color: var(--hf-tx-color);
+  font-size: 17px;
   margin-bottom: 12px;
 }
 
@@ -30,6 +33,10 @@ tr {
 th,
 td {
   text-align: left;
+  font-size: 13px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  line-height: 27px;
 }
 
 th {
@@ -53,6 +60,15 @@ tbody tr:nth-child(odd) {
 
 .about-title {
   margin-bottom: 20px;
+  color: var(--hf-tx-color);
+  font-size: 17px;
+  font-family: 'Roboto Medium', sans-serif;
+}
+
+.overview {
+  color: var(--hf-tx-color);
+  font-size: 14px;
+  font-family: 'Roboto Medium', sans-serif;
 }
 
 .buttons-box {
@@ -63,6 +79,13 @@ tbody tr:nth-child(odd) {
 
 button[data-target='toQueue'] {
   margin-bottom: 10px;
+}
+
+.butt_style {
+  color: var(--hf-tx-color);
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 
 @media (min-width: 768px) {
