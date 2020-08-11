@@ -1,55 +1,41 @@
-let selectFilm = {
-  title: 'Title',
-  release_date: '1900-12-31',
-  vote_average: 0.0,
-  poster_path: '',
-  id: 0
-}
+import {selectFilm} from './filmDetailsPage';
 
-const toggleToQueue = (event) => {
-  // Check localStorage for key "filmsQueue"
-  if (window.localStorage.hasOwnProperty('filmsQueue')) {
-    const queueFilmData = JSON.parse(window.localStorage.getItem('filmsQueue'))
-  } else {
-    queueFilmData = [];
-  };
-  // Add or remove selectFilm from Queue
-  switch (event.target.dataset.action) {
-    case 'add':
-    queueFilmData.push(selectFilm);
-    window.localStorage.setItem('filmsQueue', JSON.stringify(queueFilmData));
-      break;
-    case 'del':
-    const updatedQueue = queueFilmData.filter(film => {
-      console.log(film.id);
-      console.log(selectFilm.id);
-      return (film.id !== selectFilm.id)});
-    window.localStorage.setItem('filmsQueue', JSON.stringify(updatedQueue));
-      break;
+const checkLocalStorage = key => {
+  try {
+    return (JSON.parse(window.localStorage.getItem(key)) !== null) 
+    ? JSON.parse(window.localStorage.getItem(key)) 
+    : [];
+  } 
+  catch (error) {
+    return [];
   }
 };
 
-const toggleToWatched = (event) => {
-  // Check localStorage for key "filmsWatched"
-  if (window.localStorage.hasOwnProperty('filmsWatched')) {
-    const watchedFilmData = JSON.parse(window.localStorage.getItem('filmsWatched'))
-  } else {
-    const watchedFilmData = [];
-  };
-  // Add or remove selectFilm from Watched
-  switch (event.target.dataset.action) {
+const performDataAction = ({action}, filmData) => {
+  switch (action) {
     case 'add':
-    watchedFilmData.push(selectFilm);
-    window.localStorage.setItem('filmsQueue', JSON.stringify(watchedFilmData));
-      break;
+      return filmData.concat([selectFilm]);
     case 'del':
-    const updatedWatched = watchedFilmData.filter(film => {
-      console.log(film.id);
-      console.log(selectFilm.id);
-      return (film.id !== selectFilm.id)});
-    window.localStorage.setItem('filmsQueue', JSON.stringify(updatedWatched));
-      break;
+      return filmData.filter(film => film.id !== selectFilm.id);
   }
 };
 
-export {toggleToWatched, toggleToQueue};
+// toggleToQueue({ target: { dataset: { action: 'add' } } });
+
+const toggleToQueue = ({target}) => {
+  const queueFilmData = checkLocalStorage('filmsQueue');
+  const updateQueue = performDataAction(target.dataset, queueFilmData);
+  window.localStorage.setItem('filmsQueue', JSON.stringify(updateQueue));
+};
+
+const toggleToWatched = ({target}) => {
+  const watchedFilmData = checkLocalStorage('filmsWatched');
+  const updateWatched = performDataAction(target.dataset, watchedFilmData);
+  localStorage.setItem('filmsWatched', JSON.stringify(updateWatched));
+};
+
+export default {
+  toggleToWatched,
+  toggleToQueue,
+  checkLocalStorage
+};

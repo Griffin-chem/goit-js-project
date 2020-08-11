@@ -9,13 +9,6 @@ let inputValue;
 let pageNumber = 1;
 let renderFilms;
 
-// Handlebars.registerHelper('year1', function (date) {
-//   // const dat = Handlebars.escapeExpression(date);
-//   // return options.fn(this)
-//   const year2 = toString(new Date(date).getFullYear());
-//   return year2;
-//   // return new Handlebars.SafeString(dat);
-// });
 refs.numberPage.textContent = `${pageNumber}`;
 refs.formInput.addEventListener('submit', searchFilms);
 refs.divPagination.addEventListener('click', plaginationNavigation);
@@ -23,13 +16,13 @@ refs.divPagination.addEventListener('click', plaginationNavigation);
 function render(data) {
   renderFilms = [...data.results];
   console.log(data);
-  data.total_pages === 1
-    ? refs.divPagination.classList.add('displayNone')
-    : refs.nextBtn.classList.remove('displayNone');
+  data.total_pages === 1 ?
+    refs.divPagination.classList.add('displayNone') :
+    refs.nextBtn.classList.remove('displayNone');
 
-  data.total_pages === pageNumber
-    ? refs.nextBtn.classList.add('displayNone')
-    : refs.nextBtn.classList.remove('displayNone');
+  data.total_pages === pageNumber ?
+    refs.nextBtn.classList.add('displayNone') :
+    refs.nextBtn.classList.remove('displayNone');
 
   if (pageNumber === 1) {
     refs.prevBtn.classList.add('displayNone');
@@ -62,10 +55,10 @@ function fetchFilms(pageNumber, inputValue) {
     })
     .catch(error => {
       refs.errorDiv.classList.remove('displayNone');
-    }).finally(()=>{
-      spinner.hiddenLoader();
-    }
-      
+    }).finally(() => {
+        spinner.hiddenLoader();
+      }
+
     );
 }
 
