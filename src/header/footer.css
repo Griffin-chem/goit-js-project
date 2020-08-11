@@ -18,10 +18,11 @@
     background-color: var(--hf-bg-color);
     text-align: center;
    }
-   .footer-name_group{
-       font-family: 'Roboto',sans-serif ;
-       font-size: 16px;
-       text-align: center;
+   
+.footer-name_group{
+     font-family: 'Roboto',sans-serif ;
+     font-size: 16px;
+     text-align: center;
    }
 
    .footer-btnUp{
@@ -51,4 +52,3 @@
     }
    }
 
-   
