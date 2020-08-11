@@ -3,6 +3,7 @@
 import refs from '../dom/refs';
 import createCardFunc from '../utils/createCardsFunc';
 import moviesApi from '../services/moviesApi';
+import spinner from '../loader/loader';
 // import activeDetailsPage from ""; //Игоря функция
 
 let renderFilms = '';
@@ -14,10 +15,16 @@ refs.homePageGallery.addEventListener('click', ({ target }) => {
 });
 
 function fetchPopularMoviesList() {
+  spinner.showLoder();
   moviesApi.fetchPopularMovies(pageNumber).then(({ results }) => {
+    console.log(results);
     refs.homePageGallery.insertAdjacentHTML(
       'beforeend',
       createCardFunc(results),
     );
+  }).catch((error)=>{
+    console.log(error)
+  }).finally(()=>{
+spinner.hiddenLoader();
   });
 }

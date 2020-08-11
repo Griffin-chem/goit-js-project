@@ -3,6 +3,7 @@ import itemFilm from '../templates/itemFilm.hbs';
 import Handlebars from 'handlebars';
 import refs from '../dom/refs';
 import createCardsFunc from '../utils/createCardsFunc';
+import spinner from '../loader/loader';
 
 let inputValue;
 let pageNumber = 1;
@@ -20,11 +21,18 @@ refs.formInput.addEventListener('submit', searchFilms);
 // refs.divPagination.addEventListener('click', plaginationNavigation);
 
 function fetchFilms(pageNumber, inputValue) {
-  fetchMoviesWithQuery
-    .fetchMoviesWithQuery(inputValue, pageNumber)
+  let fetch;
+  spinner.showLoder();
+  if (inputValue) {
+    fetch = fetchMoviesWithQuery.fetchMoviesWithQuery(inputValue, pageNumber);
+  } else {
+    fetch = fetchMoviesWithQuery.fetchPopularMovies(pageNumber);
+  }
+
+  fetch
     .then(data => {
       renderFilms = [...data.results];
-
+      console.log(data);
       data.total_pages === 1
         ? refs.divPagination.classList.add('displayNone')
         : refs.nextBtn.classList.remove('displayNone');
@@ -45,14 +53,15 @@ function fetchFilms(pageNumber, inputValue) {
 
       refs.homePageGallery.innerHTML = '';
       refs.errorDiv.classList.add('displayNone');
-      refs.divPagination.classList.remove('displayNone');
 
       const markupInsList = createCardsFunc(data.results);
       refs.homePageGallery.insertAdjacentHTML('beforeend', markupInsList);
     })
     .catch(error => {
       refs.errorDiv.classList.remove('displayNone');
-    }).finally(
+    }).finally(()=>{
+      spinner.hiddenLoader();
+    }
       
     );
 }
@@ -69,7 +78,7 @@ function searchFilms(e) {
   }
 }
 
-if ((pageNumber = 1)) {
+if (pageNumber === 1) {
   refs.prevBtn.classList.add('displayNone');
   refs.numberPage.classList.add('displayNone');
 }
@@ -85,6 +94,8 @@ export function plaginationNavigation(e) {
     refs.prevBtn.classList.remove('displayNone');
     refs.numberPage.classList.remove('displayNone');
     pageNumber += 1;
+  } else {
+    return;
   }
 
   fetchFilms(pageNumber, inputValue);
