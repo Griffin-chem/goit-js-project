@@ -8,11 +8,11 @@
 
 .libraryShadow1 {
   margin-bottom: 15px;
-  box-shadow: 0 8px 8px -4px rgba(0, 0, 0, .2);
+
+  box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.2);
 }
 
 .library-btn {
-  margin-bottom: 0;
   width: 140px;
   height: 38px;
   font-family: 'Roboto', sans-serif;
@@ -20,14 +20,17 @@
   background-color: var(--cap-bg-color);
   border: 0px;
   outline: none;
+  margin: 0;
 }
+
+
 
 /* .library-btn:hover {
     background-color: rgb(110, 226, 116);
     border-bottom:  rgb(10, 82, 52);
   } */
 .libraryShadow2 {
-  box-shadow: 0 4px 2px 0px rgba(0, 0, 0, .3);
+  box-shadow: 0 4px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
 .active-but-lib {
@@ -39,7 +42,6 @@
   .library-buttons-place {
     justify-content: center;
   }
-
 }
 
 @media (min-width: 1024px) {}

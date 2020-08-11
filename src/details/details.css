@@ -13,6 +13,9 @@
 }
 
 .film__title {
+  font-family: 'Roboto Medium', sans-serif;
+  color: var(--hf-tx-color);
+  font-size: 17px;
   margin-bottom: 12px;
 }
 
@@ -30,6 +33,10 @@ tr {
 th,
 td {
   text-align: left;
+  font-size: 13px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  line-height: 27px;
 }
 
 th {
@@ -47,12 +54,25 @@ tbody tr:nth-child(odd) {
   justify-content: flex-start;
 }
 
+.genres-list__item:first-child {
+  margin-left: 0;
+}
+
 .genres-list__item:not(:last-child) {
   margin-right: 6px;
 }
 
 .about-title {
   margin-bottom: 20px;
+  color: var(--hf-tx-color);
+  font-size: 17px;
+  font-family: 'Roboto Medium', sans-serif;
+}
+
+.overview {
+  color: var(--hf-tx-color);
+  font-size: 14px;
+  font-family: 'Roboto Medium', sans-serif;
 }
 
 .buttons-box {
@@ -64,6 +84,12 @@ tbody tr:nth-child(odd) {
 button[data-target='toWatched'] {
   margin-bottom: 10px;
 }
+
+.butt_style {
+  color: var(--hf-tx-color);
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 
 .buttons-box button {
   padding-left: 20px;
@@ -88,6 +114,7 @@ button[data-target='toWatched'] {
 
 .icon-remove-watched {
   background-image: url(../images/basket.png);
+
 }
 
 @media (min-width: 768px) {
