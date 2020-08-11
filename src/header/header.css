@@ -34,11 +34,13 @@ header {
 .logo-block {
   display: flex;
   flex-direction: row;
+  padding-left: 44px;
+  margin: 0;
 }
 
 .logo-block--film {
-  margin-left: 10px;
-  margin-top: 22px;
+  margin-right: 10px;
+  margin-top: 18px;
 }
 
 .logo-block--filmoteka {
@@ -98,5 +100,11 @@ header {
     font-size: 16px;
     margin-top: 22px;
     margin-left: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  header {
+    min-width: 1024px;
   }
 }
