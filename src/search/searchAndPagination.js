@@ -78,7 +78,7 @@ if (pageNumber === 1) {
   refs.prevBtn.classList.add('displayNone');
 }
 
-function plaginationNavigation(e) {
+export function plaginationNavigation(e) {
   if (pageNumber === 1) {
     refs.prevBtn.classList.add('displayNone');
   }
