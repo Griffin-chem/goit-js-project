@@ -81,7 +81,7 @@ tbody tr:nth-child(odd) {
   align-items: center;
 }
 
-button[data-target='toQueue'] {
+button[data-target='toWatched'] {
   margin-bottom: 10px;
 }
 
@@ -90,6 +90,31 @@ button[data-target='toQueue'] {
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
+
+.buttons-box button {
+  padding-left: 20px;
+  background-repeat: no-repeat;
+  background-position: left;
+  border: none;
+  background-color: var(--ev-table-bg-color);
+  line-height: 14px;
+}
+
+.icon-add-queue {
+  background-image: url(../images/calendar-plus.png);
+}
+
+.icon-remove-queue {
+  background-image: url(../images/calendar-minus.png);
+}
+
+.icon-add-watched {
+  background-image: url(../images/video.png);
+}
+
+.icon-remove-watched {
+  background-image: url(../images/basket.png);
+
 }
 
 @media (min-width: 768px) {
@@ -100,6 +125,7 @@ button[data-target='toQueue'] {
   .img-wrapper {
     width: 50%;
     margin-right: 20px;
+    margin-bottom: 0;
   }
 
   .details {
@@ -111,8 +137,8 @@ button[data-target='toQueue'] {
     justify-content: flex-start;
   }
 
-  button[data-target='toQueue'] {
+  button[data-target='toWatched'] {
     margin: 0;
-    margin-right: 12px;
+    margin-right: 14px;
   }
 }

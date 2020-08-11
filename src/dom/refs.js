@@ -20,4 +20,5 @@ export default {
   buttQue: document.querySelector('.queue'),
   imgDetailsWrapper: document.querySelector('.img-wrapper'),
   infoDetailsBox: document.querySelector('.info-box'),
+  spinner: document.querySelector('.loader'),
 };

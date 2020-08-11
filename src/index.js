@@ -23,3 +23,7 @@ import './search/search.css';
 // Film details page
 import './details/filmDetailsPage';
 import './details/details.css';
+
+//loader
+import './loader/loader.css';
+import './loader/loader';
