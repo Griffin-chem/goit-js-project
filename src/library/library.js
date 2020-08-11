@@ -12,7 +12,7 @@ const createGallery = films => {
 // refs.libraryGallery.insertAdjacentHTML('beforeend', createLibraryCardsFunc(filmsQueue));
 
 refs.libraryGallery.addEventListener('click', ({ target }) => {
-  activeDetailsPage(target.dataset.id, true);
+  activeDetailsPage(Number(target.dataset.id), true);
 });
 // потом удалить :
 // const activeDetailsPage = (movieId, boole) => {
