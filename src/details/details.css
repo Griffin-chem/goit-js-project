@@ -4,8 +4,8 @@
 
 .img-wrapper {
   max-width: 500px;
-  margin-bottom: 20px;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .info-box {
@@ -65,12 +65,17 @@ button[data-target='toWatched'] {
   margin-bottom: 10px;
 }
 
-.icon-add-queue {
+.buttons-box button {
   padding-left: 20px;
-  background-image: url(../images/calendar-plus.png);
   background-repeat: no-repeat;
   background-position: left;
   border: none;
+  background-color: var(--ev-table-bg-color);
+  line-height: 14px;
+}
+
+.icon-add-queue {
+  background-image: url(../images/calendar-plus.png);
 }
 
 .icon-remove-queue {
@@ -93,6 +98,7 @@ button[data-target='toWatched'] {
   .img-wrapper {
     width: 50%;
     margin-right: 20px;
+    margin-bottom: 0;
   }
 
   .details {
@@ -106,6 +112,6 @@ button[data-target='toWatched'] {
 
   button[data-target='toWatched'] {
     margin: 0;
-    margin-right: 12px;
+    margin-right: 14px;
   }
 }

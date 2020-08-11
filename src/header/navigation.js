@@ -21,7 +21,12 @@ function activeHomePage(evt) {
   refs.infoDetailsBox.innerHTML = '';
   // =======================================
   // запускать слушатель на старте страницы
-  refs.divPagination.addEventListener('click', plaginationNavigation);
+  refs.divPagination.addEventListener('click', plaginationNavigation); //TODO
+
+  // refs.homePageGallery.addEventListener('click', ({ target }) => {
+  //   activeDetailsPage(target.dataset.id, false);
+  // });
+
   refs.buttWatch.removeEventListener('click', ({ target }) =>
     createLibraryGallery(target, refs.buttQue, filmsWached),
   );
