@@ -12,7 +12,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0;
   margin-bottom: 10px;
   width: 320px;
 }
@@ -36,11 +35,11 @@
   font-family: 'Roboto', sans-serif;
   font-size: 13px;
   color: var(--ev-table-bg-color);
-  bottom: 4px;
+  bottom: 1px;
   left: 0;
-  margin: 0;
   padding-left: 12px;
-  padding-bottom: 13px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   width: 100%;
   border-radius: 0 0 8px 8px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.01), #281e1f);
@@ -51,7 +50,7 @@
   font-family: 'Roboto', sans-serif;
   font-size: 13px;
   width: 30px;
-  border-radius: 6px;
+  border-radius: 10px;
   text-align: center;
   background-color: var(--ev-table-bg-color);
   top: 6px;
