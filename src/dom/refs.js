@@ -17,5 +17,6 @@ export default {
   logo: document.querySelector('.js-logo-block'),
   libraryGallery: document.querySelector('.library-list'),
   buttWatch: document.querySelector('.watch'),
-  buttQue: document.querySelector('.queue')
+  buttQue: document.querySelector('.queue'),
+  spinner: document.querySelector('.loader'),
 };

@@ -12,16 +12,12 @@
          url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
   }
 .footer{
-    position: relative;
-    display: block;
-    min-width: 320px;
+    padding-top: 27px;
     height: 86px;
     background-color: var(--hf-bg-color);
     text-align: center;
    }
    .footer-name_group{
-       position: relative;
-       top:27px;
        font-family: 'Roboto',sans-serif ;
        font-size: 16px;
        text-align: center;
@@ -29,9 +25,8 @@
 
    .footer-btnUp{
        position: absolute;
-       margin-right: 15px;
-       top:18px;
-       right:calc(50% - 50%);
+       bottom:10px;
+       right:15px;
        text-align: center;
        width: 50px;
        height: 50px;
