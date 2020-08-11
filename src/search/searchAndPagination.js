@@ -3,6 +3,7 @@ import itemFilm from '../templates/itemFilm.hbs';
 import Handlebars from 'handlebars';
 import refs from '../dom/refs';
 import createCardsFunc from '../utils/createCardsFunc';
+import spinner from '../loader/loader';
 
 let inputValue;
 let pageNumber = 1;
@@ -48,7 +49,7 @@ function render(data) {
 
 function fetchFilms(pageNumber, inputValue) {
   let fetch;
-
+  spinner.showLoder();
   if (inputValue) {
     fetch = fetchMoviesWithQuery.fetchMoviesWithQuery(inputValue, pageNumber);
   } else {
@@ -61,7 +62,11 @@ function fetchFilms(pageNumber, inputValue) {
     })
     .catch(error => {
       refs.errorDiv.classList.remove('displayNone');
-    });
+    }).finally(()=>{
+      spinner.hiddenLoader();
+    }
+      
+    );
 }
 
 function searchFilms(e) {

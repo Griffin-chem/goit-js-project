@@ -3,6 +3,7 @@ import templatesDetailsFilm from '../templates/detailsFilm.hbs';
 import templatesDetailsImg from '../templates/detailsImg.hbs';
 import getYear from '../utils/getYear';
 import refs from '../dom/refs';
+import spinner from '../loader/loader';
 
 const filmsQueue = [{ id: 583083 }, { id: 561 }]; ///
 const filmsWatched = [{ id: 561 }]; ///
@@ -48,10 +49,14 @@ const checkFilmToWatched = movieId =>
   filmsWatched.find(({ id }) => id === movieId);
 
 const createDetails = movieId => {
+  spinner.showLoder();
   moviesApi
     .fetchMovieDetails(movieId)
     .then(data => markupDetailsPage(data))
-    .catch(error => console.error(error));
+    .catch(error => console.error(error))
+    .finally(()=>{
+     spinner.hiddenLoader();
+    });
 };
 
 const markupDetailsPage = data => {
