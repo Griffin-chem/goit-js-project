@@ -1,26 +1,33 @@
- <img src="#" alt="text about img" class="details-page_img" >
+ <img src="http://image.tmdb.org/t/p/w500{{dateFilm.poster_path}}" alt="text about img" class="details-page_img" >
 
 <div class="details-page_card">
-<h2 class="details-page_name">Name Film</h2>
-<ul class="details-page_list">
+<h2 class="details-page_name">{{dateFilm.original_title}}</h2>
+<ul class="details-page_list"
   <il class="details-page_item">
     <span>vote / votes</span>
-    <span></span>
+    <span>{{dateFilm.vote_count}}</span>
     </il>
   <il class="details-page_item">
-    span>popularity</span>
-    <span></span></il>
+    <span>popularity</span>
+    <span>{{dateFilm.popularity}}</span>
+    </il>
   <il class="details-page_item">
-    span>original title</span>
-    <span></span></il>
+    <span>original title</span>
+    <span>{{dateFilm.original_title}}</span>
+    </il>
   <il class="details-page_item">
-    span>genre</span>
-    <span></span></il>
+    <span>genre</span>
+    <ul>
+      {{#each dateFilm.genres}}
+    <li class="genres-list__item">{{this.name}}</li>
+      {{/each}}
+    </ul>
+
+    </il>
 </ul>
 
 <h3>About</h3>
-<p>A young elephant, whose oversized ears enable him to fly, helps save a struggling circus, but when the circus plans a new venture, Dumbo and his friends discover dark secrets beneath its shiny veneer.</p>
-
+<p>{{dateFilm.overview}}</p>
  <form class="details-page__form" data-name="form-film" >
     <div class="" data-name="{{queue.film}}">
         <i class="{{queue.iconNot}} {{queue.icon}} " data-name="icon-Queue"></i>

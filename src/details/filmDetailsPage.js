@@ -16,7 +16,7 @@ const filmDetalisPage = {
 	elementForm: {},
 
 	options: {
-    dateFilm:{},
+    dateFilm: {},
 		queue: {
 			boxFilm: 'filmsQueue', // имя коробки c элементами icon and button,  name in localStorage
 			delete: 'Delete from queue', // change text
@@ -41,7 +41,9 @@ const filmDetalisPage = {
     href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
     rel="stylesheet"
   />`);
-		const tag = document.querySelector(elem);
+
+    const tag = document.querySelector(elem);
+
 		if (elem === undefined) {
 			document.querySelector('body').insertAdjacentHTML(where, templateButton(this.options));
 			this.refs(elem, this.options);
@@ -65,26 +67,28 @@ const filmDetalisPage = {
 		};
 	},
 	//monitorButtonStatusText - следит за кнопками и изменяет  их данные
-	monitorButtonStatusText(selectFilm) {
+	monitorButtonStatusText(elem,selectFilm) {
 		this.elementForm.buttonQueue.addEventListener('click', (e) => this.elemEvent(e, this.options, selectFilm));
     this.elementForm.buttonWatched.addEventListener('click', (e) => this.elemEvent(e, this.options, selectFilm));
-    refs.homePageGallery.addEventListener('click', (e) =>  this.filmEvent(e, this.options));
-	},
-filmEvent(e,options){
-  const target = e.target;
-     let text = moviesApi.fetchMovieDetails(target.dataset.id);
-     options.dateFilm = text.then(item =>{
-        console.log('item :>> ', item);
-        options.dateFilm = item;
-return item
-    });
 
+	},
+filmEvent(e, elem,  options){
+  const target = e.target;
+     let text = moviesApi.fetchMovieDetails(target.dataset.id)
+       .then(item =>{
+        options.dateFilm = {...item};
+        console.dir(this.options.dateFilm);
+        this.addFormInElem(elem);
+        this.monitorButtonStatusText(elem, options.dateFilm.original_title);
+   })
+
+    // this.addFormInElem(elem);
+    // this.monitorButtonStatusText(elem, selectFilm);
 },
 
 	toggleToQueue(selectFilm) {
     const remember = this.readingLocalStorage(this.options.queue.boxFilm);
 		return remember;
-
 		// пишем функцию toggleToQueue (будет добавлять или удалять фильмы из очереди просмотра),
 		//  которая создает переменную массива в очереди,
 		//   читает local storage по ключу filmsQueue если результат не пустой то пушит элементы в нашу переменную,
@@ -96,18 +100,10 @@ return item
 	toggleToWatched(selectFilm) {
 		const remember = this.readingLocalStorage(this.options.watched.boxFilm);
 		return remember;
-		// пишем функцию toggleToWatched (будет добавлять или удалять фильмы из просмотренных),
-		//  суть ее работы один в один как toggleToQueue только работает с local storage по ключу filmsWatched.
 	},
 
-	showDetails(elem, selectFilm) {
-		//+ пишем функцию showDetails которая принимает параметром selectFilm (глобальная переменная - объект,
-		// +  которая создана в задаче номер три) и рендерит всю разметку согласно макета,
-		//+   в этой функции запускается функция monitorButtonStatusText.
-
-		this.addFormInElem(elem);
-		this.monitorButtonStatusText(selectFilm);
-		this.toggleToWatched(selectFilm);
+	showDetails(elem) {
+    refs.homePageGallery.addEventListener('click', (e) =>  this.filmEvent(e, elem,  this.options));
 	},
 	// elemEvent -Функция  меняющая и изменяющая иконку и надпись на кнопках
 	elemEvent(e, { queue, watched }, selectFilm) {
@@ -168,25 +164,25 @@ return item
 	},
 };
 
-// При желаний можно всё это изменить
-filmDetalisPage.options = {
-	queue: {
-		boxFilm: 'filmsQueue', // имя коробки c элементами icon and button,  name in localStorage
-		delete: 'Delete from queue', // change text
-		add: 'Add to queue', //start text
-		icon: 'fas', //не низменное в иконке
-		iconNot: 'fa-video', // стартовая иконка
-		iconYes: 'fa-film' //на то что должна меняться
-	},
-	watched: {
-		boxFilm: 'filmsWatched', // имя коробки c элементами icon and button,name in localStorage
-		delete: 'Delete from watched', // change text
-		add: 'Add to watched', //start text
-		icon: 'fa-calendar-plus', //не низменное в иконке
-		iconNot: 'fas', // стартовая иконка
-		iconYes: 'far' //на то что должна меняться
-	}
-};
+// // При желаний можно всё это изменить
+// filmDetalisPage.options = {
+// 	queue: {
+// 		boxFilm: 'filmsQueue', // имя коробки c элементами icon and button,  name in localStorage
+// 		delete: 'Delete from queue', // change text
+// 		add: 'Add to queue', //start text
+// 		icon: 'fas', //не низменное в иконке
+// 		iconNot: 'fa-video', // стартовая иконка
+// 		iconYes: 'fa-film' //на то что должна меняться
+// 	},
+// 	watched: {
+// 		boxFilm: 'filmsWatched', // имя коробки c элементами icon and button,name in localStorage
+// 		delete: 'Delete from watched', // change text
+// 		add: 'Add to watched', //start text
+// 		icon: 'fa-calendar-plus', //не низменное в иконке
+// 		iconNot: 'fas', // стартовая иконка
+// 		iconYes: 'far' //на то что должна меняться
+// 	}
+// };
 
 filmDetalisPage.showDetails('.details-page', 'The name film');
 
@@ -244,32 +240,3 @@ const markupDetailsPage = (data, itsLibraryFilm) => {
 
 export { showDetails };
 
-const film = {
-  adult: false,
-  backdrop_path: '/t4FHFL6hckU9vohbqO2k7rYGWhF.jpg',
-  belongs_to_collection: null,
-  budget: 1200000,
-  genres: Array(2),
-  0: { id: 80, name: 'Crime' },
-  1: { id: 53, name: 'Thriller' },
-  length: 2,
-  __proto__: Array(0),
-  homepage: '',
-  id: 500,
-  imdb_id: 'tt0105236',
-  original_language: 'en',
-  original_title: 'Reservoir Dogs',
-  overview:
-    'A botched robbery indicates a police informant, and the pressure mounts in the aftermath at a warehouse. Crime begets violence as the survivors -- veteran Mr. White, newcomer Mr. Orange, psychopathic parolee Mr. Blonde, bickering weasel Mr. Pink and Nice Guy Eddie -- unravel.',
-  popularity: 27.31,
-  poster_path: '/AjTtJNumZyUDz33VtMlF1K8JPsE.jpg',
-  release_date: '1992-09-02',
-  revenue: 2859750,
-  runtime: 99,
-  status: 'Released',
-  tagline: 'Every dog has his day.',
-  title: 'Reservoir Dogs',
-  video: false,
-  vote_average: 8.2,
-  vote_count: 9497,
-};
