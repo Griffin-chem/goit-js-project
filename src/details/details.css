@@ -90,6 +90,14 @@ button[data-target='toWatched'] {
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.butt_style:hover {
+  background-color: #e4e4e4;
+  box-shadow: 2px #b4b4b4;
+}
 
 .buttons-box button {
   padding-left: 20px;
