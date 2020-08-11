@@ -96,5 +96,6 @@ img {
 }
 
 .displayNone {
-  display: none;
+  /* display: none; */
+  visibility: hidden;
 }
