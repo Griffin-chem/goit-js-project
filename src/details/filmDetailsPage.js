@@ -28,12 +28,18 @@ const filmDetalisPage = {
 	},
 	//addFormInElem - прорисовывает на страницу разметку html и записывает нужные элементы из формы
 	addFormInElem(elem, where = 'beforeend') {
+    // чтобы работали icons
+     document.querySelector('head').insertAdjacentHTML(where,`<link
+    href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    rel="stylesheet"
+  />`);
 		const tag = document.querySelector(elem);
 		if (elem === undefined) {
 			document.querySelector('body').insertAdjacentHTML(where, templateButton(this.options));
-			this.refs(elem);
+			this.refs(elem, this.options);
 			return;
-		}
+    }
+
 		tag.insertAdjacentHTML(where, templateButton(this.options));
 		this.refs(elem, this.options);
 	},
@@ -71,7 +77,6 @@ const filmDetalisPage = {
 	},
 	toggleToWatched(selectFilm) {
 		const remember = this.readingLocalStorage(this.options.watched.boxFilm);
-
 		console.dir(remember);
 		return remember;
 		// пишем функцию toggleToWatched (будет добавлять или удалять фильмы из просмотренных),
@@ -98,13 +103,13 @@ const filmDetalisPage = {
 				this.elementForm.iconWatched.classList.replace(watched.iconYes, watched.iconNot);
 				elem.innerText = watched.add;
 				//to do
-				this.addLocalStorage(watched.boxFilm, false, selectFilm, this.toggleToWatched(selectFilm));
+				this.addLocalStorage(watched.boxFilm, false,  this.toggleToWatched(selectFilm));
 				return;
 			case watched.add:
 				this.elementForm.iconWatched.classList.replace(watched.iconNot, watched.iconYes);
 				elem.innerText = watched.delete;
 				//to do
-				this.addLocalStorage(watched.boxFilm, true, selectFilm, this.toggleToWatched(selectFilm));
+				this.addLocalStorage(watched.boxFilm, true,  this.toggleToWatched(selectFilm));
 				return;
 			case queue.add:
 				this.elementForm.iconQueue.classList.replace(queue.iconNot, queue.iconYes);
@@ -123,7 +128,8 @@ const filmDetalisPage = {
 				console.warn("don't found  LocalStorage ");
 				break;
 		}
-	},
+  },
+
 
 	readingLocalStorage(item) {
 		try {
