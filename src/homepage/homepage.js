@@ -14,7 +14,9 @@ refs.homePageGallery.addEventListener('click', ({ target }) => {
 });
 
 function fetchPopularMoviesList() {
+
   moviesApi.fetchPopularMovies(pageNumber).then(({ results }) => {
+    console.log(results);
     refs.homePageGallery.insertAdjacentHTML(
       'beforeend',
       createCardFunc(results),

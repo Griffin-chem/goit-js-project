@@ -1,6 +1,91 @@
-.details-page {
+.details-wrapper {
+  padding: 20px;
 }
-.details-page__button {
+
+.img-wrapper {
+  max-width: 500px;
+  margin-bottom: 20px;
+  margin: 0 auto;
 }
-.details-page__form {
+
+.info-box {
+  margin-bottom: 20px;
+}
+
+.film__title {
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+tr {
+  height: 26px;
+}
+
+th,
+td {
+  text-align: left;
+}
+
+th {
+  width: 45%;
+  padding-left: 16px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--odd-table-bg-color);
+}
+
+.genres-list {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.genres-list__item:not(:last-child) {
+  margin-right: 6px;
+}
+
+.about-title {
+  margin-bottom: 20px;
+}
+
+.buttons-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button[data-target='toQueue'] {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .details-wrapper {
+    display: flex;
+  }
+
+  .img-wrapper {
+    width: 50%;
+    margin-right: 20px;
+  }
+
+  .details {
+    width: 50%;
+  }
+
+  .buttons-box {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  button[data-target='toQueue'] {
+    margin: 0;
+    margin-right: 12px;
+  }
 }
