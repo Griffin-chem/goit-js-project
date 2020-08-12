@@ -7,12 +7,15 @@ import { createGallery, createLibraryGallery } from '../library/library';
 import { showDetails } from '../details/filmDetailsPage';
 import filmsQueue from '../library/movies';
 import filmsWatched from '../library/movies';
+import storage from '../details/storage';
 // import { join } from 'lodash';
+
 // ======================================
 refs.navHome.addEventListener('click', evt => activeHomePage(evt));
 refs.navLibrary.addEventListener('click', evt => activeLibraryPage(evt));
 refs.logo.addEventListener('click', evt => activeHomePage(evt));
 // =====================================
+
 function activeHomePage(evt) {
   evt.preventDefault();
   if (refs.mainPage.classList.contains('is-hidden')) {
@@ -22,8 +25,7 @@ function activeHomePage(evt) {
   refs.mainDetailsPage.classList.add('is-hidden');
   refs.imgDetailsWrapper.innerHTML = '';
   refs.infoDetailsBox.innerHTML = '';
-  // =======================================
-  // запускать слушатель на старте страницы
+
   // addEventListener
   refs.homePageGallery.addEventListener('click', startDetailsFilm);
   refs.divPagination.addEventListener('click', plaginationNavigation);
@@ -33,14 +35,12 @@ function activeHomePage(evt) {
   refs.buttWatch.removeEventListener('click', startQueueGallery);
   refs.buttQue.removeEventListener('click', startWatchedGallery);
   refs.libraryGallery.removeEventListener('click', startDetailsLibraryFilm);
+  refs.btnToQueue.removeEventListener('click', storage.toggleToQueue);
+  refs.btnToWatched.removeEventListener('click', storage.toggleToWatched);
 }
-//---
-
-// ====================================
 
 function activeLibraryPage(evt) {
   evt.preventDefault();
-  // показывает страницу с библиотекой
   if (refs.mainLibrary.classList.contains('is-hidden')) {
     refs.mainLibrary.classList.remove('is-hidden');
   }
@@ -61,19 +61,23 @@ function activeLibraryPage(evt) {
   refs.homePageGallery.removeEventListener('click', startDetailsFilm);
   refs.divPagination.removeEventListener('click', plaginationNavigation);
   refs.formInput.removeEventListener('submit', searchFilms);
+  refs.btnToQueue.removeEventListener('click', storage.toggleToQueue);
+  refs.btnToWatched.removeEventListener('click', storage.toggleToWatched);
 }
+
 // ===================
 function activeDetailsPage(movieId, itsLibraryFilm) {
   if (refs.mainDetailsPage.classList.contains('is-hidden')) {
     refs.mainDetailsPage.classList.remove('is-hidden');
   }
-
   refs.mainPage.classList.add('is-hidden');
   refs.mainLibrary.classList.add('is-hidden');
 
   showDetails(movieId, itsLibraryFilm);
-  // ===============================
+
   // addEventListener
+  refs.btnToQueue.addEventListener('click', storage.toggleToQueue);
+  refs.btnToWatched.addEventListener('click', storage.toggleToWatched);
 
   //removeEventListener
   refs.homePageGallery.removeEventListener('click', startDetailsFilm);

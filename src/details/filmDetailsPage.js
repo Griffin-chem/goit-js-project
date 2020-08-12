@@ -6,20 +6,13 @@ import refs from '../dom/refs';
 import spinner from '../loader/loader';
 import storage from './storage';
 
-// const filmsQueue = [{ id: 583083 }, { id: 561 }]; ///
-// const filmsWatched = [{ id: 561 }]; ///
-
 let selectFilm = {};
 
 const showDetails = (movieId, itsLibraryFilm) => {
   createDetails(movieId);
-  monitorButtonStatusText(movieId, itsLibraryFilm);
+  // monitorButtonStatusText(movieId, itsLibraryFilm);
 };
-/*
- * пишем функцию monitorButtonStatusText которая следит за состоянием (значок и текст в кнопке)
- * читает  local storage по ключу filmsQueue и  filmsWatched и меняет текст и значки в кнопках:
- * Delete from queue / Add to queue ; Delete from watched / Add to watched.
- */
+
 const monitorButtonStatusText = () => {
   const checkQueue = checkFilmToQueue(selectFilm.id);
   const textBtnQueue = checkQueue ? 'Delete from queue' : 'Add to queue';
@@ -51,7 +44,7 @@ const checkFilmToQueue = movieId => {
 
 const checkFilmToWatched = movieId => {
   const filmsWatched = storage.checkLocalStorage('filmsWatched');
-  filmsWatched.find(({ id }) => id === movieId);
+  return filmsWatched.find(({ id }) => id === movieId);
 };
 
 const createDetails = movieId => {
@@ -84,8 +77,4 @@ const markupDetailsPage = data => {
   );
 };
 
-export { showDetails, selectFilm };
-refs.btnToQueue.addEventListener('click', storage.toggleToQueue);
-refs.btnToQueue.addEventListener('click', monitorButtonStatusText);
-refs.btnToWatched.addEventListener('click', storage.toggleToWatched);
-refs.btnToWatched.addEventListener('click', monitorButtonStatusText);
+export { showDetails, monitorButtonStatusText, selectFilm };
