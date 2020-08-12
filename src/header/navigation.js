@@ -5,9 +5,10 @@ import {
 } from '../search/searchAndPagination';
 import { createGallery, createLibraryGallery } from '../library/library';
 import { showDetails } from '../details/filmDetailsPage';
-import filmsQueue from '../library/movies';
-import filmsWatched from '../library/movies';
+// import filmsQueue from '../library/movies';
+// import filmsWatched from '../library/movies';
 import storage from '../details/storage';
+
 // import { join } from 'lodash';
 
 // ======================================
@@ -53,8 +54,8 @@ function activeLibraryPage(evt) {
   refs.buttWatch.classList.remove('active-but-lib');
 
   // addEventListener
-  refs.buttWatch.addEventListener('click', startQueueGallery);
-  refs.buttQue.addEventListener('click', startWatchedGallery);
+  refs.buttQue.addEventListener('click', startQueueGallery);
+  refs.buttWatch.addEventListener('click', startWatchedGallery);
   refs.libraryGallery.addEventListener('click', startDetailsLibraryFilm);
 
   //removeEventListener
@@ -93,6 +94,10 @@ const startDetailsFilm = ({ target }) =>
 
 const startDetailsLibraryFilm = ({ target }) =>
   activeDetailsPage(target.dataset.id, false);
+
+  const filmsQueue = storage.checkLocalStorage('filmsQueue');
+  const filmsWatched = storage.checkLocalStorage('filmsWatched');
+  
 
 const startQueueGallery = ({ target }) =>
   createLibraryGallery(target, refs.buttQue, filmsQueue);
