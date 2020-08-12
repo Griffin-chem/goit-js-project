@@ -10,19 +10,18 @@ let pageNumber = 1;
 let renderFilms;
 
 refs.numberPage.textContent = `${pageNumber}`;
-refs.formInput.addEventListener('submit', searchFilms);
-refs.divPagination.addEventListener('click', plaginationNavigation);
+// refs.formInput.addEventListener('submit', searchFilms);
 
 function render(data) {
   renderFilms = [...data.results];
   console.log(data);
-  data.total_pages === 1 ?
-    refs.divPagination.classList.add('displayNone') :
-    refs.nextBtn.classList.remove('displayNone');
+  data.total_pages === 1
+    ? refs.divPagination.classList.add('displayNone')
+    : refs.nextBtn.classList.remove('displayNone');
 
-  data.total_pages === pageNumber ?
-    refs.nextBtn.classList.add('displayNone') :
-    refs.nextBtn.classList.remove('displayNone');
+  data.total_pages === pageNumber
+    ? refs.nextBtn.classList.add('displayNone')
+    : refs.nextBtn.classList.remove('displayNone');
 
   if (pageNumber === 1) {
     refs.prevBtn.classList.add('displayNone');
@@ -55,14 +54,13 @@ function fetchFilms(pageNumber, inputValue) {
     })
     .catch(error => {
       refs.errorDiv.classList.remove('displayNone');
-    }).finally(() => {
-        spinner.hiddenLoader();
-      }
-
-    );
+    })
+    .finally(() => {
+      spinner.hiddenLoader();
+    });
 }
 
-function searchFilms(e) {
+export function searchFilms(e) {
   e.preventDefault();
   pageNumber = 1;
   refs.numberPage.textContent = `${pageNumber}`;

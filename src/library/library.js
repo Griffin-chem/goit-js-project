@@ -3,7 +3,6 @@ import filmsWached from './movies';
 import refs from '../dom/refs';
 import { activeDetailsPage } from '../header/navigation';
 
-
 import createCardsFunc from '../utils/createCardsFunc';
 
 const createGallery = films => {
@@ -12,9 +11,9 @@ const createGallery = films => {
 
 // refs.libraryGallery.insertAdjacentHTML('beforeend', createLibraryCardsFunc(filmsQueue));
 
-refs.libraryGallery.addEventListener('click', ({ target }) => {
-  activeDetailsPage(Number(target.dataset.id), true);
-});
+// refs.libraryGallery.addEventListener('click', ({ target }) => {
+//   activeDetailsPage(Number(target.dataset.id), true);
+// });
 // потом удалить :
 // const activeDetailsPage = (movieId, boole) => {
 //   console.log(movieId);

@@ -1,17 +1,16 @@
-import {selectFilm} from './filmDetailsPage';
+import { monitorButtonStatusText, selectFilm } from './filmDetailsPage';
 
 const checkLocalStorage = key => {
   try {
-    return (JSON.parse(window.localStorage.getItem(key)) !== null) 
-    ? JSON.parse(window.localStorage.getItem(key)) 
-    : [];
-  } 
-  catch (error) {
+    return JSON.parse(window.localStorage.getItem(key)) !== null
+      ? JSON.parse(window.localStorage.getItem(key))
+      : [];
+  } catch (error) {
     return [];
   }
 };
 
-const performDataAction = ({action}, filmData) => {
+const performDataAction = ({ action }, filmData) => {
   switch (action) {
     case 'add':
       return filmData.concat([selectFilm]);
@@ -22,20 +21,22 @@ const performDataAction = ({action}, filmData) => {
 
 // toggleToQueue({ target: { dataset: { action: 'add' } } });
 
-const toggleToQueue = ({target}) => {
+const toggleToQueue = ({ target }) => {
   const queueFilmData = checkLocalStorage('filmsQueue');
   const updateQueue = performDataAction(target.dataset, queueFilmData);
   window.localStorage.setItem('filmsQueue', JSON.stringify(updateQueue));
+  monitorButtonStatusText();
 };
 
-const toggleToWatched = ({target}) => {
+const toggleToWatched = ({ target }) => {
   const watchedFilmData = checkLocalStorage('filmsWatched');
   const updateWatched = performDataAction(target.dataset, watchedFilmData);
   localStorage.setItem('filmsWatched', JSON.stringify(updateWatched));
+  monitorButtonStatusText();
 };
 
 export default {
   toggleToWatched,
   toggleToQueue,
-  checkLocalStorage
+  checkLocalStorage,
 };

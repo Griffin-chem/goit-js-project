@@ -7,6 +7,10 @@
   margin: 0 auto;
   margin-bottom: 20px;
 }
+.details {
+  max-width: 500px;
+  margin: 0 auto;
+}
 
 .info-box {
   margin-bottom: 20px;
@@ -122,21 +126,22 @@ button[data-target='toWatched'] {
 
 .icon-remove-watched {
   background-image: url(../images/basket.png);
-
 }
 
 @media (min-width: 768px) {
   .details-wrapper {
     display: flex;
+    justify-content: center;
   }
 
   .img-wrapper {
     width: 50%;
+    margin: 0;
     margin-right: 20px;
-    margin-bottom: 0;
   }
 
   .details {
+    margin: 0;
     width: 50%;
   }
 

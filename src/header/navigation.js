@@ -1,15 +1,21 @@
 import refs from '../dom/refs';
-import { plaginationNavigation } from '../search/searchAndPagination';
+import {
+  searchFilms,
+  plaginationNavigation,
+} from '../search/searchAndPagination';
 import { createGallery, createLibraryGallery } from '../library/library';
 import { showDetails } from '../details/filmDetailsPage';
 import filmsQueue from '../library/movies';
-import filmsWached from '../library/movies';
+import filmsWatched from '../library/movies';
+import storage from '../details/storage';
 // import { join } from 'lodash';
+
 // ======================================
 refs.navHome.addEventListener('click', evt => activeHomePage(evt));
 refs.navLibrary.addEventListener('click', evt => activeLibraryPage(evt));
 refs.logo.addEventListener('click', evt => activeHomePage(evt));
 // =====================================
+
 function activeHomePage(evt) {
   evt.preventDefault();
   if (refs.mainPage.classList.contains('is-hidden')) {
@@ -19,27 +25,22 @@ function activeHomePage(evt) {
   refs.mainDetailsPage.classList.add('is-hidden');
   refs.imgDetailsWrapper.innerHTML = '';
   refs.infoDetailsBox.innerHTML = '';
-  // =======================================
-  // запускать слушатель на старте страницы
-  refs.divPagination.addEventListener('click', plaginationNavigation); //TODO
 
-  // refs.homePageGallery.addEventListener('click', ({ target }) => {
-  //   activeDetailsPage(target.dataset.id, false);
-  // });
+  // addEventListener
+  refs.homePageGallery.addEventListener('click', startDetailsFilm);
+  refs.divPagination.addEventListener('click', plaginationNavigation);
+  refs.formInput.addEventListener('submit', searchFilms);
 
-  refs.buttWatch.removeEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttQue, filmsWached),
-  );
-  refs.buttQue.removeEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttWatch, filmsQueue),
-  );
+  //removeEventListener
+  refs.buttWatch.removeEventListener('click', startQueueGallery);
+  refs.buttQue.removeEventListener('click', startWatchedGallery);
+  refs.libraryGallery.removeEventListener('click', startDetailsLibraryFilm);
+  refs.btnToQueue.removeEventListener('click', storage.toggleToQueue);
+  refs.btnToWatched.removeEventListener('click', storage.toggleToWatched);
 }
-
-// ====================================
 
 function activeLibraryPage(evt) {
   evt.preventDefault();
-  // показывает страницу с библиотекой
   if (refs.mainLibrary.classList.contains('is-hidden')) {
     refs.mainLibrary.classList.remove('is-hidden');
   }
@@ -50,34 +51,53 @@ function activeLibraryPage(evt) {
   createGallery(filmsQueue);
   refs.buttQue.classList.add('active-but-lib');
   refs.buttWatch.classList.remove('active-but-lib');
-  refs.buttWatch.addEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttQue, filmsWached),
-  );
-  refs.buttQue.addEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttWatch, filmsQueue),
-  );
+
+  // addEventListener
+  refs.buttWatch.addEventListener('click', startQueueGallery);
+  refs.buttQue.addEventListener('click', startWatchedGallery);
+  refs.libraryGallery.addEventListener('click', startDetailsLibraryFilm);
+
+  //removeEventListener
+  refs.homePageGallery.removeEventListener('click', startDetailsFilm);
+  refs.divPagination.removeEventListener('click', plaginationNavigation);
+  refs.formInput.removeEventListener('submit', searchFilms);
+  refs.btnToQueue.removeEventListener('click', storage.toggleToQueue);
+  refs.btnToWatched.removeEventListener('click', storage.toggleToWatched);
 }
+
 // ===================
-export function activeDetailsPage(movieId, itsLibraryFilm) {
+function activeDetailsPage(movieId, itsLibraryFilm) {
   if (refs.mainDetailsPage.classList.contains('is-hidden')) {
     refs.mainDetailsPage.classList.remove('is-hidden');
   }
-
   refs.mainPage.classList.add('is-hidden');
   refs.mainLibrary.classList.add('is-hidden');
 
-  showDetails(movieId, itsLibraryFilm);
-  // ===============================
-  refs.buttWatch.removeEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttQue, filmsWached),
-  );
-  refs.buttQue.removeEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttWatch, filmsQueue),
-  );
+  showDetails(movieId);
 
-  // refs.addToWatched.EventListener('click', callback);
-  // refs.addToQueue.EventListener('click', callback);
+  // addEventListener
+  refs.btnToQueue.addEventListener('click', storage.toggleToQueue);
+  refs.btnToWatched.addEventListener('click', storage.toggleToWatched);
 
-  // refs.addToWatched.addEventListener('click', callback);
-  // refs.addToQueue.addEventListener('click', callback);
+  //removeEventListener
+  refs.homePageGallery.removeEventListener('click', startDetailsFilm);
+  refs.divPagination.removeEventListener('click', plaginationNavigation);
+  refs.formInput.removeEventListener('submit', searchFilms);
+  refs.buttWatch.removeEventListener('click', startQueueGallery);
+  refs.buttQue.removeEventListener('click', startWatchedGallery);
+  refs.libraryGallery.removeEventListener('click', startDetailsLibraryFilm);
 }
+
+const startDetailsFilm = ({ target }) =>
+  activeDetailsPage(target.dataset.id, false);
+
+const startDetailsLibraryFilm = ({ target }) =>
+  activeDetailsPage(target.dataset.id, false);
+
+const startQueueGallery = ({ target }) =>
+  createLibraryGallery(target, refs.buttQue, filmsQueue);
+
+const startWatchedGallery = ({ target }) =>
+  createLibraryGallery(target, refs.buttWatch, filmsWatched);
+
+export { activeHomePage, activeDetailsPage };
