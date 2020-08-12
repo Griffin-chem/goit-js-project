@@ -49,9 +49,10 @@ function activeLibraryPage(evt) {
   refs.mainDetailsPage.classList.add('is-hidden');
   refs.imgDetailsWrapper.innerHTML = '';
   refs.infoDetailsBox.innerHTML = '';
+  refs.libraryGallery.innerHTML = '';
   createGallery(filmsQueue);
-  refs.buttQue.classList.add('active-but-lib');
-  refs.buttWatch.classList.remove('active-but-lib');
+  refs.buttWatch.classList.add('active-but-lib');
+  refs.buttQue.classList.remove('active-but-lib');
 
   // addEventListener
   refs.buttQue.addEventListener('click', startQueueGallery);
@@ -95,14 +96,13 @@ const startDetailsFilm = ({ target }) =>
 const startDetailsLibraryFilm = ({ target }) =>
   activeDetailsPage(target.dataset.id, false);
 
-  const filmsQueue = storage.checkLocalStorage('filmsQueue');
-  const filmsWatched = storage.checkLocalStorage('filmsWatched');
-  
+const filmsQueue = storage.checkLocalStorage('filmsQueue');
+const filmsWatched = storage.checkLocalStorage('filmsWatched');
 
 const startQueueGallery = ({ target }) =>
-  createLibraryGallery(target, refs.buttQue, filmsQueue);
+  createLibraryGallery(target, refs.buttWatch, filmsQueue);
 
 const startWatchedGallery = ({ target }) =>
-  createLibraryGallery(target, refs.buttWatch, filmsWatched);
+  createLibraryGallery(target, refs.buttQue, filmsWatched);
 
 export { activeHomePage, activeDetailsPage };
