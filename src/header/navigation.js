@@ -12,10 +12,13 @@ import storage from '../details/storage';
 // import { join } from 'lodash';
 
 // ======================================
-refs.navHome.addEventListener('click', evt => activeHomePage(evt));
-refs.navLibrary.addEventListener('click', evt => activeLibraryPage(evt));
-refs.logo.addEventListener('click', evt => activeHomePage(evt));
+refs.navHome.addEventListener('click', activeHomePage);
+refs.navLibrary.addEventListener('click', activeLibraryPage);
+refs.logo.addEventListener('click', activeHomePage);
 // =====================================
+
+let filmsQueue = [];
+let filmsWatched = [];
 
 function activeHomePage(evt) {
   evt.preventDefault();
@@ -50,7 +53,9 @@ function activeLibraryPage(evt) {
   refs.imgDetailsWrapper.innerHTML = '';
   refs.infoDetailsBox.innerHTML = '';
   refs.libraryGallery.innerHTML = '';
-  createGallery(filmsQueue);
+  filmsQueue = storage.checkLocalStorage('filmsQueue');
+  filmsWatched = storage.checkLocalStorage('filmsWatched');
+  createGallery(filmsWatched);
   refs.buttWatch.classList.add('active-but-lib');
   refs.buttQue.classList.remove('active-but-lib');
 
@@ -96,13 +101,12 @@ const startDetailsFilm = ({ target }) =>
 const startDetailsLibraryFilm = ({ target }) =>
   activeDetailsPage(target.dataset.id, false);
 
-const filmsQueue = storage.checkLocalStorage('filmsQueue');
-const filmsWatched = storage.checkLocalStorage('filmsWatched');
+const startQueueGallery = ({ target }) => {
+  filmsQueue = storage.checkLocalStorage('filmsQueue');
+  createLibraryGallery(target, refs.buttWatch, filmsQueue)};
 
-const startQueueGallery = ({ target }) =>
-  createLibraryGallery(target, refs.buttWatch, filmsQueue);
-
-const startWatchedGallery = ({ target }) =>
-  createLibraryGallery(target, refs.buttQue, filmsWatched);
+const startWatchedGallery = ({ target }) => {
+  filmsWatched = storage.checkLocalStorage('filmsWatched')
+  createLibraryGallery(target, refs.buttQue, filmsWatched)};
 
 export { activeHomePage, activeDetailsPage };
