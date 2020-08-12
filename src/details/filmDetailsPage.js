@@ -8,9 +8,8 @@ import storage from './storage';
 
 let selectFilm = {};
 
-const showDetails = (movieId, itsLibraryFilm) => {
+const showDetails = movieId => {
   createDetails(movieId);
-  // monitorButtonStatusText(movieId, itsLibraryFilm);
 };
 
 const monitorButtonStatusText = () => {

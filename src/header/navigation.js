@@ -73,7 +73,7 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.mainPage.classList.add('is-hidden');
   refs.mainLibrary.classList.add('is-hidden');
 
-  showDetails(movieId, itsLibraryFilm);
+  showDetails(movieId);
 
   // addEventListener
   refs.btnToQueue.addEventListener('click', storage.toggleToQueue);
