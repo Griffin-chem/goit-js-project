@@ -1,9 +1,12 @@
 import refs from '../dom/refs';
-import { plaginationNavigation } from '../search/searchAndPagination';
+import {
+  searchFilms,
+  plaginationNavigation,
+} from '../search/searchAndPagination';
 import { createGallery, createLibraryGallery } from '../library/library';
 import { showDetails } from '../details/filmDetailsPage';
 import filmsQueue from '../library/movies';
-import filmsWached from '../library/movies';
+import filmsWatched from '../library/movies';
 // import { join } from 'lodash';
 // ======================================
 refs.navHome.addEventListener('click', evt => activeHomePage(evt));
@@ -21,19 +24,17 @@ function activeHomePage(evt) {
   refs.infoDetailsBox.innerHTML = '';
   // =======================================
   // запускать слушатель на старте страницы
-  refs.divPagination.addEventListener('click', plaginationNavigation); //TODO
+  // addEventListener
+  refs.homePageGallery.addEventListener('click', startDetailsFilm);
+  refs.divPagination.addEventListener('click', plaginationNavigation);
+  refs.formInput.addEventListener('submit', searchFilms);
 
-  // refs.homePageGallery.addEventListener('click', ({ target }) => {
-  //   activeDetailsPage(target.dataset.id, false);
-  // });
-
-  refs.buttWatch.removeEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttQue, filmsWached),
-  );
-  refs.buttQue.removeEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttWatch, filmsQueue),
-  );
+  //removeEventListener
+  refs.buttWatch.removeEventListener('click', startQueueGallery);
+  refs.buttQue.removeEventListener('click', startWatchedGallery);
+  refs.libraryGallery.removeEventListener('click', startDetailsLibraryFilm);
 }
+//---
 
 // ====================================
 
@@ -50,15 +51,19 @@ function activeLibraryPage(evt) {
   createGallery(filmsQueue);
   refs.buttQue.classList.add('active-but-lib');
   refs.buttWatch.classList.remove('active-but-lib');
-  refs.buttWatch.addEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttQue, filmsWached),
-  );
-  refs.buttQue.addEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttWatch, filmsQueue),
-  );
+
+  // addEventListener
+  refs.buttWatch.addEventListener('click', startQueueGallery);
+  refs.buttQue.addEventListener('click', startWatchedGallery);
+  refs.libraryGallery.addEventListener('click', startDetailsLibraryFilm);
+
+  //removeEventListener
+  refs.homePageGallery.removeEventListener('click', startDetailsFilm);
+  refs.divPagination.removeEventListener('click', plaginationNavigation);
+  refs.formInput.removeEventListener('submit', searchFilms);
 }
 // ===================
-export function activeDetailsPage(movieId, itsLibraryFilm) {
+function activeDetailsPage(movieId, itsLibraryFilm) {
   if (refs.mainDetailsPage.classList.contains('is-hidden')) {
     refs.mainDetailsPage.classList.remove('is-hidden');
   }
@@ -68,16 +73,27 @@ export function activeDetailsPage(movieId, itsLibraryFilm) {
 
   showDetails(movieId, itsLibraryFilm);
   // ===============================
-  refs.buttWatch.removeEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttQue, filmsWached),
-  );
-  refs.buttQue.removeEventListener('click', ({ target }) =>
-    createLibraryGallery(target, refs.buttWatch, filmsQueue),
-  );
+  // addEventListener
 
-  // refs.addToWatched.EventListener('click', callback);
-  // refs.addToQueue.EventListener('click', callback);
-
-  // refs.addToWatched.addEventListener('click', callback);
-  // refs.addToQueue.addEventListener('click', callback);
+  //removeEventListener
+  refs.homePageGallery.removeEventListener('click', startDetailsFilm);
+  refs.divPagination.removeEventListener('click', plaginationNavigation);
+  refs.formInput.removeEventListener('submit', searchFilms);
+  refs.buttWatch.removeEventListener('click', startQueueGallery);
+  refs.buttQue.removeEventListener('click', startWatchedGallery);
+  refs.libraryGallery.removeEventListener('click', startDetailsLibraryFilm);
 }
+
+const startDetailsFilm = ({ target }) =>
+  activeDetailsPage(target.dataset.id, false);
+
+const startDetailsLibraryFilm = ({ target }) =>
+  activeDetailsPage(target.dataset.id, false);
+
+const startQueueGallery = ({ target }) =>
+  createLibraryGallery(target, refs.buttQue, filmsQueue);
+
+const startWatchedGallery = ({ target }) =>
+  createLibraryGallery(target, refs.buttWatch, filmsWatched);
+
+export { activeHomePage, activeDetailsPage };
