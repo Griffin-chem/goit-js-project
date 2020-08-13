@@ -5,6 +5,9 @@
   align-items: center;
   height: 68px;
 }
+.library{
+  min-height: 470px;
+}
 
 .libraryShadow1 {
   margin-bottom: 15px;
@@ -31,7 +34,12 @@
   background-color: var(--hf-bg-color);
   color: rgb(255, 255, 255);
 }
-
+.message{
+  list-style: none;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 22px;
+}
 @media (min-width: 768px) {
   .library-buttons-place {
     justify-content: center;
