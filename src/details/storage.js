@@ -1,10 +1,9 @@
 import { monitorButtonStatusText, selectFilm } from './filmDetailsPage';
+import globalValue from '../globalValue/globalValue';
 
 const checkLocalStorage = key => {
   try {
-    return JSON.parse(window.localStorage.getItem(key)) !== null
-      ? JSON.parse(window.localStorage.getItem(key))
-      : [];
+    return JSON.parse(window.localStorage.getItem(key));
   } catch (error) {
     return [];
   }
@@ -19,19 +18,23 @@ const performDataAction = ({ action }, filmData) => {
   }
 };
 
-// toggleToQueue({ target: { dataset: { action: 'add' } } });
-
 const toggleToQueue = ({ target }) => {
-  const queueFilmData = checkLocalStorage('filmsQueue');
-  const updateQueue = performDataAction(target.dataset, queueFilmData);
+  const updateQueue = performDataAction(
+    target.dataset,
+    globalValue.getFilmsQueue(),
+  );
   window.localStorage.setItem('filmsQueue', JSON.stringify(updateQueue));
+  globalValue.setFilmsQueue();
   monitorButtonStatusText();
 };
 
 const toggleToWatched = ({ target }) => {
-  const watchedFilmData = checkLocalStorage('filmsWatched');
-  const updateWatched = performDataAction(target.dataset, watchedFilmData);
-  localStorage.setItem('filmsWatched', JSON.stringify(updateWatched));
+  const updateWatched = performDataAction(
+    target.dataset,
+    globalValue.getFilmsWatched(),
+  );
+  window.localStorage.setItem('filmsWatched', JSON.stringify(updateWatched));
+  globalValue.setFilmsWatched();
   monitorButtonStatusText();
 };
 

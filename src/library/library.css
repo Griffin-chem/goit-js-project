@@ -23,12 +23,6 @@
   margin: 0;
 }
 
-
-
-/* .library-btn:hover {
-    background-color: rgb(110, 226, 116);
-    border-bottom:  rgb(10, 82, 52);
-  } */
 .libraryShadow2 {
   box-shadow: 0 4px 2px 0px rgba(0, 0, 0, 0.3);
 }
@@ -44,4 +38,5 @@
   }
 }
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+}
