@@ -5,8 +5,7 @@ import {
 } from '../search/searchAndPagination';
 import { createGallery, createLibraryGallery } from '../library/library';
 import { showDetails } from '../details/filmDetailsPage';
-// import filmsQueue from '../library/movies';
-// import filmsWatched from '../library/movies';
+import globalValue from '../globalValue/globalValue';
 import storage from '../details/storage';
 
 // import { join } from 'lodash';
@@ -16,9 +15,6 @@ refs.navHome.addEventListener('click', activeHomePage);
 refs.navLibrary.addEventListener('click', activeLibraryPage);
 refs.logo.addEventListener('click', activeHomePage);
 // =====================================
-
-let filmsQueue = [];
-let filmsWatched = [];
 
 function activeHomePage(evt) {
   evt.preventDefault();
@@ -53,11 +49,11 @@ function activeLibraryPage(evt) {
   refs.imgDetailsWrapper.innerHTML = '';
   refs.infoDetailsBox.innerHTML = '';
   refs.libraryGallery.innerHTML = '';
-  filmsQueue = storage.checkLocalStorage('filmsQueue');
-  filmsWatched = storage.checkLocalStorage('filmsWatched');
-  createGallery(filmsWatched);
-  refs.buttWatch.classList.add('active-but-lib');
-  refs.buttQue.classList.remove('active-but-lib');
+  globalValue.setFilmsQueue();
+  globalValue.setFilmsWatched();
+  createGallery(globalValue.getFilmsQueue(), 'queue');
+  refs.buttQue.classList.add('active-but-lib');
+  refs.buttWatch.classList.remove('active-but-lib');
 
   // addEventListener
   refs.buttQue.addEventListener('click', startQueueGallery);
@@ -73,7 +69,7 @@ function activeLibraryPage(evt) {
 }
 
 // ===================
-function activeDetailsPage(movieId, itsLibraryFilm) {
+function activeDetailsPage(movieId) {
   if (refs.mainDetailsPage.classList.contains('is-hidden')) {
     refs.mainDetailsPage.classList.remove('is-hidden');
   }
@@ -102,11 +98,13 @@ const startDetailsLibraryFilm = ({ target }) =>
   activeDetailsPage(target.dataset.id, false);
 
 const startQueueGallery = ({ target }) => {
-  filmsQueue = storage.checkLocalStorage('filmsQueue');
-  createLibraryGallery(target, refs.buttWatch, filmsQueue)};
+  // globalValue.setFilmsQueue();
+  createLibraryGallery(target, refs.buttWatch, globalValue.getFilmsQueue());
+};
 
 const startWatchedGallery = ({ target }) => {
-  filmsWatched = storage.checkLocalStorage('filmsWatched')
-  createLibraryGallery(target, refs.buttQue, filmsWatched)};
+  // globalValue.setFilmsWatched();
+  createLibraryGallery(target, refs.buttQue, globalValue.getFilmsWatched());
+};
 
 export { activeHomePage, activeDetailsPage };

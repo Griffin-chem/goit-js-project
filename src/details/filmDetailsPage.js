@@ -3,6 +3,7 @@ import templatesDetailsFilm from '../templates/detailsFilm.hbs';
 import templatesDetailsImg from '../templates/detailsImg.hbs';
 import getYear from '../utils/getYear';
 import refs from '../dom/refs';
+import globalValue from '../globalValue/globalValue';
 import spinner from '../loader/loader';
 import storage from './storage';
 
@@ -37,13 +38,11 @@ const monitorButtonStatusText = () => {
 };
 
 const checkFilmToQueue = movieId => {
-  const filmsQueue = storage.checkLocalStorage('filmsQueue');
-  return filmsQueue.find(({ id }) => id === movieId);
+  return globalValue.getFilmsQueue().find(({ id }) => id === movieId);
 };
 
 const checkFilmToWatched = movieId => {
-  const filmsWatched = storage.checkLocalStorage('filmsWatched');
-  return filmsWatched.find(({ id }) => id === movieId);
+  return globalValue.getFilmsWatched().find(({ id }) => id === movieId);
 };
 
 const createDetails = movieId => {
