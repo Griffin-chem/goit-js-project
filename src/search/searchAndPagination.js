@@ -1,57 +1,25 @@
-import fetchMoviesWithQuery from '../services/moviesApi';
-import itemFilm from '../templates/itemFilm.hbs';
-import Handlebars from 'handlebars';
+import globalValue from '../globalValue/globalValue';
+import moviesApi from '../services/moviesApi';
+import fetchPopularMoviesList from '../homepage/homepage';
 import refs from '../dom/refs';
-import createCardsFunc from '../utils/createCardsFunc';
+import renderSearchPage from '../utils/render';
 import spinner from '../loader/loader';
 
 let inputValue;
-let pageNumber = 1;
-let renderFilms;
 
-refs.numberPage.textContent = `${pageNumber}`;
-// refs.formInput.addEventListener('submit', searchFilms);
-
-function render(data) {
-  renderFilms = [...data.results];
-  console.log(data);
-  data.total_pages === 1
-    ? refs.divPagination.classList.add('displayNone')
-    : refs.nextBtn.classList.remove('displayNone');
-
-  data.total_pages === pageNumber
-    ? refs.nextBtn.classList.add('displayNone')
-    : refs.nextBtn.classList.remove('displayNone');
-
-  if (pageNumber === 1) {
-    refs.prevBtn.classList.add('displayNone');
-  }
-
-  if (data.results.length === 0) {
-    refs.errorDiv.classList.remove('displayNone');
-    refs.homePageGallery.innerHTML = '';
-    return;
-  }
-  refs.homePageGallery.innerHTML = '';
-  refs.errorDiv.classList.add('displayNone');
-
-  const markupInsList = createCardsFunc(data.results);
-  refs.homePageGallery.insertAdjacentHTML('beforeend', markupInsList);
-}
+refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
 
 function fetchFilms(pageNumber, inputValue) {
-  let fetch;
-  spinner.showLoder();
-  if (inputValue) {
-    fetch = fetchMoviesWithQuery.fetchMoviesWithQuery(inputValue, pageNumber);
-  } else {
-    fetch = fetchMoviesWithQuery.fetchPopularMovies(pageNumber);
-  }
+  inputValue
+    ? fetchMoviesWithQueryList(pageNumber, inputValue)
+    : fetchPopularMoviesList(pageNumber);
+}
 
-  fetch
-    .then(data => {
-      render(data);
-    })
+function fetchMoviesWithQueryList(pageNumber, inputValue) {
+  spinner.showLoder();
+  moviesApi
+    .fetchMoviesWithQuery(pageNumber, inputValue)
+    .then(data => renderSearchPage(data))
     .catch(error => {
       refs.errorDiv.classList.remove('displayNone');
     })
@@ -62,36 +30,36 @@ function fetchFilms(pageNumber, inputValue) {
 
 export function searchFilms(e) {
   e.preventDefault();
-  pageNumber = 1;
-  refs.numberPage.textContent = `${pageNumber}`;
+  globalValue.resetPageNumber();
+  refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
   inputValue = e.target.elements[1].value;
   refs.input.value = '';
 
-  fetchFilms(pageNumber, inputValue);
+  fetchFilms(globalValue.getPageNumber(), inputValue);
 }
 
-if (pageNumber === 1) {
+if (globalValue.getPageNumber() === 1) {
   refs.prevBtn.classList.add('displayNone');
 }
 
 export function plaginationNavigation(e) {
-  if (pageNumber === 1) {
+  if (globalValue.getPageNumber() === 1) {
     refs.prevBtn.classList.add('displayNone');
   }
 
-  if (e.target.id === 'prev' && pageNumber > 1) {
-    pageNumber -= 1;
+  if (e.target.id === 'prev' && globalValue.getPageNumber() > 1) {
+    globalValue.decrementPageNumber();
   } else if (e.target.id === 'next') {
     refs.prevBtn.classList.remove('displayNone');
     refs.numberPage.classList.remove('displayNone');
-    pageNumber += 1;
+    globalValue.incrementPageNumber();
   } else {
     return;
   }
 
-  fetchFilms(pageNumber, inputValue);
+  fetchFilms(globalValue.getPageNumber(), inputValue);
 
-  refs.numberPage.textContent = `${pageNumber}`;
+  refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
 
   window.scrollTo({
     top: 0,

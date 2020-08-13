@@ -15,7 +15,7 @@ const fetchPopularMovies = pageNumber => {
 /*
  * Make a request for movies by searchQuery
  */
-const fetchMoviesWithQuery = (searchQuery, pageNumber) => {
+const fetchMoviesWithQuery = (pageNumber, searchQuery) => {
   return getAxios(
     `${baseUrl}/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${pageNumber}&include_adult=false`,
   );
