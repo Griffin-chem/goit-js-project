@@ -3,7 +3,7 @@ import globalValue from '../globalValue/globalValue';
 
 const checkLocalStorage = key => {
   try {
-    return (JSON.parse(window.localStorage.getItem(key)) === null)
+    return (JSON.parse(window.localStorage.getItem(key)) !== null)
     ? JSON.parse(window.localStorage.getItem(key))
     : [];
   } catch (error) {

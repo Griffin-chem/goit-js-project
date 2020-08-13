@@ -49,7 +49,6 @@ function activeLibraryPage(evt) {
   refs.imgDetailsWrapper.innerHTML = '';
   refs.infoDetailsBox.innerHTML = '';
   refs.libraryGallery.innerHTML = '';
-  console.log(globalValue.setFilmsQueue());
   globalValue.setFilmsQueue();
   globalValue.setFilmsWatched();
   createGallery(globalValue.getFilmsQueue(), 'queue');
