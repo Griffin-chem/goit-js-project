@@ -1,102 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cinema Library</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Cinema Library</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cinema Library</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Cinema Library</title>
-</head>
-
-<body>
-  <div class="loader is-hidden">
-    <div class="l_main">
-      <div class="l_square"><span></span><span></span><span></span></div>
-      <div class="l_square"><span></span><span></span><span></span></div>
-      <div class="l_square"><span></span><span></span><span></span></div>
-      <div class="l_square"><span></span><span></span><span></span></div>
-    </div>
-  </div>
-  <header>
-    <div class="logo-block js-logo-block">
-      <a class="logo-block--logo" href="#"><img class="logo-block--film" src="./images/film.png" alt="" /></a>
-      <p class="logo-block--filmoteka">Filmoteka</p>
-    </div>
-
-    <ul class="nav-menu nav-menu--header">
-      <li class="nav-menu__item">
-        <a class="nav-menu__link js-link-to-home" href="#">home</a>
-      </li>
-      <li class="nav-menu__item">
-        <a class="nav-menu__link js-link-to-myLibrary" href="#">My Library</a>
-      </li>
-    </ul>
-  </header>
-
-  <main>
-    <section class="main-page">
-      <form class="formSearch">
-        <button class="buttonSearch" type="submit"></button>
-        <input class="inputSearch" type="text" placeholder="Write movie name and click Enter" />
-      </form>
-
-      <div class="errorSearch displayNone">This film is not found</div>
-
-      <ul class="js-main-page position-items"></ul>
-
-      <div class="pagination">
-        <button id="prev" type="button" data-active="prev">Prev</button>
-        <span class="numberPage"></span>
-        <button id="next" type="button" data-active="next">Next</button>
+  <body>
+    <div class="loader is-hidden">
+      <div class="l_main">
+        <div class="l_square"><span></span><span></span><span></span></div>
+        <div class="l_square"><span></span><span></span><span></span></div>
+        <div class="l_square"><span></span><span></span><span></span></div>
+        <div class="l_square"><span></span><span></span><span></span></div>
       </div>
-    </section>
-
-    <section class="library is-hidden">
-      <div class="library-buttons-place libraryShadow1">
-        <button type="button" class="library-btn libraryShadow2 watch active-but-lib">
-          Watched
-        </button>
-        <button type="button" class="library-btn libraryShadow2 queue">
-          Queue
-        </button>
+    </div>
+    <header>
+      <div class="logo-block js-logo-block">
+        <a class="logo-block--logo" href="#"
+          ><img class="logo-block--film" src="./images/film.png" alt=""
+        /></a>
+        <p class="logo-block--filmoteka">Filmoteka</p>
       </div>
-      <ul class="library-list position-items"></ul>
-    </section>
-    <section class="details-page is-hidden">
-      <div class="details-wrapper">
-        <div class="img-wrapper"></div>
-        <div class="details">
-          <div class="info-box"></div>
-          <div class="buttons-box">
-            <button type="button" class="icon-add-watched butt_style" data-target="toWatched" data-action="add">
-              Add to watched
-            </button>
-            <button type="button" class="icon-add-queue butt_style" data-target="toQueue" data-action="add">
-              Add to queue
-            </button>
-          </div>
 
+      <ul class="nav-menu nav-menu--header">
+        <li class="nav-menu__item">
+          <a class="nav-menu__link js-link-to-home" href="#">home</a>
+        </li>
+        <li class="nav-menu__item">
+          <a class="nav-menu__link js-link-to-myLibrary" href="#">My Library</a>
+        </li>
+      </ul>
+    </header>
+
+    <main>
+      <section class="main-page">
+        <form class="formSearch">
+          <button class="buttonSearch" type="submit"></button>
+          <input
+            class="inputSearch"
+            type="text"
+            placeholder="Write movie name and click Enter"
+          />
+        </form>
+
+        <div class="errorSearch displayNone">This film is not found</div>
+
+        <ul class="js-main-page position-items"></ul>
+
+        <div class="pagination">
+          <button id="prev" type="button" data-active="prev">Prev</button>
+          <span class="numberPage"></span>
+          <button id="next" type="button" data-active="next">Next</button>
         </div>
-      </div>
+      </section>
 
-    </section>
-  </main>
-  <footer class="footer">
-    <span class="footer-name_group">
-      Made by JS Worms &copy;
-    </span>
+      <section class="library is-hidden">
+        <div class="library-buttons-place libraryShadow1">
+          <button
+            type="button"
+            data-target="watched"
+            class="library-btn libraryShadow2 watch active-but-lib"
+          >
+            Watched
+          </button>
+          <button
+            type="button"
+            data-target="queue"
+            class="library-btn libraryShadow2 queue"
+          >
+            Queue
+          </button>
+        </div>
+        <ul class="library-list position-items"></ul>
+      </section>
+      <section class="details-page is-hidden">
+        <div class="details-wrapper">
+          <div class="img-wrapper"></div>
+          <div class="details">
+            <div class="info-box"></div>
+            <div class="buttons-box">
+              <button
+                type="button"
+                class="icon-add-watched butt_style"
+                data-target="toWatched"
+                data-action="add"
+              >
+                Add to watched
+              </button>
+              <button
+                type="button"
+                class="icon-add-queue butt_style"
+                data-target="toQueue"
+                data-action="add"
+              >
+                Add to queue
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <span class="footer-name_group">
+        Made by JS Worms &copy;
+      </span>
 
-    <button class="footer-btnUp">
-      <img src="./images/arrow.png" alt="" />
-    </button>
-  </footer>
-</body>
-
+      <button class="footer-btnUp">
+        <img src="./images/arrow.png" alt="" />
+      </button>
+    </footer>
+  </body>
 </html>

@@ -1,5 +1,9 @@
+import storage from '../details/storage';
+
 export default {
   pageNumber: 1,
+  filmsQueue: [],
+  filmsWatched: [],
 
   //----pageNumber----
   getPageNumber() {
@@ -16,6 +20,26 @@ export default {
 
   decrementPageNumber() {
     this.pageNumber -= 1;
+  },
+  //-------------------
+
+  //----filmsQueue----
+  getFilmsQueue() {
+    return this.filmsQueue;
+  },
+
+  setFilmsQueue() {
+    this.filmsQueue = storage.checkLocalStorage('filmsQueue');
+  },
+  //-------------------
+
+  //----filmsWatched----
+  getFilmsWatched() {
+    return this.filmsWatched;
+  },
+
+  setFilmsWatched() {
+    this.filmsWatched = storage.checkLocalStorage('filmsWatched');
   },
   //-------------------
 };
