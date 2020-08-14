@@ -1,0 +1,12 @@
+.error-page--title{
+text-transform: uppercase;
+font-family: sans-serif;
+font-size: 20px;
+color: var(--hf-tx-color);
+}
+.error-page{
+    width: 100%;
+    height: calc(100vh - 152px);
+    background-color: #ffffff;
+    text-align: center;
+}

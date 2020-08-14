@@ -2,11 +2,11 @@ import refs from '../dom/refs';
 import createCardsFunc from '../utils/createCardsFunc';
 
 const createGallery = (films, galleryLibName) => {
-  if (films) {
-    refs.libraryGallery.innerHTML = createCardsFunc(films);
+  if (films.length>0) {
+    refs.libraryGallery.insertAdjacentHTML('beforeend', createCardsFunc(films));
   } else {
-    const message = `You do not have to ${galleryLibName} movies to watch. Add them.`;
-    console.log(message);
+    const message = `<li class="message"><span>You do not have to ${galleryLibName} movies to watch. Add them.</span></li>`;
+    refs.libraryGallery.innerHTML = message;
   }
 };
 

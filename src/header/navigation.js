@@ -7,6 +7,7 @@ import { createGallery, createLibraryGallery } from '../library/library';
 import { showDetails } from '../details/filmDetailsPage';
 import globalValue from '../globalValue/globalValue';
 import storage from '../details/storage';
+import errorPage from '../errorPage/errorPage'
 
 // ======================================
 refs.navHome.addEventListener('click', activeHomePage);
@@ -19,6 +20,7 @@ function activeHomePage(evt) {
   if (refs.mainPage.classList.contains('is-hidden')) {
     refs.mainPage.classList.remove('is-hidden');
   }
+  errorPage.hiddenErrorPage();
   refs.mainLibrary.classList.add('is-hidden');
   refs.mainDetailsPage.classList.add('is-hidden');
   refs.imgDetailsWrapper.innerHTML = '';
@@ -42,6 +44,7 @@ function activeLibraryPage(evt) {
   if (refs.mainLibrary.classList.contains('is-hidden')) {
     refs.mainLibrary.classList.remove('is-hidden');
   }
+  errorPage.hiddenErrorPage();
   refs.mainPage.classList.add('is-hidden');
   refs.mainDetailsPage.classList.add('is-hidden');
   refs.imgDetailsWrapper.innerHTML = '';
@@ -71,6 +74,7 @@ function activeDetailsPage(movieId) {
   if (refs.mainDetailsPage.classList.contains('is-hidden')) {
     refs.mainDetailsPage.classList.remove('is-hidden');
   }
+  errorPage.hiddenErrorPage();
   refs.mainPage.classList.add('is-hidden');
   refs.mainLibrary.classList.add('is-hidden');
 
