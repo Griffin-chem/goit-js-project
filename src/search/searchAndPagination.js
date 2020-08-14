@@ -5,7 +5,7 @@ import refs from '../dom/refs';
 import renderSearchPage from '../utils/render';
 import spinner from '../loader/loader';
 import errorPage from '../errorPage/errorPage';
-import { indexOf } from 'core-js/fn/array';
+import createCardsFunc from '../utils/createCardsFunc';
 
 let inputValue;
 
@@ -77,43 +77,64 @@ export function plaginationNavigation(e) {
 }
 
 refs.divPaginationLib.addEventListener('click', paginationLibrary);
-refs.numberPageLib.textContent = `1`;
-// refs.prevBtnLib.classList.add('displayNone');
+
+refs.prevBtnLib.classList.add('displayNone');
+
+let pageNow;
+let total = 6;
+const incrementPage = () => {
+  total += 6;
+};
+const decrementPage = () => {
+  if (total >= 6) {
+    total -= 6;
+  } else if (total === 0) {
+    return;
+  }
+};
 
 function paginationLibrary(e) {
-  console.log(globalValue.getFilmsQueue());
-
-  const films = globalValue.getFilmsQueue();
-
-  const nextPageFilms = globalValue
-    .getFilmsQueue()
-    .filter(film => indexOf(film) < 6);
-
-  console.log(nextPageFilms);
-
   const filmsNumbers = globalValue.getFilmsQueue().length;
+  const allFilmsPages = Math.ceil(filmsNumbers / 6);
 
-  const allFilmsPages = Math.round(filmsNumbers / 6);
-
-  console.log(allFilmsPages);
-
-  // const pageNow =
-
-  if (e.target.id === 'prevLib') {
+  if (e.target.id === 'prevLib' && total > 6) {
     refs.libraryGallery.innerHTML = '';
-    refs.libraryGallery.insertAdjacentHTML('beforeend', createCardsFunc(films));
-  } else if (e.target.id === 'nextLib') {
+
+    const prevPageFilms = globalValue.getFilmsQueue().filter((film, index) => {
+      if (index < total - 6 && index >= total - 12) {
+        return film;
+      }
+    });
+    refs.libraryGallery.insertAdjacentHTML(
+      'beforeend',
+      createCardsFunc(prevPageFilms),
+    );
+    decrementPage();
+  } else if (e.target.id === 'nextLib' && total <= filmsNumbers) {
     refs.libraryGallery.innerHTML = '';
-    refs.libraryGallery.insertAdjacentHTML('beforeend', createCardsFunc(films));
+
+    const nextPageFilms = globalValue.getFilmsQueue().filter((film, index) => {
+      if (index > total - 1 && index < total + 6) {
+        return film;
+      }
+    });
+    refs.libraryGallery.insertAdjacentHTML(
+      'beforeend',
+      createCardsFunc(nextPageFilms),
+    );
+    incrementPage();
   } else {
     return;
   }
+  pageNow = total / 6;
 
-  refs.numberPageLib.textContent = `${filmsNumbers} - ${allFilmsPages}`;
+  pageNow > 1
+    ? refs.prevBtnLib.classList.remove('displayNone')
+    : refs.prevBtnLib.classList.add('displayNone');
 
-  // window.scrollTo({
-  //   top: 0,
-  //   left: 0,
-  //   behavior: 'smooth',
-  // });
+  pageNow === allFilmsPages
+    ? refs.nextBtnLib.classList.add('displayNone')
+    : refs.nextBtnLib.classList.remove('displayNone');
+
+  refs.numberPageLib.textContent = `${pageNow} - ${allFilmsPages}`;
 }

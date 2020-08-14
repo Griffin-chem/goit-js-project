@@ -4,8 +4,18 @@ import { activeDetailsPage } from '../header/navigation';
 import createCardsFunc from '../utils/createCardsFunc';
 
 const createGallery = (films, galleryLibName) => {
-  if (films.length>0) {
-    refs.libraryGallery.insertAdjacentHTML('beforeend', createCardsFunc(films));
+  const filmsix = films.filter((film, index) => {
+    if (index <= 5) {
+      return film;
+    }
+  });
+
+  if (films.length > 0) {
+    refs.numberPageLib.textContent = `1 - ${Math.ceil(films.length / 6)}`;
+    refs.libraryGallery.insertAdjacentHTML(
+      'beforeend',
+      createCardsFunc(filmsix),
+    );
   } else {
     const message = `<li class="message"><span>You do not have to ${galleryLibName} movies to watch. Add them.</span></li>`;
     refs.libraryGallery.innerHTML = message;
