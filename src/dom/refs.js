@@ -21,4 +21,5 @@ export default {
   imgDetailsWrapper: document.querySelector('.img-wrapper'),
   infoDetailsBox: document.querySelector('.info-box'),
   spinner: document.querySelector('.loader'),
+  errorPage:document.querySelector('.error-page'),
 };

@@ -3,7 +3,7 @@ import renderHomePage from '../utils/render';
 import moviesApi from '../services/moviesApi';
 import spinner from '../loader/loader';
 import { activeHomePage } from '../header/navigation';
-
+import errorPage from '../errorPage/errorPage'
 fetchPopularMoviesList(globalValue.getPageNumber());
 
 window.addEventListener('DOMContentLoaded', activeHomePage);
@@ -16,6 +16,7 @@ export default function fetchPopularMoviesList(pageNumber) {
       renderHomePage(data);
     })
     .catch(error => {
+      errorPage.showErrorPage();
       console.log(error);
     })
     .finally(() => {

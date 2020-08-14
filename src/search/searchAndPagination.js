@@ -4,7 +4,7 @@ import fetchPopularMoviesList from '../homepage/homepage';
 import refs from '../dom/refs';
 import renderSearchPage from '../utils/render';
 import spinner from '../loader/loader';
-
+import errorPage from '../errorPage/errorPage'
 let inputValue;
 
 refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
@@ -22,6 +22,7 @@ function fetchMoviesWithQueryList(pageNumber, inputValue) {
     .then(data => renderSearchPage(data))
     .catch(error => {
       refs.errorDiv.classList.remove('displayNone');
+      errorPage.showErrorPage();
     })
     .finally(() => {
       spinner.hiddenLoader();
