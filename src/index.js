@@ -28,3 +28,6 @@ import './details/details.css';
 //loader
 import './loader/loader.css';
 import './loader/loader';
+//errorPage
+import './errorPage/errorPage';
+import './errorPage/errorpage.css'; 
