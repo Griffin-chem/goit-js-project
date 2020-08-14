@@ -5,6 +5,8 @@ import refs from '../dom/refs';
 import renderSearchPage from '../utils/render';
 import spinner from '../loader/loader';
 import errorPage from '../errorPage/errorPage';
+import { indexOf } from 'core-js/fn/array';
+
 let inputValue;
 
 refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
@@ -72,4 +74,46 @@ export function plaginationNavigation(e) {
     left: 0,
     behavior: 'smooth',
   });
+}
+
+refs.divPaginationLib.addEventListener('click', paginationLibrary);
+refs.numberPageLib.textContent = `1`;
+// refs.prevBtnLib.classList.add('displayNone');
+
+function paginationLibrary(e) {
+  console.log(globalValue.getFilmsQueue());
+
+  const films = globalValue.getFilmsQueue();
+
+  const nextPageFilms = globalValue
+    .getFilmsQueue()
+    .filter(film => indexOf(film) < 6);
+
+  console.log(nextPageFilms);
+
+  const filmsNumbers = globalValue.getFilmsQueue().length;
+
+  const allFilmsPages = Math.round(filmsNumbers / 6);
+
+  console.log(allFilmsPages);
+
+  // const pageNow =
+
+  if (e.target.id === 'prevLib') {
+    refs.libraryGallery.innerHTML = '';
+    refs.libraryGallery.insertAdjacentHTML('beforeend', createCardsFunc(films));
+  } else if (e.target.id === 'nextLib') {
+    refs.libraryGallery.innerHTML = '';
+    refs.libraryGallery.insertAdjacentHTML('beforeend', createCardsFunc(films));
+  } else {
+    return;
+  }
+
+  refs.numberPageLib.textContent = `${filmsNumbers} - ${allFilmsPages}`;
+
+  // window.scrollTo({
+  //   top: 0,
+  //   left: 0,
+  //   behavior: 'smooth',
+  // });
 }
