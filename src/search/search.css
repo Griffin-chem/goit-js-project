@@ -73,7 +73,7 @@ img {
 .pagination button {
   border: none;
   border-radius: 10px;
-  width: 95px;
+  width: 75px;
   height: 48px;
   color: #556270;
   font-size: 22px;
@@ -85,7 +85,7 @@ img {
   display: block;
   border: none;
   border-radius: 10px;
-  width: 48px;
+  width: 100px;
   height: 48px;
   color: #556270;
   font-size: 22px;

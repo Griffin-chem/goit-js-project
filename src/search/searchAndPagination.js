@@ -4,7 +4,7 @@ import fetchPopularMoviesList from '../homepage/homepage';
 import refs from '../dom/refs';
 import renderSearchPage from '../utils/render';
 import spinner from '../loader/loader';
-import errorPage from '../errorPage/errorPage'
+import errorPage from '../errorPage/errorPage';
 let inputValue;
 
 refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
@@ -19,7 +19,12 @@ function fetchMoviesWithQueryList(pageNumber, inputValue) {
   spinner.showLoder();
   moviesApi
     .fetchMoviesWithQuery(pageNumber, inputValue)
-    .then(data => renderSearchPage(data))
+    .then(data => {
+      renderSearchPage(data);
+      refs.numberPage.textContent = `${globalValue.getPageNumber()} - ${
+        data.total_pages
+      }`;
+    })
     .catch(error => {
       refs.errorDiv.classList.remove('displayNone');
       errorPage.showErrorPage();
@@ -32,7 +37,7 @@ function fetchMoviesWithQueryList(pageNumber, inputValue) {
 export function searchFilms(e) {
   e.preventDefault();
   globalValue.resetPageNumber();
-  refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
+  // refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
   inputValue = e.target.elements[1].value;
   refs.input.value = '';
 
