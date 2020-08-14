@@ -1,6 +1,5 @@
 'use strict';
 // Shared files
-import './styles.css';
 import './common/common.css';
 import './services/moviesApi';
 
@@ -14,7 +13,6 @@ import './header/footer.css';
 import './header/header.css';
 import './header/main.css';
 // Libraries - queue and watched
-import './library/library';
 import './library/library.css';
 
 // Search and Pagination

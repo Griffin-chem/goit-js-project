@@ -8,8 +8,6 @@ import { showDetails } from '../details/filmDetailsPage';
 import globalValue from '../globalValue/globalValue';
 import storage from '../details/storage';
 
-// import { join } from 'lodash';
-
 // ======================================
 refs.navHome.addEventListener('click', activeHomePage);
 refs.navLibrary.addEventListener('click', activeLibraryPage);

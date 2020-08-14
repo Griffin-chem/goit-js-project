@@ -22,13 +22,6 @@ const fetchMoviesWithQuery = (pageNumber, searchQuery) => {
 };
 
 /*
- * Get the list of official genres for movies
- */
-const fetchGenres = () => {
-  return getAxios(`${baseUrl}/genre/movie/list?api_key=${API_KEY}`);
-};
-
-/*
  * Make a request the primary information about a movie
  */
 const fetchMovieDetails = movieId => {
@@ -49,6 +42,5 @@ const getAxios = url =>
 export default {
   fetchPopularMovies,
   fetchMoviesWithQuery,
-  fetchGenres,
   fetchMovieDetails,
 };

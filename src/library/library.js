@@ -1,8 +1,4 @@
-// import storage from '../details/storage';
-// import filmsWached from './movies';
 import refs from '../dom/refs';
-import { activeDetailsPage } from '../header/navigation';
-
 import createCardsFunc from '../utils/createCardsFunc';
 
 const createGallery = (films, galleryLibName) => {
