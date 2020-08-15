@@ -27,4 +27,5 @@ export default function render({ results, total_pages }) {
     'beforeend',
     createCardsFunc(results),
   );
+  window.scrollTo(0, 0);
 }
