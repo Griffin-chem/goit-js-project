@@ -82,6 +82,9 @@ refs.prevBtnLib.classList.add('displayNone');
 
 let pageNow;
 let total = 6;
+let filmsNumbers;
+let arrFilms;
+
 const incrementPage = () => {
   total += 6;
 };
@@ -93,14 +96,32 @@ const decrementPage = () => {
   }
 };
 
+refs.divButtons.addEventListener('click', watch_queue);
+function watch_queue(e) {
+  if (e.target.dataset.target === 'watched') {
+    pageNow = 1;
+  } else if (e.target.dataset.target === 'queue') {
+    pageNow = 1;
+  }
+}
+
 function paginationLibrary(e) {
-  const filmsNumbers = globalValue.getFilmsQueue().length;
+  if (refs.buttWatch.classList.contains('active-but-lib')) {
+    filmsNumbers = globalValue.getFilmsWatched().length;
+    arrFilms = globalValue.getFilmsWatched();
+  } else if (refs.buttQue.classList.contains('active-but-lib')) {
+    arrFilms = globalValue.getFilmsQueue();
+    filmsNumbers = globalValue.getFilmsQueue().length;
+  } else {
+    return;
+  }
+
   const allFilmsPages = Math.ceil(filmsNumbers / 6);
 
   if (e.target.id === 'prevLib' && total > 6) {
     refs.libraryGallery.innerHTML = '';
 
-    const prevPageFilms = globalValue.getFilmsQueue().filter((film, index) => {
+    const prevPageFilms = arrFilms.filter((film, index) => {
       if (index < total - 6 && index >= total - 12) {
         return film;
       }
@@ -113,7 +134,7 @@ function paginationLibrary(e) {
   } else if (e.target.id === 'nextLib' && total <= filmsNumbers) {
     refs.libraryGallery.innerHTML = '';
 
-    const nextPageFilms = globalValue.getFilmsQueue().filter((film, index) => {
+    const nextPageFilms = arrFilms.filter((film, index) => {
       if (index > total - 1 && index < total + 6) {
         return film;
       }
