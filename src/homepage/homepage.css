@@ -8,6 +8,7 @@
 
 .itemFilm {
   width: 300px;
+  height: 156px;
   position: relative;
   list-style-type: none;
   margin-top: 10px;
@@ -16,8 +17,10 @@
 
 .card__movie {
   width: 100%;
+  height: 155px;
   background: linear-gradient(to top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
   border-radius: 10px;
+  object-fit: cover;
 }
 
 .itemFilm_title {
@@ -62,7 +65,12 @@
 
   .itemFilm {
     width: 350px;
+    height: 180px;
     margin-top: 20px;
+  }
+
+  .card__movie {
+    height: 179px;
   }
 
   .itemFilm_title {
@@ -83,7 +91,12 @@
 
   .itemFilm {
     width: 470px;
+    height: 245px;
     margin-top: 20px;
+  }
+
+  .card__movie {
+    height: 244px;
   }
 
   .itemFilm_title {
