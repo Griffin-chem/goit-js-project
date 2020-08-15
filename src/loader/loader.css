@@ -4,10 +4,8 @@ body {
   overflow-x: hidden;
 }
 body {
-  /* /* z-index: 1000; */
-  margin: 0; 
-  background-color:#ffffff;
-
+  margin: 0;
+  background-color: #ffffff;
 }
 .loader {
   position: fixed;
@@ -15,7 +13,6 @@ body {
   height: 100%;
   width: 100%;
   z-index: 1001;
-  
 }
 .loader .l_main {
   position: absolute;
@@ -28,19 +25,12 @@ body {
   transform: translate(-50%, -50%);
 }
 
-
 @media (max-width: 315px) {
   .loader {
     -webkit-transform: scale(0.75);
     transform: scale(0.75);
   }
-} 
-/* @media (max-width: 320px) {
-  .loader {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-} */
+}
 .l_square {
   position: relative;
 }
