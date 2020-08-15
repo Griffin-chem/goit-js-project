@@ -5,6 +5,8 @@ import refs from '../dom/refs';
 import renderSearchPage from '../utils/render';
 import spinner from '../loader/loader';
 import errorPage from '../errorPage/errorPage';
+import createCardsFunc from '../utils/createCardsFunc';
+
 let inputValue;
 
 refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
@@ -72,4 +74,67 @@ export function plaginationNavigation(e) {
     left: 0,
     behavior: 'smooth',
   });
+}
+
+refs.divPaginationLib.addEventListener('click', paginationLibrary);
+
+refs.prevBtnLib.classList.add('displayNone');
+
+let pageNow;
+let total = 6;
+const incrementPage = () => {
+  total += 6;
+};
+const decrementPage = () => {
+  if (total >= 6) {
+    total -= 6;
+  } else if (total === 0) {
+    return;
+  }
+};
+
+function paginationLibrary(e) {
+  const filmsNumbers = globalValue.getFilmsQueue().length;
+  const allFilmsPages = Math.ceil(filmsNumbers / 6);
+
+  if (e.target.id === 'prevLib' && total > 6) {
+    refs.libraryGallery.innerHTML = '';
+
+    const prevPageFilms = globalValue.getFilmsQueue().filter((film, index) => {
+      if (index < total - 6 && index >= total - 12) {
+        return film;
+      }
+    });
+    refs.libraryGallery.insertAdjacentHTML(
+      'beforeend',
+      createCardsFunc(prevPageFilms),
+    );
+    decrementPage();
+  } else if (e.target.id === 'nextLib' && total <= filmsNumbers) {
+    refs.libraryGallery.innerHTML = '';
+
+    const nextPageFilms = globalValue.getFilmsQueue().filter((film, index) => {
+      if (index > total - 1 && index < total + 6) {
+        return film;
+      }
+    });
+    refs.libraryGallery.insertAdjacentHTML(
+      'beforeend',
+      createCardsFunc(nextPageFilms),
+    );
+    incrementPage();
+  } else {
+    return;
+  }
+  pageNow = total / 6;
+
+  pageNow > 1
+    ? refs.prevBtnLib.classList.remove('displayNone')
+    : refs.prevBtnLib.classList.add('displayNone');
+
+  pageNow === allFilmsPages
+    ? refs.nextBtnLib.classList.add('displayNone')
+    : refs.nextBtnLib.classList.remove('displayNone');
+
+  refs.numberPageLib.textContent = `${pageNow} - ${allFilmsPages}`;
 }

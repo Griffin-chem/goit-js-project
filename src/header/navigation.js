@@ -13,6 +13,8 @@ import errorPage from '../errorPage/errorPage'
 refs.navHome.addEventListener('click', activeHomePage);
 refs.navLibrary.addEventListener('click', activeLibraryPage);
 refs.logo.addEventListener('click', activeHomePage);
+globalValue.setFilmsQueue();
+globalValue.setFilmsWatched();
 // =====================================
 
 function activeHomePage(evt) {
@@ -93,11 +95,15 @@ function activeDetailsPage(movieId) {
   refs.libraryGallery.removeEventListener('click', startDetailsLibraryFilm);
 }
 
-const startDetailsFilm = ({ target }) =>
-  activeDetailsPage(target.dataset.id, false);
+const startDetailsFilm = ({ target }) => {
+  if (target.localName !== 'ul')
+  {activeDetailsPage(target.parentElement.children[2].dataset.id, false)}
+};
 
-const startDetailsLibraryFilm = ({ target }) =>
-  activeDetailsPage(target.dataset.id, false);
+const startDetailsLibraryFilm = ({ target }) =>{
+  if (target.localName !== 'ul')
+  {activeDetailsPage(target.parentElement.children[2].dataset.id, false)}
+};
 
 const startQueueGallery = ({ target }) => {
   // globalValue.setFilmsQueue();

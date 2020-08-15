@@ -6,6 +6,12 @@ export default {
   prevBtn: document.querySelector('#prev'),
   nextBtn: document.querySelector('#next'),
   numberPage: document.querySelector('.numberPage'),
+
+  divPaginationLib: document.querySelector('.paginationLib'),
+  prevBtnLib: document.querySelector('#prevLib'),
+  nextBtnLib: document.querySelector('#nextLib'),
+  numberPageLib: document.querySelector('.numberPageLib'),
+
   errorDiv: document.querySelector('.errorSearch'),
   navHome: document.querySelector('.js-link-to-home'),
   navLibrary: document.querySelector('.js-link-to-myLibrary'),
@@ -21,5 +27,5 @@ export default {
   imgDetailsWrapper: document.querySelector('.img-wrapper'),
   infoDetailsBox: document.querySelector('.info-box'),
   spinner: document.querySelector('.loader'),
-  errorPage:document.querySelector('.error-page'),
+  errorPage: document.querySelector('.error-page'),
 };

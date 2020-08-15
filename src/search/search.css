@@ -88,3 +88,36 @@ img {
 .displayNone {
   visibility: hidden;
 }
+
+.paginationLib {
+  width: 270px;
+  margin: 0 auto 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.paginationLib button {
+  border: none;
+  border-radius: 10px;
+  width: 75px;
+  height: 48px;
+  color: #556270;
+  font-size: 22px;
+  border: 1px solid #556270;
+  background-color: #fbfbfb;
+}
+
+.numberPageLib {
+  display: block;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 48px;
+  color: #556270;
+  font-size: 22px;
+  line-height: 45px;
+  border: 1px solid #556270;
+  background-color: #fbfbfb;
+  cursor: default;
+}
