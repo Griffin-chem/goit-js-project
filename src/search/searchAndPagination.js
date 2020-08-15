@@ -76,8 +76,6 @@ export function plaginationNavigation(e) {
   });
 }
 
-refs.divPaginationLib.addEventListener('click', paginationLibrary);
-
 refs.prevBtnLib.classList.add('displayNone');
 
 let pageNow;
@@ -96,14 +94,27 @@ const decrementPage = () => {
   }
 };
 
-refs.divButtons.addEventListener('click', watch_queue);
-function watch_queue(e) {
-  if (e.target.dataset.target === 'watched') {
-    pageNow = 1;
-  } else if (e.target.dataset.target === 'queue') {
-    pageNow = 1;
-  }
-}
+// refs.divButtons.addEventListener('click', ee);
+
+// function ee(e) {
+//   let filmsix;
+//   if (e.target.dataset.target === 'watched') {
+//     filmsix = globalValue.getFilmsWatched().filter((film, index) => {
+//       if (index <= 5) {
+//         return film;
+//       }
+//     });
+//   } else if (e.target.dataset.target === 'queue') {
+//     filmsix = globalValue.getFilmsQueue().filter((film, index) => {
+//       if (index <= 5) {
+//         return film;
+//       }
+//     });
+//   }
+//   refs.libraryGallery.insertAdjacentHTML('beforeend', createCardsFunc(filmsix));
+// }
+
+refs.divPaginationLib.addEventListener('click', paginationLibrary);
 
 function paginationLibrary(e) {
   if (refs.buttWatch.classList.contains('active-but-lib')) {
