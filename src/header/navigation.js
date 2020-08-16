@@ -74,13 +74,13 @@ const togglePageVisibility = (visiblePage, notVisiblePages) => {
 
 const startDetailsFilm = ({ target }) => {
   if (target.localName !== 'ul') {
-    activeDetailsPage(target.parentElement.children[2].dataset.id);
+  activeDetailsPage(target.parentElement.children[2].dataset.id);
   }
 };
 
 const startDetailsLibraryFilm = ({ target }) => {
   if (target.localName !== 'ul') {
-    activeDetailsPage(target.parentElement.children[2].dataset.id);
+  activeDetailsPage(target.parentElement.children[2].dataset.id);
   }
 };
 

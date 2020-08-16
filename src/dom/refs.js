@@ -21,6 +21,8 @@ export default {
   btnToWatched: document.querySelector('button[data-target="toWatched"]'),
   btnToQueue: document.querySelector('button[data-target="toQueue"]'),
   logo: document.querySelector('.js-logo-block'),
+  divButtons: document.querySelector('#buttonsMyFilm'),
+
   libraryGallery: document.querySelector('.library-list'),
   buttWatch: document.querySelector('.watch'),
   buttQue: document.querySelector('.queue'),

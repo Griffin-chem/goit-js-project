@@ -8,6 +8,10 @@ const createGallery = (films, galleryLibName) => {
     }
   });
 
+  films.length <= 6
+    ? refs.divPaginationLib.classList.add('displayNone')
+    : refs.divPaginationLib.classList.remove('displayNone');
+
   if (films.length > 0) {
     refs.numberPageLib.textContent = `1 - ${Math.ceil(films.length / 6)}`;
     refs.libraryGallery.insertAdjacentHTML(
