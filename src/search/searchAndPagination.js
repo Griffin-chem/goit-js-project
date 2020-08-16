@@ -1,11 +1,10 @@
-import globalValue from '../globalValue/globalValue';
 import moviesApi from '../services/moviesApi';
 import fetchPopularMoviesList from '../homepage/homepage';
 import refs from '../dom/refs';
 import renderSearchPage from '../utils/render';
 import spinner from '../loader/loader';
 import errorPage from '../errorPage/errorPage';
-import createCardsFunc from '../utils/createCardsFunc';
+import globalValue from '../globalValue/globalValue';
 
 let inputValue;
 
@@ -77,77 +76,3 @@ export function plaginationNavigation(e) {
   });
 }
 
-refs.prevBtnLib.classList.add('hidden');
-
-let pageNow;
-let total = 6;
-let filmsNumbers;
-let arrFilms;
-
-const incrementPage = () => {
-  total += 6;
-};
-const decrementPage = () => {
-  if (total >= 6) {
-    total -= 6;
-  } else if (total === 0) {
-    return;
-  }
-};
-
-refs.divPaginationLib.addEventListener('click', paginationLibrary);
-
-function paginationLibrary(e) {
-  e.preventDefault();
-
-  if (refs.buttWatch.classList.contains('active-but-lib')) {
-    filmsNumbers = globalValue.getFilmsWatched().length;
-    arrFilms = globalValue.getFilmsWatched();
-  } else if (refs.buttQue.classList.contains('active-but-lib')) {
-    arrFilms = globalValue.getFilmsQueue();
-    filmsNumbers = globalValue.getFilmsQueue().length;
-  } else {
-    return;
-  }
-
-  const allFilmsPages = Math.ceil(filmsNumbers / 6);
-
-  if (e.target.id === 'prevLib' && total > 6) {
-    refs.libraryGallery.innerHTML = '';
-    const prevPageFilms = arrFilms.filter((film, index) => {
-      if (index < total - 6 && index >= total - 12) {
-        return film;
-      }
-    });
-    refs.libraryGallery.insertAdjacentHTML(
-      'beforeend',
-      createCardsFunc(prevPageFilms),
-    );
-    decrementPage();
-  } else if (e.target.id === 'nextLib' && total <= filmsNumbers) {
-    refs.libraryGallery.innerHTML = '';
-    const nextPageFilms = arrFilms.filter((film, index) => {
-      if (index > total - 1 && index < total + 6) {
-        return film;
-      }
-    });
-    refs.libraryGallery.insertAdjacentHTML(
-      'beforeend',
-      createCardsFunc(nextPageFilms),
-    );
-    incrementPage();
-  } else {
-    return;
-  }
-  pageNow = total / 6;
-
-  pageNow > 1
-    ? refs.prevBtnLib.classList.remove('hidden')
-    : refs.prevBtnLib.classList.add('hidden');
-
-  pageNow === allFilmsPages
-    ? refs.nextBtnLib.classList.add('hidden')
-    : refs.nextBtnLib.classList.remove('hidden');
-
-  refs.numberPageLib.textContent = `${pageNow} - ${allFilmsPages}`;
-}
