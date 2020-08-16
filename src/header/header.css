@@ -48,10 +48,6 @@ header {
   visibility: hidden;
 }
 
-.js-main-page {
-  /* display: block; */
-}
-
 .nav-menu {
   width: 218px;
   display: flex;

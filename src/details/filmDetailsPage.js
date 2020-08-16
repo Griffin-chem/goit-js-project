@@ -5,7 +5,6 @@ import getYear from '../utils/getYear';
 import refs from '../dom/refs';
 import globalValue from '../globalValue/globalValue';
 import spinner from '../loader/loader';
-import storage from './storage';
 
 let selectFilm = {};
 
