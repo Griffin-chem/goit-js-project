@@ -45,11 +45,14 @@ img {
   background-color: #fff;
 }
 
-.errorSearch {
+.errorPage, .errorPageLib {
   text-align: center;
   font-size: 30px;
   color: #050505;
-  background-color: #f8faf8;
+  background-color: inherit;
+  height: calc(80vh - 120px);
+  line-height: calc(80vh - 120px);
+  font-family: 'Roboto', serif;
 }
 
 .pagination {
@@ -86,7 +89,7 @@ img {
 }
 
 .displayNone {
-  visibility: hidden;
+  display: none !important;
 }
 
 .paginationLib {
@@ -120,4 +123,8 @@ img {
   border: 1px solid #556270;
   background-color: #fbfbfb;
   cursor: default;
+}
+
+.hidden {
+  visibility: hidden;
 }
