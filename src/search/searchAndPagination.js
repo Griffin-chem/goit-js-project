@@ -29,6 +29,7 @@ function fetchMoviesWithQueryList(pageNumber, inputValue) {
     })
     .catch(error => {
       refs.errorDiv.classList.remove('displayNone');
+      refs.divPagination.classList.add('displayNone');
       errorPage.showErrorPage();
     })
     .finally(() => {
@@ -47,19 +48,19 @@ export function searchFilms(e) {
 }
 
 if (globalValue.getPageNumber() === 1) {
-  refs.prevBtn.classList.add('displayNone');
+  refs.prevBtn.classList.add('hidden');
 }
 
 export function plaginationNavigation(e) {
   if (globalValue.getPageNumber() === 1) {
-    refs.prevBtn.classList.add('displayNone');
+    refs.prevBtn.classList.add('hidden');
   }
 
   if (e.target.id === 'prev' && globalValue.getPageNumber() > 1) {
     globalValue.decrementPageNumber();
   } else if (e.target.id === 'next') {
-    refs.prevBtn.classList.remove('displayNone');
-    refs.numberPage.classList.remove('displayNone');
+    refs.prevBtn.classList.remove('hidden');
+    refs.numberPage.classList.remove('hidden');
     globalValue.incrementPageNumber();
   } else {
     return;
@@ -76,7 +77,7 @@ export function plaginationNavigation(e) {
   });
 }
 
-refs.prevBtnLib.classList.add('displayNone');
+refs.prevBtnLib.classList.add('hidden');
 
 let pageNow;
 let total = 6;
@@ -93,25 +94,6 @@ const decrementPage = () => {
     return;
   }
 };
-
-// refs.divButtons.addEventListener('click', ee);
-// function ee(e) {
-//   let filmsix;
-//   if (e.target.dataset.target === 'watched') {
-//     filmsix = globalValue.getFilmsWatched().filter((film, index) => {
-//       if (index <= 5) {
-//         return film;
-//       }
-//     });
-//   } else if (e.target.dataset.target === 'queue') {
-//     filmsix = globalValue.getFilmsQueue().filter((film, index) => {
-//       if (index <= 5) {
-//         return film;
-//       }
-//     });
-//   }
-//   refs.libraryGallery.insertAdjacentHTML('beforeend', createCardsFunc(filmsix));
-// }
 
 refs.divPaginationLib.addEventListener('click', paginationLibrary);
 
@@ -160,12 +142,12 @@ function paginationLibrary(e) {
   pageNow = total / 6;
 
   pageNow > 1
-    ? refs.prevBtnLib.classList.remove('displayNone')
-    : refs.prevBtnLib.classList.add('displayNone');
+    ? refs.prevBtnLib.classList.remove('hidden')
+    : refs.prevBtnLib.classList.add('hidden');
 
   pageNow === allFilmsPages
-    ? refs.nextBtnLib.classList.add('displayNone')
-    : refs.nextBtnLib.classList.remove('displayNone');
+    ? refs.nextBtnLib.classList.add('hidden')
+    : refs.nextBtnLib.classList.remove('hidden');
 
   refs.numberPageLib.textContent = `${pageNow} - ${allFilmsPages}`;
 }

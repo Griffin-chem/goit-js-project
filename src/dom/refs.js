@@ -12,7 +12,8 @@ export default {
   nextBtnLib: document.querySelector('#nextLib'),
   numberPageLib: document.querySelector('.numberPageLib'),
 
-  errorDiv: document.querySelector('.errorSearch'),
+  errorDiv: document.querySelector('.errorPage'),
+  errorLib: document.querySelector('.errorPageLib'),
   navHome: document.querySelector('.js-link-to-home'),
   navLibrary: document.querySelector('.js-link-to-myLibrary'),
   mainPage: document.querySelector('.main-page'),

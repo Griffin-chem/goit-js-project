@@ -2,6 +2,7 @@ import refs from '../dom/refs';
 import createCardsFunc from '../utils/createCardsFunc';
 
 const createGallery = (films, galleryLibName) => {
+  refs.errorLib.classList.add('displayNone');
   const filmsix = films.filter((film, index) => {
     if (index <= 5) {
       return film;
@@ -13,14 +14,17 @@ const createGallery = (films, galleryLibName) => {
     : refs.divPaginationLib.classList.remove('displayNone');
 
   if (films.length > 0) {
+    refs.divPaginationLib.classList.remove('displayNone')
     refs.numberPageLib.textContent = `1 - ${Math.ceil(films.length / 6)}`;
     refs.libraryGallery.insertAdjacentHTML(
       'beforeend',
       createCardsFunc(filmsix),
     );
   } else {
-    const message = `<li class="message"><span>You do not have to ${galleryLibName} movies to watch. Add them.</span></li>`;
-    refs.libraryGallery.innerHTML = message;
+    const message = `You don't have any movies in ${galleryLibName} library. Add them.`;
+    refs.errorLib.textContent = message;
+    refs.errorLib.classList.remove('displayNone');
+    refs.divPaginationLib.classList.add('displayNone');
   }
 };
 
