@@ -95,7 +95,6 @@ const decrementPage = () => {
 };
 
 // refs.divButtons.addEventListener('click', ee);
-
 // function ee(e) {
 //   let filmsix;
 //   if (e.target.dataset.target === 'watched') {
@@ -117,6 +116,8 @@ const decrementPage = () => {
 refs.divPaginationLib.addEventListener('click', paginationLibrary);
 
 function paginationLibrary(e) {
+  e.preventDefault();
+
   if (refs.buttWatch.classList.contains('active-but-lib')) {
     filmsNumbers = globalValue.getFilmsWatched().length;
     arrFilms = globalValue.getFilmsWatched();
@@ -131,7 +132,6 @@ function paginationLibrary(e) {
 
   if (e.target.id === 'prevLib' && total > 6) {
     refs.libraryGallery.innerHTML = '';
-
     const prevPageFilms = arrFilms.filter((film, index) => {
       if (index < total - 6 && index >= total - 12) {
         return film;
@@ -144,7 +144,6 @@ function paginationLibrary(e) {
     decrementPage();
   } else if (e.target.id === 'nextLib' && total <= filmsNumbers) {
     refs.libraryGallery.innerHTML = '';
-
     const nextPageFilms = arrFilms.filter((film, index) => {
       if (index > total - 1 && index < total + 6) {
         return film;

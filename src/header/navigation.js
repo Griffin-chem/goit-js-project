@@ -7,7 +7,7 @@ import { createGallery, createLibraryGallery } from '../library/library';
 import { showDetails } from '../details/filmDetailsPage';
 import globalValue from '../globalValue/globalValue';
 import storage from '../details/storage';
-import errorPage from '../errorPage/errorPage'
+import errorPage from '../errorPage/errorPage';
 
 // import { join } from 'lodash';
 
@@ -98,13 +98,15 @@ function activeDetailsPage(movieId) {
 }
 
 const startDetailsFilm = ({ target }) => {
-  if (target.localName !== 'ul')
-  {activeDetailsPage(target.parentElement.children[2].dataset.id, false)}
+  if (target.localName !== 'ul') {
+    activeDetailsPage(target.parentElement.children[2].dataset.id, false);
+  }
 };
 
-const startDetailsLibraryFilm = ({ target }) =>{
-  if (target.localName !== 'ul')
-  {activeDetailsPage(target.parentElement.children[2].dataset.id, false)}
+const startDetailsLibraryFilm = ({ target }) => {
+  if (target.localName !== 'ul') {
+    activeDetailsPage(target.parentElement.children[2].dataset.id, false);
+  }
 };
 
 const startQueueGallery = ({ target }) => {
