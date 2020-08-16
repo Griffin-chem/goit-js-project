@@ -29,6 +29,13 @@ const fetchMovieDetails = movieId => {
 };
 
 /*
+ * Get the videos that have been added to a movie.
+ */
+const fetchGetVideos = movieId => {
+  return getAxios(`${baseUrl}/movie/${movieId}/videos?api_key=${API_KEY}`);
+};
+
+/*
  * Axios get Api-request by URL
  */
 const getAxios = url =>
@@ -43,4 +50,5 @@ export default {
   fetchPopularMovies,
   fetchMoviesWithQuery,
   fetchMovieDetails,
+  fetchGetVideos,
 };
