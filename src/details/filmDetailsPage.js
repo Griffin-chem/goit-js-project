@@ -52,13 +52,9 @@ const createDetails = movieId => {
       selectFilm = { ...data };
       markupDetailsPage(data);
       const trailer = document.getElementById('trailer');
-      console.log(data.id);
-      console.log(trailer);
-      moviesApi
-      .fetchGetVideos(data.id)
-      .then(result => {
-        console.log(result);
-        trailer.src = `http://www.youtube.com/embed/${result.results[0].key}`});
+      moviesApi.fetchGetVideos(data.id).then(result => {
+        trailer.src = `http://www.youtube.com/embed/${result.results[0].key}`;
+      });
     })
     .catch(error => console.error(error))
     .finally(() => {

@@ -155,3 +155,8 @@ button[data-target='toWatched'] {
     margin-right: 14px;
   }
 }
+
+.trailer-box {
+  margin-top: 20px;
+  width: max-content;
+}
