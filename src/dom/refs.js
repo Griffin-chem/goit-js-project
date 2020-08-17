@@ -23,6 +23,7 @@ export default {
   btnToQueue: document.querySelector('button[data-target="toQueue"]'),
   logo: document.querySelector('.js-logo-block'),
   divButtons: document.querySelector('#buttonsMyFilm'),
+  btnUp: document.querySelector('.footer-btnUp'),
 
   libraryGallery: document.querySelector('.library-list'),
   buttWatch: document.querySelector('.watch'),
