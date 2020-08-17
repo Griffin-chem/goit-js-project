@@ -51,20 +51,20 @@ const createDetails = movieId => {
     .then(data => {
       selectFilm = { ...data };
       markupDetailsPage(data);
+      const trailer = document.getElementById('trailer');
+      console.log(data.id);
+      console.log(trailer);
+      moviesApi
+      .fetchGetVideos(data.id)
+      .then(result => {
+        console.log(result);
+        trailer.src = `http://www.youtube.com/embed/${result.results[0].key}`});
     })
     .catch(error => console.error(error))
     .finally(() => {
       spinner.hiddenLoader();
       monitorButtonStatusText();
     });
-  moviesApi
-    .fetchGetVideos(movieId)
-    .then(
-      result =>
-        (window.querySelector(
-          '#trailer',
-        ).src = `http://www.youtube.com/embed/${result.key}`),
-    );
 };
 
 const markupDetailsPage = data => {
