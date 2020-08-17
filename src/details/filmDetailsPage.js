@@ -57,6 +57,14 @@ const createDetails = movieId => {
       spinner.hiddenLoader();
       monitorButtonStatusText();
     });
+  moviesApi
+    .fetchGetVideos(movieId)
+    .then(
+      result =>
+        (window.querySelector(
+          '#trailer',
+        ).src = `http://www.youtube.com/embed/${result.key}`),
+    );
 };
 
 const markupDetailsPage = data => {
