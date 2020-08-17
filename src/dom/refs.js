@@ -32,4 +32,6 @@ export default {
   infoDetailsBox: document.querySelector('.info-box'),
   spinner: document.querySelector('.loader'),
   errorPage: document.querySelector('.error-page'),
+
+  player: document.querySelector('#trailer'),
 };

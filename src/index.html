@@ -58,54 +58,40 @@
         </div>
       </section>
 
-      <section class="library is-hidden">
-        <div id="buttonsMyFilm" class="library-buttons-place libraryShadow1">
-          <button
-            type="button"
-            data-target="watched"
-            class="library-btn libraryShadow2 watch active-but-lib"
-          >
-            Watched
-          </button>
-          <button
-            type="button"
-            data-target="queue"
-            class="library-btn libraryShadow2 queue"
-          >
-            Queue
-          </button>
-        </div>
-        <div class="errorPageLib displayNone"></div>
-        <ul class="library-list position-items"></ul>
-        <div class="paginationLib">
-          <button id="prevLib" type="button" data-active="prev">Prev</button>
-          <span class="numberPageLib"></span>
-          <button id="nextLib" type="button" data-active="next">Next</button>
-        </div>
-      </section>
-      <section class="details-page is-hidden">
-        <div class="details-wrapper">
-          <div class="img-wrapper"></div>
-          <div class="details">
-            <div class="info-box"></div>
-            <div class="buttons-box">
-              <button
-                type="button"
-                class="icon-add-watched butt_style"
-                data-target="toWatched"
-                data-action="add"
-              >
-                Add to watched
-              </button>
-              <button
-                type="button"
-                class="icon-add-queue butt_style"
-                data-target="toQueue"
-                data-action="add"
-              >
-                Add to queue
-              </button>
-            </div>
+    <section class="library is-hidden">
+      <div id="buttonsMyFilm" class="library-buttons-place libraryShadow1">
+        <button type="button" data-target="watched" class="library-btn libraryShadow2 watch active-but-lib">
+          Watched
+        </button>
+        <button type="button" data-target="queue" class="library-btn libraryShadow2 queue">
+          Queue
+        </button>
+      </div>
+      <div class="errorPageLib displayNone"></div>
+      <ul class="library-list position-items"></ul>
+      <div class="paginationLib">
+        <button id="prevLib" type="button" data-active="prev">Prev</button>
+        <span class="numberPageLib"></span>
+        <button id="nextLib" type="button" data-active="next">Next</button>
+      </div>
+    </section>
+    <section class="details-page is-hidden">
+      <div class="details-wrapper">
+        <div class="img-wrapper"></div>
+        <div class="details">
+          <div class="info-box"></div>
+          <div class="buttons-box">
+            <button type="button" class="icon-add-watched butt_style" data-target="toWatched" data-action="add">
+              Add to watched
+            </button>
+            <button type="button" class="icon-add-queue butt_style" data-target="toQueue" data-action="add">
+              Add to queue
+            </button>
+
+          </div>
+          <div class="trailer-box">
+            <iframe id="trailer" src="" frameborder="0" allowfullscreen></iframe>
+ 
           </div>
         </div>
       </section>
