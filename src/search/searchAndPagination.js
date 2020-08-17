@@ -5,6 +5,7 @@ import renderSearchPage from '../utils/render';
 import spinner from '../loader/loader';
 import errorPage from '../errorPage/errorPage';
 import globalValue from '../globalValue/globalValue';
+import goUp from '../utils/goUp';
 
 let inputValue;
 
@@ -69,10 +70,5 @@ export function plaginationNavigation(e) {
 
   refs.numberPage.textContent = `${globalValue.getPageNumber()}`;
 
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
-  });
+  goUp();
 }
-
