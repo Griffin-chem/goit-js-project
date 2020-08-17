@@ -10,6 +10,14 @@ let selectFilm = {};
 
 const showDetails = movieId => {
   createDetails(movieId);
+  getTrailerFilm(movieId);
+};
+
+const getTrailerFilm = movieId => {
+  moviesApi.fetchGetVideos(movieId).then(result => {
+    const trailerURL = `http://www.youtube.com/embed/${result.results[0].key}`;
+    refs.player.setAttribute('src', trailerURL);
+  });
 };
 
 const monitorButtonStatusText = () => {
@@ -52,9 +60,6 @@ const createDetails = movieId => {
       selectFilm = { ...data };
       markupDetailsPage(data);
       const trailer = document.getElementById('trailer');
-      moviesApi.fetchGetVideos(data.id).then(result => {
-        trailer.src = `http://www.youtube.com/embed/${result.results[0].key}`;
-      });
     })
     .catch(error => console.error(error))
     .finally(() => {
