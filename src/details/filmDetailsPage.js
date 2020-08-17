@@ -15,7 +15,7 @@ const showDetails = movieId => {
 
 const getTrailerFilm = movieId => {
   moviesApi.fetchGetVideos(movieId).then(result => {
-    const trailerURL = `http://www.youtube.com/embed/${result.results[0].key}`;
+    const trailerURL = `https://www.youtube.com/embed/${result.results[0].key}`;
     refs.player.setAttribute('src', trailerURL);
   });
 };
@@ -59,7 +59,6 @@ const createDetails = movieId => {
     .then(data => {
       selectFilm = { ...data };
       markupDetailsPage(data);
-      const trailer = document.getElementById('trailer');
     })
     .catch(error => console.error(error))
     .finally(() => {
